@@ -14,6 +14,7 @@ public class mouseFollow : MonoBehaviour
     public int green;
     public int blue;
     public int red;
+    public GameObject door;
 
     Vector3 mouse;
 
@@ -52,6 +53,7 @@ public class mouseFollow : MonoBehaviour
         else if (collision.tag == "Green")
         {
             green++;
+            door.transform.Translate(0, 10, 0);
         }
         
     }
@@ -70,6 +72,7 @@ public class mouseFollow : MonoBehaviour
         else if (collision.tag == "Green")
         {
             green--;
+            door.transform.Translate(0, -10, 0);
         }
         
     }

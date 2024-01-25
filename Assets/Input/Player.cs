@@ -22,7 +22,7 @@ public class Player : MonoBehaviour
     void Update()
     {
         transform.position += (Vector3)(speed * Time.deltaTime * _moveDirection);
-        
+          
         
     }
     public void SetMovementDirection(Vector2 currentDirection)
