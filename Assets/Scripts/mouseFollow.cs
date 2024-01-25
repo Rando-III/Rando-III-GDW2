@@ -7,6 +7,7 @@ public class mouseFollow : MonoBehaviour
 {
 
     [SerializeField] Camera mainCam;
+    [SerializeField] GameObject[] effectObjects;
 
     Renderer _renderer;
     PlayerInput playerInput;
@@ -14,7 +15,9 @@ public class mouseFollow : MonoBehaviour
     public int green;
     public int blue;
     public int red;
-    public GameObject door;
+    public int testColour;
+    
+
 
     Vector3 mouse;
 
@@ -29,8 +32,12 @@ public class mouseFollow : MonoBehaviour
     {
         transform.position = new Vector3(mouse.x, mouse.y);
         _renderer.material.color = new Color(red * 130, green * 130, blue * 130);
-    }
 
+        if (green > 0 || red > 0 || blue > 0 || testColour > 0)
+        {
+
+        }
+    }
 
 
     private void OnMouse(InputValue value)
@@ -53,7 +60,6 @@ public class mouseFollow : MonoBehaviour
         else if (collision.tag == "Green")
         {
             green++;
-            door.transform.Translate(0, 10, 0);
         }
         
     }
@@ -72,7 +78,6 @@ public class mouseFollow : MonoBehaviour
         else if (collision.tag == "Green")
         {
             green--;
-            door.transform.Translate(0, -10, 0);
         }
         
     }
