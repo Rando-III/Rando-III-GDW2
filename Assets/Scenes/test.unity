@@ -407,7 +407,7 @@ GameObject:
   - component: {fileID: 1726301956}
   - component: {fileID: 1726301955}
   m_Layer: 0
-  m_Name: Main Camera
+  m_Name: MainCamera
   m_TagString: MainCamera
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -725,9 +725,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mainCam: {fileID: 1726301956}
-  _transform: {fileID: 2002310218}
-  _renderer: {fileID: 2002310217}
-  playerInput: {fileID: 2002310215}
+  green: 0
+  blue: 0
+  red: 0
 --- !u!212 &2002310217
 SpriteRenderer:
   m_ObjectHideFlags: 0
