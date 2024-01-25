@@ -18,14 +18,14 @@ public static class InputManager
         };
         _input.InGame.Jump.performed += mtx =>
         {
-            myPlayer.Jump();
+            myPlayer.Jump(); 
         };
     }
 
     public static void SetGameControls()
     {
         _input.InGame.Enable();
-        _input.UI.Disable();
+        _input.UI.Disable();  
     }
     public static void SetUIControls()
     {
