@@ -8,21 +8,25 @@ public class mouseFollow : MonoBehaviour
 
     [SerializeField] Camera mainCam;
 
-    [SerializeField] Transform _transform;
-    [SerializeField] Renderer _renderer;
+    Renderer _renderer;
+    PlayerInput playerInput;
 
-    [SerializeField] PlayerInput playerInput;
-
-    int green;
-    int blue;
-    int red;
+    public int green;
+    public int blue;
+    public int red;
 
     Vector3 mouse;
 
 
+    private void Start()
+    {
+        playerInput = GetComponent<PlayerInput>();
+        _renderer = GetComponent<Renderer>();
+    }
+
     private void FixedUpdate()
     {
-        _transform.position = new Vector3(mouse.x, mouse.y);
+        transform.position = new Vector3(mouse.x, mouse.y);
         _renderer.material.color = new Color(red * 130, green * 130, blue * 130);
     }
 
