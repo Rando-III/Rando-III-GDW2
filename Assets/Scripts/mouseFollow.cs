@@ -11,70 +11,62 @@ public class mouseFollow : MonoBehaviour
     [SerializeField] Transform _transform;
     [SerializeField] Renderer _renderer;
 
+    [SerializeField] PlayerInput playerInput;
+
     int green;
     int blue;
     int red;
 
+    Vector3 mouse;
 
-    // Start is called before the first frame update
-    void Start()
+
+    private void FixedUpdate()
     {
-        
+        _transform.position = new Vector3(mouse.x, mouse.y);
+        _renderer.material.color = new Color(red * 130, green * 130, blue * 130);
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-        _renderer.material.color = new Color (red * 130, green * 130, blue * 130);
-    }
+
 
     private void OnMouse(InputValue value)
     {
         var mouse_pos = value.Get<Vector2>();
-        var mouse = mainCam.ScreenToWorldPoint(mouse_pos);
-        
-        _transform.position = new Vector3(mouse.x, mouse.y);
-        
-
+        mouse = mainCam.ScreenToWorldPoint(mouse_pos);
     }
-
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision != null)
+       
+        if (collision.tag == "Blue")
         {
-            if (collision.tag == "Blue")
-            {
-                blue++;
-            }
-            else if (collision.tag == "Red")
-            {
-                red++;
-            }
-            else if (collision.tag == "Green")
-            {
-                green++;
-            }
+            blue++;
         }
+        else if (collision.tag == "Red")
+        {
+            red++;
+        }
+        else if (collision.tag == "Green")
+        {
+            green++;
+        }
+        
     }
 
     private void OnTriggerExit2D(Collider2D collision)
     {
-        if (collision != null)
+        
+        if (collision.tag == "Blue")
         {
-            if (collision.tag == "Blue")
-            {
-                blue--;
-            }
-            else if (collision.tag == "Red")
-            {
-                red--;
-            }
-            else if (collision.tag == "Green")
-            {
-                green--;
-            }
+            blue--;
         }
+        else if (collision.tag == "Red")
+        {
+            red--;
+        }
+        else if (collision.tag == "Green")
+        {
+            green--;
+        }
+        
     }
 }
