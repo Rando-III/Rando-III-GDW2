@@ -9,6 +9,8 @@ public class mouseFollow : MonoBehaviour
     [SerializeField] Camera mainCam;
     [SerializeField] GameObject[] effectObjects;
 
+    [SerializeField] GameObject door;
+
     Renderer _renderer;
     PlayerInput playerInput;
 
@@ -60,6 +62,7 @@ public class mouseFollow : MonoBehaviour
         else if (collision.tag == "Green")
         {
             green++;
+            door.transform.Translate(0, 10, 0);
         }
         
     }
@@ -78,6 +81,7 @@ public class mouseFollow : MonoBehaviour
         else if (collision.tag == "Green")
         {
             green--;
+            door.transform.Translate(0, -10, 0);
         }
         
     }

@@ -1194,10 +1194,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mainCam: {fileID: 1726301956}
+  effectObjects: []
+  door: {fileID: 624850727}
   green: 0
   blue: 0
   red: 0
-  door: {fileID: 624850727}
+  testColour: 0
 --- !u!212 &2002310217
 SpriteRenderer:
   m_ObjectHideFlags: 0
