@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 6459022456568225349}
   - component: {fileID: 6197831256250828937}
   - component: {fileID: 7472488249162486269}
+  - component: {fileID: 610631243537393105}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -174,3 +175,32 @@ MonoBehaviour:
   _moveDirection: {x: 0, y: 0}
   speed: 10
   isGrounded: 1
+  canMove: 1
+  rb: {fileID: 0}
+  maxV: 10
+  minVelocityX: -10
+  isjumping: 0
+  roll: 0
+  rolltimer: 1
+  isrolling: 0
+--- !u!95 &610631243537393105
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1039188263637433551}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 5aff2ad0c0e422d4ba479ca97099faec, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0

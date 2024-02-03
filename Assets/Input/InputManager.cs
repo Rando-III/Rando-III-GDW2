@@ -20,6 +20,10 @@ public static class InputManager
         {
             myPlayer.Jump(); 
         };
+        _input.InGame.Roll.performed += mtx =>
+        {
+            myPlayer.Roll();
+        };
     }
 
     public static void SetGameControls()
