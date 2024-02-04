@@ -40,7 +40,7 @@ public class Player : MonoBehaviour
     {
         rolltimer -= Time.deltaTime;
         
-        rb.AddForce((new Vector2(10, 0) * _moveDirection));
+        
         
         
         
@@ -59,6 +59,14 @@ public class Player : MonoBehaviour
         if (_moveDirection.x == 1)
         {
             sr.flipX = false;
+        }
+        if (isGrounded)
+        {
+            rb.AddForce((new Vector2(10, 0) * _moveDirection));
+        }
+        if (!isGrounded)
+        {
+            rb.AddForce((new Vector2(10, 0) * _moveDirection * 0.3f));
         }
         
 
