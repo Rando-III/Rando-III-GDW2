@@ -1,3 +1,4 @@
+using JetBrains.Annotations;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -21,9 +22,9 @@ public class Player : MonoBehaviour
     public SpriteRenderer sr;
 
     public Animator animator;
-    
-    
+    public bool canWalljump;
 
+    public bool walljumping;
     // Start is called before the first frame update
     void Start()
     {
@@ -39,7 +40,10 @@ public class Player : MonoBehaviour
     void Update()
     {
         rolltimer -= Time.deltaTime;
-        
+        if (rolltimer < 0) 
+        {
+            rolltimer = 0;
+        }
         
         
         
@@ -64,7 +68,7 @@ public class Player : MonoBehaviour
         {
             rb.AddForce((new Vector2(10, 0) * _moveDirection));
         }
-        if (!isGrounded)
+        if (!isGrounded && !walljumping)
         {
             rb.AddForce((new Vector2(10, 0) * _moveDirection * 0.3f));
         }
@@ -87,15 +91,30 @@ public class Player : MonoBehaviour
             isGrounded = true;
             canMove = true;
             isjumping = false;
+            walljumping = false;
+        }
+        
+    }
+    private void OnCollisionStay2D(Collision2D collision)
+    {
+        if (collision.gameObject.layer == 8)
+        {
+            rb.velocity = Vector2.zero;
+            canWalljump = true;
         }
     }
-    
+
     public void OnCollisionExit2D(Collision2D collision)
     {
         if (collision.gameObject.layer == 3)
         {
             isGrounded = false;
             canMove = false;
+            
+        }
+        if (collision.gameObject.layer == 8)
+        {
+            canWalljump = false;
             
         }
     }
@@ -105,8 +124,14 @@ public class Player : MonoBehaviour
         if (isGrounded) 
         {
              isjumping = true;
-            gameObject.GetComponent<Rigidbody2D>().AddForce(new Vector2(0f, 10f), ForceMode2D.Impulse);
+            gameObject.GetComponent<Rigidbody2D>().AddForce(new Vector2(0f, 20f), ForceMode2D.Impulse);
             isGrounded = false;
+        }
+        if (canWalljump)
+        {
+            gameObject.GetComponent<Rigidbody2D>().AddForce(new Vector2(100, 30f), ForceMode2D.Impulse);
+            canWalljump = false;
+            walljumping = true;
         }
         
     }
@@ -118,7 +143,7 @@ public class Player : MonoBehaviour
         {
             maxV = 20;
             rolltimer = 1f;
-            gameObject.GetComponent<Rigidbody2D>().AddForce(new Vector2(20f, 0f), ForceMode2D.Impulse);
+            gameObject.GetComponent<Rigidbody2D>().AddForce(new Vector2(30f, 0f), ForceMode2D.Impulse);
             maxV = 10;
            
            
@@ -128,10 +153,11 @@ public class Player : MonoBehaviour
         {
            
             rolltimer = 1f;
-            gameObject.GetComponent<Rigidbody2D>().AddForce(new Vector2(-20f, 0f), ForceMode2D.Impulse);
+            gameObject.GetComponent<Rigidbody2D>().AddForce(new Vector2(-30f, 0f), ForceMode2D.Impulse);
             maxV = 10;
         }
         
         
     }
+    
 }
