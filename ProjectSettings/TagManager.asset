@@ -4,11 +4,12 @@
 TagManager:
   serializedVersion: 2
   tags:
-  - Blue
-  - Green
-  - Red
   - Door
-  - TestEffect
+  - Effect0
+  - Effect1
+  - Effect2
+  - Effect3
+  - Effect4
   layers:
   - Default
   - TransparentFX

@@ -7,9 +7,6 @@ public class mouseFollow : MonoBehaviour
 {
 
     [SerializeField] Camera mainCam;
-    [SerializeField] GameObject[] effectObjects;
-
-
 
     [SerializeField] GameObject door;
 

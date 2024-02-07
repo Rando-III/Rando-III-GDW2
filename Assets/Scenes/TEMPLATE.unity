@@ -193,7 +193,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3695335548663206742, guid: 9a73f6892d15c794ba5a97ea5b08c9c1, type: 3}
       propertyPath: m_TagString
-      value: Red
+      value: Effect2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -393,7 +393,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3695335548663206742, guid: 9a73f6892d15c794ba5a97ea5b08c9c1, type: 3}
       propertyPath: m_TagString
-      value: Blue
+      value: Effect1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -1194,10 +1194,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mainCam: {fileID: 1726301956}
-  green: 0
-  blue: 0
-  red: 0
   door: {fileID: 624850727}
+  effect: 0000000000000000000000000000000000000000
+  effectActive: 0000000000
 --- !u!212 &2002310217
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -1527,7 +1526,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3695335548663206742, guid: 9a73f6892d15c794ba5a97ea5b08c9c1, type: 3}
       propertyPath: m_TagString
-      value: Green
+      value: Effect0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
