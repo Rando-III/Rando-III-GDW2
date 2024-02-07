@@ -10,6 +10,7 @@ TagManager:
   - Effect2
   - Effect3
   - Effect4
+  - Kill
   layers:
   - Default
   - TransparentFX

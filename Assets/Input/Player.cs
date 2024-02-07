@@ -9,7 +9,8 @@ public class Player : MonoBehaviour
     public Vector2 _moveDirection;
     public float speed;
     public bool isGrounded = true;
-   
+
+    bool dead = false;
 
     // Start is called before the first frame update
     void Start()
@@ -23,7 +24,11 @@ public class Player : MonoBehaviour
     {
         transform.position += (Vector3)(speed * Time.deltaTime * _moveDirection);
           
-        
+        if (dead)
+        {
+            // Add Death Stuff Here
+            Destroy(gameObject); // temp
+        }
     }
     public void SetMovementDirection(Vector2 currentDirection)
     {
@@ -31,6 +36,11 @@ public class Player : MonoBehaviour
     }
     private void OnCollisionEnter2D(Collision2D collision)
     {
+        if (collision.gameObject.tag == "Kill")
+        {
+            dead = true;
+        }
+
         if (collision.gameObject.layer == 3)
         {
             isGrounded = true;
