@@ -35,12 +35,12 @@ public class mouseFollow : MonoBehaviour
         if (effect[0] > 0 && !effectActive[0]) // start action for effect (called at start of colission)
         {
             effectActive[0] = true;
-            door.transform.Translate(0, 10, 0);
+            door.SetActive(false);
         }
         else if (effectActive[0] && effect[0] <= 0) // end action for effect (called at end of colission)
         {
             effectActive[0] = false;
-            door.transform.Translate(0, -10, 0);
+            door.SetActive(true);
         }
 
         if (effect[1] > 0 && !effectActive[1]) // start action for effect (called at start of colission)
