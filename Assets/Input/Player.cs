@@ -20,10 +20,10 @@ public class Player : MonoBehaviour
     public float rolltimer = 1;
     public bool isrolling = false;
     public SpriteRenderer sr;
-
+    public float jumpforce= 40;
     public Animator animator;
     public bool canWalljump;
-
+    public float rollforce = 0;
     public bool walljumping;
     // Start is called before the first frame update
     void Start()
@@ -72,6 +72,24 @@ public class Player : MonoBehaviour
         {
             rb.AddForce((new Vector2(10, 0) * _moveDirection * 0.3f));
         }
+        if (rb.velocity.y >= 0)
+        {
+            rb.gravityScale = 4;
+        }
+        if (rb.velocity.y < 0 )
+        {
+            rb.gravityScale = 6;
+        }
+        if (rolltimer > 0  && rolltimer < 1)
+        {
+            jumpforce = 30;
+            maxV = 20;
+        }
+        else
+        {
+            jumpforce = 20;
+            maxV = 10;
+        }
         
 
     }
@@ -99,7 +117,7 @@ public class Player : MonoBehaviour
     {
         if (collision.gameObject.layer == 8)
         {
-            rb.velocity = Vector2.zero;
+            rb.velocity = new Vector2 (rb.velocity.x, 0);
             canWalljump = true;
         }
     }
@@ -124,7 +142,7 @@ public class Player : MonoBehaviour
         if (isGrounded) 
         {
              isjumping = true;
-            gameObject.GetComponent<Rigidbody2D>().AddForce(new Vector2(0f, 20f), ForceMode2D.Impulse);
+            gameObject.GetComponent<Rigidbody2D>().AddForce(new Vector2(0f, jumpforce), ForceMode2D.Impulse);
             isGrounded = false;
         }
         if (canWalljump)
@@ -143,7 +161,7 @@ public class Player : MonoBehaviour
         {
             maxV = 20;
             rolltimer = 1f;
-            gameObject.GetComponent<Rigidbody2D>().AddForce(new Vector2(30f, 0f), ForceMode2D.Impulse);
+            gameObject.GetComponent<Rigidbody2D>().AddForce(new Vector2(40, 0f), ForceMode2D.Impulse);
             maxV = 10;
            
            
@@ -153,7 +171,7 @@ public class Player : MonoBehaviour
         {
            
             rolltimer = 1f;
-            gameObject.GetComponent<Rigidbody2D>().AddForce(new Vector2(-30f, 0f), ForceMode2D.Impulse);
+            gameObject.GetComponent<Rigidbody2D>().AddForce(new Vector2(-jumpforce, 0f), ForceMode2D.Impulse);
             maxV = 10;
         }
         
