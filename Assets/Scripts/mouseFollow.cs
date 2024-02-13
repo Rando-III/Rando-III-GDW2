@@ -18,7 +18,7 @@ public class mouseFollow : MonoBehaviour
     public bool[] effectActive = { false, false, false, false, false};
 
     Vector3 mouse;
-
+    Vector2 mousePos;
 
     private void Start()
     {
@@ -28,10 +28,11 @@ public class mouseFollow : MonoBehaviour
 
     private void FixedUpdate()
     {
+        mouse = mainCam.ScreenToWorldPoint(mousePos);
         transform.position = new Vector3(mouse.x, mouse.y);
         _renderer.material.color = new Color(effect[2] * 130, effect[0] * 130, effect[1] * 130);
 
-        
+
         if (effect[0] > 0 && !effectActive[0]) // start action for effect (called at start of colission)
         {
             effectActive[0] = true;
@@ -83,8 +84,7 @@ public class mouseFollow : MonoBehaviour
 
     private void OnMouse(InputValue value)
     {
-        var mouse_pos = value.Get<Vector2>();
-        mouse = mainCam.ScreenToWorldPoint(mouse_pos);
+        mousePos = value.Get<Vector2>();
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
