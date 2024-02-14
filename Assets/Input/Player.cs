@@ -25,6 +25,11 @@ public class Player : MonoBehaviour
     public bool canWalljump;
     public float rollforce = 0;
     public bool walljumping;
+
+
+    bool dead = false;
+
+
     // Start is called before the first frame update
     void Start()
     {
@@ -92,6 +97,14 @@ public class Player : MonoBehaviour
         }
         
 
+
+          
+        if (dead)
+        {
+            // Add Death Stuff Here
+            Destroy(gameObject); // temp
+        }
+
     }
     public void SetMovementDirection(Vector2 currentDirection)
     {
@@ -104,6 +117,11 @@ public class Player : MonoBehaviour
     }
     private void OnCollisionEnter2D(Collision2D collision)
     {
+        if (collision.gameObject.tag == "Kill")
+        {
+            dead = true;
+        }
+
         if (collision.gameObject.layer == 3)
         {
             isGrounded = true;
