@@ -13,8 +13,8 @@ public class Player : MonoBehaviour
     public bool isGrounded = true;
     public bool canMove = true;
     public Rigidbody2D rb;
-    public float maxV = 10;
-    public float minVelocityX = -10;
+    public float maxV = 50;
+    public float minVelocityX = -50;
     public bool isjumping = false;
     public bool roll = false;
     public float rolltimer = 1;
@@ -66,11 +66,11 @@ public class Player : MonoBehaviour
         }
         if (isGrounded)
         {
-            rb.AddForce((new Vector2(10, 0) * _moveDirection));
+            rb.AddForce((new Vector2(50, 0) * _moveDirection));
         }
         if (!isGrounded && !walljumping)
         {
-            rb.AddForce((new Vector2(10, 0) * _moveDirection * 0.3f));
+            rb.AddForce((new Vector2(50, 0) * _moveDirection * 0.6f));
         }
         if (rb.velocity.y >= 0)
         {
@@ -83,12 +83,12 @@ public class Player : MonoBehaviour
         if (rolltimer > 0  && rolltimer < 1)
         {
             jumpforce = 30;
-            maxV = 20;
+            maxV = 70;
         }
         else
         {
             jumpforce = 20;
-            maxV = 10;
+            maxV = 50;
         }
         
 
