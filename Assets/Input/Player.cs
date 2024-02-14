@@ -117,7 +117,7 @@ public class Player : MonoBehaviour
     {
         if (collision.gameObject.layer == 8)
         {
-            rb.velocity = new Vector2 (rb.velocity.x, 0);
+            rb.velocity = new Vector2 (rb.velocity.x, -1);
             canWalljump = true;
         }
     }
@@ -147,7 +147,8 @@ public class Player : MonoBehaviour
         }
         if (canWalljump)
         {
-            gameObject.GetComponent<Rigidbody2D>().AddForce(new Vector2(100, 30f), ForceMode2D.Impulse);
+            rb.velocity = new Vector2 (50, 50);
+            
             canWalljump = false;
             walljumping = true;
         }
