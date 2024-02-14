@@ -80,10 +80,10 @@ public class Player : MonoBehaviour
         {
             rb.gravityScale = 6;
         }
-        if (rolltimer > 0  && rolltimer < 1)
+        if (rolltimer > 0  && rolltimer < 0.6f)
         {
-            jumpforce = 30;
-            maxV = 70;
+            jumpforce = 20;
+            maxV = 50;
         }
         else
         {
@@ -161,8 +161,8 @@ public class Player : MonoBehaviour
         if (rolltimer <= 0 && sr.flipX == false && isGrounded)
         {
             maxV = 20;
-            rolltimer = 1f;
-            gameObject.GetComponent<Rigidbody2D>().AddForce(new Vector2(40, 0f), ForceMode2D.Impulse);
+            rolltimer = 0.6f;
+            gameObject.GetComponent<Rigidbody2D>().AddForce(new Vector2(20, 0f), ForceMode2D.Impulse);
             maxV = 10;
            
            
@@ -171,8 +171,8 @@ public class Player : MonoBehaviour
         if (rolltimer <= 0 && sr.flipX == true && isGrounded)
         {
            
-            rolltimer = 1f;
-            gameObject.GetComponent<Rigidbody2D>().AddForce(new Vector2(-jumpforce, 0f), ForceMode2D.Impulse);
+            rolltimer = 0.6f;
+            gameObject.GetComponent<Rigidbody2D>().AddForce(new Vector2(-20, 0f), ForceMode2D.Impulse);
             maxV = 10;
         }
         
