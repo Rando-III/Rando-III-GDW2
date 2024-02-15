@@ -25,6 +25,7 @@ public class Player : MonoBehaviour
     public bool canWalljump;
     public float rollforce = 0;
     public bool walljumping;
+    public bool canwalljumpleft;
 
 
     bool dead = false;
@@ -138,6 +139,11 @@ public class Player : MonoBehaviour
             rb.velocity = new Vector2 (rb.velocity.x, -1);
             canWalljump = true;
         }
+        if (collision.gameObject.layer == 9)
+        {
+            rb.velocity = new Vector2(rb.velocity.x, -1);
+            canwalljumpleft = true;
+        }
     }
 
     public void OnCollisionExit2D(Collision2D collision)
@@ -152,6 +158,10 @@ public class Player : MonoBehaviour
         {
             canWalljump = false;
             
+        }
+        if (collision.gameObject.layer == 9)
+        {
+            canwalljumpleft = false;
         }
     }
 
@@ -168,6 +178,12 @@ public class Player : MonoBehaviour
             rb.velocity = new Vector2 (50, 50);
             
             canWalljump = false;
+            walljumping = true;
+        }
+        if (canwalljumpleft)
+        {
+            rb.velocity = new Vector2 (-50,50);
+            canwalljumpleft = false;
             walljumping = true;
         }
         
