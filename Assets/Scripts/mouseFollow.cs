@@ -7,6 +7,7 @@ public class mouseFollow : MonoBehaviour
 {
 
     [SerializeField] Camera mainCam;
+    [SerializeField] Player player;
 
     [SerializeField] GameObject door;
     [SerializeField] GameObject platform;
@@ -56,9 +57,10 @@ public class mouseFollow : MonoBehaviour
 
         if (effect[1] > 0) // start action for effect (called at start of colission)
         {
-            if (e1_tf.position.x > effect2PlatformStart - 19)
+            if (e1_tf.position.x > effect2PlatformStart - 15)
             {
                 e1_tf.position = new Vector3(e1_tf.position.x - platformSpeed, e1_tf.position.y, e1_tf.position.z);
+                player.platformLock(-platformSpeed);
             }
         }
         else if (effect[1] <= 0) // end action for effect (called at end of colission)
@@ -66,6 +68,8 @@ public class mouseFollow : MonoBehaviour
             if (e1_tf.position.x < effect2PlatformStart)
             {
                 e1_tf.position = new Vector3(e1_tf.position.x + platformSpeed, e1_tf.position.y, e1_tf.position.z);
+
+                player.platformLock(platformSpeed);
             }
         }
 

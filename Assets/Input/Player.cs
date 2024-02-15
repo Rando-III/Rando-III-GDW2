@@ -27,7 +27,10 @@ public class Player : MonoBehaviour
     public bool walljumping;
     public bool canwalljumpleft;
     public bool platLock = false;
+    Transform tf;
 
+    bool onPlat = false;
+    bool onFloor = false;
 
     bool dead = false;
 
@@ -106,6 +109,17 @@ public class Player : MonoBehaviour
         }
 
     }
+
+
+    public void platformLock(float move)
+    {
+        if (platLock)
+        {
+            tf = GetComponent<Transform>();
+            tf.position = new Vector3(move + tf.position.x, tf.position.y, tf.position.z);
+        }
+    }
+
     public void SetMovementDirection(Vector2 currentDirection)
     {
         
@@ -124,15 +138,24 @@ public class Player : MonoBehaviour
 
         if (collision.gameObject.layer == 3)
         {
+            onFloor = true;
+
             isGrounded = true;
             canMove = true;
             isjumping = false;
             walljumping = false;
         }
 
-        if (collision.gameObject.layer == 9)
+        if (collision.gameObject.layer == 11)
         {
             platLock = true;
+
+            onPlat = true;
+
+            isGrounded = true;
+            canMove = true;
+            isjumping = false;
+            walljumping = false;
         }
     }
     private void OnCollisionStay2D(Collision2D collision)
@@ -153,8 +176,12 @@ public class Player : MonoBehaviour
     {
         if (collision.gameObject.layer == 3)
         {
-            isGrounded = false;
-            canMove = false;
+            if (!onPlat)
+            {
+                isGrounded = false;
+                canMove = false;
+            }
+            onFloor = false;
             
         }
         if (collision.gameObject.layer == 8)
@@ -165,7 +192,16 @@ public class Player : MonoBehaviour
         if (collision.gameObject.layer == 9)
         {
             canwalljumpleft = false;
+        }
+        if (collision.gameObject.layer == 11)
+        {
             platLock = false;
+            if (!onFloor)
+            {
+                isGrounded = false;
+                canMove = false;
+            }
+            onPlat = false;
         }
     }
 
@@ -174,7 +210,7 @@ public class Player : MonoBehaviour
         if (isGrounded) 
         {
              isjumping = true;
-            gameObject.GetComponent<Rigidbody2D>().AddForce(new Vector2(0f, jumpforce), ForceMode2D.Impulse);
+            rb.AddForce(new Vector2(0f, jumpforce), ForceMode2D.Impulse);
             isGrounded = false;
         }
         if (canWalljump)
@@ -200,7 +236,7 @@ public class Player : MonoBehaviour
         {
             maxV = 20;
             rolltimer = 0.6f;
-            gameObject.GetComponent<Rigidbody2D>().AddForce(new Vector2(20, 0f), ForceMode2D.Impulse);
+            rb.AddForce(new Vector2(20, 0f), ForceMode2D.Impulse);
             maxV = 10;
            
            
@@ -210,7 +246,7 @@ public class Player : MonoBehaviour
         {
            
             rolltimer = 0.6f;
-            gameObject.GetComponent<Rigidbody2D>().AddForce(new Vector2(-20, 0f), ForceMode2D.Impulse);
+            rb.AddForce(new Vector2(-20, 0f), ForceMode2D.Impulse);
             maxV = 10;
         }
         
