@@ -26,12 +26,12 @@ public class Player : MonoBehaviour
     public float rollforce = 0;
     public bool walljumping;
     public bool canwalljumpleft;
+    public bool platLock = false;
 
 
     bool dead = false;
 
 
-    // Start is called before the first frame update
     void Start()
     {
         sr = GetComponent<SpriteRenderer>();
@@ -42,7 +42,6 @@ public class Player : MonoBehaviour
     }
     
 
-    // Update is called once per frame
     void FixedUpdate()
     {
         rolltimer -= Time.deltaTime;
@@ -76,7 +75,7 @@ public class Player : MonoBehaviour
         }
         if (!isGrounded && !walljumping)
         {
-            rb.AddForce((new Vector2(50, 0) * _moveDirection * 0.6f));
+            rb.AddForce((new Vector2(50, 0) * _moveDirection * 0.8f));
         }
         if (rb.velocity.y >= 0)
         {
@@ -88,12 +87,12 @@ public class Player : MonoBehaviour
         }
         if (rolltimer > 0  && rolltimer < 0.6f)
         {
-            jumpforce = 20;
+            jumpforce = 30;
             maxV = 50;
         }
         else
         {
-            jumpforce = 20;
+            jumpforce = 30;
             maxV = 50;
         }
         
@@ -130,7 +129,11 @@ public class Player : MonoBehaviour
             isjumping = false;
             walljumping = false;
         }
-        
+
+        if (collision.gameObject.layer == 9)
+        {
+            platLock = true;
+        }
     }
     private void OnCollisionStay2D(Collision2D collision)
     {
@@ -162,6 +165,7 @@ public class Player : MonoBehaviour
         if (collision.gameObject.layer == 9)
         {
             canwalljumpleft = false;
+            platLock = false;
         }
     }
 
@@ -175,7 +179,7 @@ public class Player : MonoBehaviour
         }
         if (canWalljump)
         {
-            rb.velocity = new Vector2 (50, 50);
+            rb.velocity = new Vector2 (30, 80);
             
             canWalljump = false;
             walljumping = true;
