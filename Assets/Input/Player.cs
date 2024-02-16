@@ -105,7 +105,9 @@ public class Player : MonoBehaviour
         if (dead)
         {
             // Add Death Stuff Here
-            Destroy(gameObject); // temp
+            //Destroy(gameObject); // temp
+            gameObject.transform.position = new Vector2(4.5f, -3.9f);
+            dead = false;
         }
 
     }
