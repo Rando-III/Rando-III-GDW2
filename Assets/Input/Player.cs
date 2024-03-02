@@ -27,12 +27,15 @@ public class Player : MonoBehaviour
     public float rollforce = 0;
     public bool walljumping;
     public bool canwalljumpleft;
+    public bool platLock = false;
+    Transform tf;
 
+    bool onPlat = false;
+    bool onFloor = false;
 
     bool dead = false;
 
 
-    // Start is called before the first frame update
     void Start()
     {
         sr = GetComponent<SpriteRenderer>();
@@ -43,7 +46,6 @@ public class Player : MonoBehaviour
     }
     
 
-    // Update is called once per frame
     void FixedUpdate()
     {
         rolltimer -= Time.deltaTime;
@@ -77,7 +79,7 @@ public class Player : MonoBehaviour
         }
         if (!isGrounded && !walljumping)
         {
-            rb.AddForce((new Vector2(50, 0) * _moveDirection * 0.6f));
+            rb.AddForce((new Vector2(50, 0) * _moveDirection * 0.8f));
         }
         if (rb.velocity.y >= 0)
         {
@@ -89,12 +91,12 @@ public class Player : MonoBehaviour
         }
         if (rolltimer > 0  && rolltimer < 0.6f)
         {
-            jumpforce = 20;
+            jumpforce = 30;
             maxV = 50;
         }
         else
         {
-            jumpforce = 20;
+            jumpforce = 30;
             maxV = 50;
         }
         
@@ -104,10 +106,23 @@ public class Player : MonoBehaviour
         if (dead)
         {
             // Add Death Stuff Here
-            Destroy(gameObject); // temp
+            //Destroy(gameObject); // temp
+            gameObject.transform.position = new Vector2(4.5f, -3.9f);
+            dead = false;
         }
 
     }
+
+
+    public void platformLock(float move)
+    {
+        if (platLock)
+        {
+            tf = GetComponent<Transform>();
+            tf.position = new Vector3(move + tf.position.x, tf.position.y, tf.position.z);
+        }
+    }
+
     public void SetMovementDirection(Vector2 currentDirection)
     {
         
@@ -126,12 +141,25 @@ public class Player : MonoBehaviour
 
         if (collision.gameObject.layer == 3)
         {
+            onFloor = true;
+
             isGrounded = true;
             canMove = true;
             isjumping = false;
             walljumping = false;
         }
-        
+
+        if (collision.gameObject.layer == 11)
+        {
+            platLock = true;
+
+            onPlat = true;
+
+            isGrounded = true;
+            canMove = true;
+            isjumping = false;
+            walljumping = false;
+        }
     }
     private void OnCollisionStay2D(Collision2D collision)
     {
@@ -151,8 +179,12 @@ public class Player : MonoBehaviour
     {
         if (collision.gameObject.layer == 3)
         {
-            isGrounded = false;
-            canMove = false;
+            if (!onPlat)
+            {
+                isGrounded = false;
+                canMove = false;
+            }
+            onFloor = false;
             
         }
         if (collision.gameObject.layer == 8)
@@ -165,6 +197,16 @@ public class Player : MonoBehaviour
         {
             canwalljumpleft = false;
         }
+        if (collision.gameObject.layer == 11)
+        {
+            platLock = false;
+            if (!onFloor)
+            {
+                isGrounded = false;
+                canMove = false;
+            }
+            onPlat = false;
+        }
     }
 
     internal void Jump()
@@ -172,17 +214,18 @@ public class Player : MonoBehaviour
         if (isGrounded) 
         {
              isjumping = true;
-            gameObject.GetComponent<Rigidbody2D>().AddForce(new Vector2(0f, jumpforce), ForceMode2D.Impulse);
+            rb.AddForce(new Vector2(0f, jumpforce), ForceMode2D.Impulse);
             isGrounded = false;
         }
         if (canWalljump)
         {
+
             
             rb.AddForce(Vector2.right * 20, ForceMode2D.Impulse);
             rb.AddForce(Vector2.up * 40, ForceMode2D.Impulse);
            
 
-           
+          
             
             canWalljump = false;
             
@@ -205,7 +248,7 @@ public class Player : MonoBehaviour
         {
             maxV = 20;
             rolltimer = 0.6f;
-            gameObject.GetComponent<Rigidbody2D>().AddForce(new Vector2(20, 0f), ForceMode2D.Impulse);
+            rb.AddForce(new Vector2(20, 0f), ForceMode2D.Impulse);
             maxV = 10;
            
            
@@ -215,7 +258,7 @@ public class Player : MonoBehaviour
         {
            
             rolltimer = 0.6f;
-            gameObject.GetComponent<Rigidbody2D>().AddForce(new Vector2(-20, 0f), ForceMode2D.Impulse);
+            rb.AddForce(new Vector2(-20, 0f), ForceMode2D.Impulse);
             maxV = 10;
         }
         

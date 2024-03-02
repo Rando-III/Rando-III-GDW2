@@ -7,23 +7,34 @@ public class mouseFollow : MonoBehaviour
 {
 
     [SerializeField] Camera mainCam;
+    [SerializeField] Player player;
 
     [SerializeField] GameObject door;
+    [SerializeField] GameObject platform;
 
     Renderer _renderer;
     PlayerInput playerInput;
+
+    public float platformSpeed;
 
     public int[] effect = { 0, 0, 0, 0, 0};
 
     public bool[] effectActive = { false, false, false, false, false};
 
+    float effect2PlatformStart;
+
     Vector3 mouse;
     Vector2 mousePos;
+
+    Transform e1_tf;
 
     private void Start()
     {
         playerInput = GetComponent<PlayerInput>();
         _renderer = GetComponent<Renderer>();
+
+        e1_tf = platform.GetComponent<Transform>();
+        effect2PlatformStart = e1_tf.position.x;
     }
 
     private void FixedUpdate()
@@ -44,13 +55,22 @@ public class mouseFollow : MonoBehaviour
             door.SetActive(true);
         }
 
-        if (effect[1] > 0 && !effectActive[1]) // start action for effect (called at start of colission)
+        if (effect[1] > 0) // start action for effect (called at start of colission)
         {
-
+            if (e1_tf.position.x > effect2PlatformStart - 15)
+            {
+                e1_tf.position = new Vector3(e1_tf.position.x - platformSpeed, e1_tf.position.y, e1_tf.position.z);
+                player.platformLock(-platformSpeed);
+            }
         }
-        else if (effectActive[1] && effect[1] <= 0) // end action for effect (called at end of colission)
+        else if (effect[1] <= 0) // end action for effect (called at end of colission)
         {
+            if (e1_tf.position.x < effect2PlatformStart)
+            {
+                e1_tf.position = new Vector3(e1_tf.position.x + platformSpeed, e1_tf.position.y, e1_tf.position.z);
 
+                player.platformLock(platformSpeed);
+            }
         }
 
         if (effect[2] > 0 && !effectActive[2]) // start action for effect (called at start of colission)
