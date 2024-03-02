@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 using UnityEngine.EventSystems;
+using UnityEngine.UIElements;
 
 public class Player : MonoBehaviour
 {
@@ -164,12 +165,12 @@ public class Player : MonoBehaviour
     {
         if (collision.gameObject.layer == 8)
         {
-            rb.velocity = new Vector2 (rb.velocity.x, -1);
+            
             canWalljump = true;
         }
         if (collision.gameObject.layer == 9)
         {
-            rb.velocity = new Vector2(rb.velocity.x, -1);
+            
             canwalljumpleft = true;
         }
     }
@@ -189,6 +190,7 @@ public class Player : MonoBehaviour
         if (collision.gameObject.layer == 8)
         {
             canWalljump = false;
+            
             
         }
         if (collision.gameObject.layer == 9)
@@ -217,16 +219,24 @@ public class Player : MonoBehaviour
         }
         if (canWalljump)
         {
-            rb.velocity = new Vector2 (30, 80);
+
+            
+            rb.AddForce(Vector2.right * 20, ForceMode2D.Impulse);
+            rb.AddForce(Vector2.up * 40, ForceMode2D.Impulse);
+           
+
+          
             
             canWalljump = false;
-            walljumping = true;
+            
         }
         if (canwalljumpleft)
         {
-            rb.velocity = new Vector2 (-50,50);
+            rb.AddForce(Vector2.right * 20, ForceMode2D.Impulse);
+            rb.AddForce(Vector2.up * 40, ForceMode2D.Impulse);
+
             canwalljumpleft = false;
-            walljumping = true;
+            
         }
         
     }
