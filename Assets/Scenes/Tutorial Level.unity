@@ -938,7 +938,6 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
-<<<<<<< HEAD
 --- !u!1 &458229992
 GameObject:
   m_ObjectHideFlags: 0
@@ -958,13 +957,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
-=======
---- !u!1 &458229992 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 4442225215187593358, guid: 623e23a735382eb44ace4a6144c271ed, type: 3}
-  m_PrefabInstance: {fileID: 1206506355}
-  m_PrefabAsset: {fileID: 0}
->>>>>>> cbb887ea1dbabcb106164139c9e7969d4410d82d
 --- !u!114 &458229996
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -982,7 +974,6 @@ MonoBehaviour:
   Cam: {fileID: 588597843}
   CameraManager: {fileID: 1929183247}
   speed: 1
-<<<<<<< HEAD
   GoToCamPos: 0
   GoToPlayer: 0
   playerPos: {x: 0, y: 0, z: 0}
@@ -1100,8 +1091,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
-=======
->>>>>>> cbb887ea1dbabcb106164139c9e7969d4410d82d
 --- !u!1001 &480666269
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1301,7 +1290,6 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
-<<<<<<< HEAD
 --- !u!1 &588597840
 GameObject:
   m_ObjectHideFlags: 0
@@ -1320,13 +1308,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
-=======
---- !u!1 &588597840 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1642481420893093684, guid: 623e23a735382eb44ace4a6144c271ed, type: 3}
-  m_PrefabInstance: {fileID: 1206506355}
-  m_PrefabAsset: {fileID: 0}
->>>>>>> cbb887ea1dbabcb106164139c9e7969d4410d82d
 --- !u!20 &588597843
 Camera:
   m_ObjectHideFlags: 0
@@ -1378,7 +1359,6 @@ Camera:
   m_OcclusionCulling: 1
   m_StereoConvergence: 10
   m_StereoSeparation: 0.022
-<<<<<<< HEAD
 --- !u!212 &588597844
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -1446,8 +1426,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1721600826}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-=======
->>>>>>> cbb887ea1dbabcb106164139c9e7969d4410d82d
 --- !u!1001 &696033386
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4953,7 +4931,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ff5236467adae474694cadd896532128, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-<<<<<<< HEAD
   CamFollow: 1
   playerPosOld: {x: 0, y: 0, z: 0}
   MainCamera: {fileID: 1726301956}
@@ -4961,10 +4938,6 @@ MonoBehaviour:
   CamCount: 4
   CamSpeed: 0.1
   CamChange: 0
-=======
-  MainCamera: {fileID: 1726301956}
-  CamSize: 8
->>>>>>> cbb887ea1dbabcb106164139c9e7969d4410d82d
 --- !u!1 &1950954405
 GameObject:
   m_ObjectHideFlags: 0
