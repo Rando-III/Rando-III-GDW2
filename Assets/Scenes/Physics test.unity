@@ -1386,6 +1386,7 @@ GameObject:
   - component: {fileID: 1860417911}
   - component: {fileID: 1860417910}
   - component: {fileID: 1860417912}
+  - component: {fileID: 1860417913}
   m_Layer: 9
   m_Name: Wall
   m_TagString: Untagged
@@ -1491,7 +1492,7 @@ BoxCollider2D:
     serializedVersion: 2
     m_Bits: 4294967295
   m_IsTrigger: 0
-  m_UsedByEffector: 0
+  m_UsedByEffector: 1
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   m_SpriteTilingProperty:
@@ -1506,6 +1507,24 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
+--- !u!252 &1860417913
+SurfaceEffector2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1860417909}
+  m_Enabled: 1
+  m_UseColliderMask: 1
+  m_ColliderMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_Speed: 0
+  m_SpeedVariation: 0
+  m_ForceScale: 0.3
+  m_UseContactForce: 0
+  m_UseFriction: 1
+  m_UseBounce: 1
 --- !u!1 &1892010709 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1039188263637433551, guid: 3972110d16ee61a4ea426993fa9eeca1, type: 3}
