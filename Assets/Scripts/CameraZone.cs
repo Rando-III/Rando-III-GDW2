@@ -7,6 +7,7 @@ public class CameraZone : MonoBehaviour
 {
     [SerializeField] GameObject CameraPos;
     [SerializeField] Camera MainCamera;
+    [SerializeField] Camera Cam;
     [SerializeField] CameraManager CameraManager;
     public float speed = 1;
     bool GoToCamPos = false;
@@ -20,6 +21,7 @@ public class CameraZone : MonoBehaviour
         if (collision.tag == "Player")
         {
             GoToCamPos = true;
+            CameraManager.CamSizeChange(Cam.orthographicSize);
             GoToPlayer = false;
         }
     }
