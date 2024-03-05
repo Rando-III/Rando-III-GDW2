@@ -19,7 +19,6 @@ public class CameraManager : MonoBehaviour
     {
         if (collision.tag == "CamZone")
         {
-            Debug.Log("Enter CamZone");
             CamFollow = false;
         }
     }
@@ -28,7 +27,6 @@ public class CameraManager : MonoBehaviour
     {
         if (collision.tag == "CamZone")
         {
-            Debug.Log("Exit CamZone");
             CamFollow = true;
             CamCount = 0;
         }
