@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class CameraManager : MonoBehaviour
 {
-    bool CamFollow = true;
+    int CamFollow;
     Vector3 playerPosOld;
     [SerializeField] Camera MainCamera;
 
@@ -19,7 +19,7 @@ public class CameraManager : MonoBehaviour
     {
         if (collision.tag == "CamZone")
         {
-            CamFollow = false;
+            CamFollow--;
         }
     }
 
@@ -27,7 +27,7 @@ public class CameraManager : MonoBehaviour
     {
         if (collision.tag == "CamZone")
         {
-            CamFollow = true;
+            CamFollow++;
             CamCount = 0;
         }
     }
@@ -53,7 +53,7 @@ public class CameraManager : MonoBehaviour
 
     private void FixedUpdate()
     {
-        if (CamFollow)
+        if (CamFollow >= 0)
         {
             if (playerPosOld != transform.position)
             {
@@ -94,7 +94,7 @@ public class CameraManager : MonoBehaviour
                 CamChange = 0;
             }
         }
-        else if (CamFollow)
+        else if (CamFollow >= 0)
         {
             MainCamera.orthographicSize = CamSize;
         }
