@@ -11,6 +11,9 @@ TagManager:
   - Effect3
   - Effect4
   - Kill
+  - room2
+  - room1
+  - room3
   layers:
   - Default
   - TransparentFX
@@ -24,7 +27,6 @@ TagManager:
   - walljumpLeft
   - Key
   - platform
-  - 
   - 
   - 
   - 
