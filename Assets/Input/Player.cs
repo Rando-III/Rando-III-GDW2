@@ -59,7 +59,7 @@ public class Player : MonoBehaviour
         
         if (rb.velocity.x >= maxV)
         {
-            rb.velocity -= new Vector2( 1,0);
+            rb.velocity = new Vector2( 1,0);
         }
         if (rb.velocity.x <= -maxV)
         {
@@ -222,7 +222,7 @@ public class Player : MonoBehaviour
 
             
             rb.AddForce(Vector2.right * 20, ForceMode2D.Impulse);
-            rb.AddForce(Vector2.up * 40, ForceMode2D.Impulse);
+            rb.AddForce(Vector2.up * 35, ForceMode2D.Impulse);
            
 
           
@@ -232,8 +232,8 @@ public class Player : MonoBehaviour
         }
         if (canwalljumpleft)
         {
-            rb.AddForce(Vector2.right * 20, ForceMode2D.Impulse);
-            rb.AddForce(Vector2.up * 40, ForceMode2D.Impulse);
+            rb.AddForce(Vector2.left * 20, ForceMode2D.Impulse);
+            rb.AddForce(Vector2.up * 35, ForceMode2D.Impulse);
 
             canwalljumpleft = false;
             
