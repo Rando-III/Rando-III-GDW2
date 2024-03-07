@@ -9,6 +9,8 @@ public class LevelManager : MonoBehaviour
     float finalTime;
 
 
+
+
     private void Start()
     {
         startTime = Time.time;
@@ -18,4 +20,11 @@ public class LevelManager : MonoBehaviour
     {
         finalTime = Time.time - startTime;
     }
+
+
+    public float GetTime()
+    {
+        return Time.time - startTime;
+    }
+
 }
