@@ -20,6 +20,7 @@ public class mouseFollow : MonoBehaviour
     public int[] effect = { 0, 0, 0, 0, 0};
 
     public bool[] effectActive = { false, false, false, false, false};
+    public bool[] effectEnabled = { false, false, false, false, false };
 
     float effect2PlatformStart;
 
@@ -43,61 +44,74 @@ public class mouseFollow : MonoBehaviour
         transform.position = new Vector3(mouse.x, mouse.y);
         _renderer.material.color = new Color(effect[2] * 130, effect[0] * 130, effect[1] * 130);
 
-
-        if (effect[0] > 0 && !effectActive[0]) // start action for effect (called at start of colission)
+        if (effectEnabled[0])
         {
-            effectActive[0] = true;
-            door.SetActive(false);
-        }
-        else if (effectActive[0] && effect[0] <= 0) // end action for effect (called at end of colission)
-        {
-            effectActive[0] = false;
-            door.SetActive(true);
-        }
-
-        if (effect[1] > 0) // start action for effect (called at start of colission)
-        {
-            if (e1_tf.position.x > effect2PlatformStart - 15)
+            if (effect[0] > 0 && !effectActive[0]) // start action for effect (called at start of colission)
             {
-                e1_tf.position = new Vector3(e1_tf.position.x - platformSpeed, e1_tf.position.y, e1_tf.position.z);
-                player.platformLock(-platformSpeed);
+                effectActive[0] = true;
+                door.SetActive(false);
+            }
+            else if (effectActive[0] && effect[0] <= 0) // end action for effect (called at end of colission)
+            {
+                effectActive[0] = false;
+                door.SetActive(true);
             }
         }
-        else if (effect[1] <= 0) // end action for effect (called at end of colission)
+        if (effectEnabled[1])
         {
-            if (e1_tf.position.x < effect2PlatformStart)
+            if (effect[1] > 0) // start action for effect (called at start of colission)
             {
-                e1_tf.position = new Vector3(e1_tf.position.x + platformSpeed, e1_tf.position.y, e1_tf.position.z);
+                if (e1_tf.position.x > effect2PlatformStart - 15)
+                {
+                    e1_tf.position = new Vector3(e1_tf.position.x - platformSpeed, e1_tf.position.y, e1_tf.position.z);
+                    player.platformLock(-platformSpeed);
+                }
+            }
+            else if (effect[1] <= 0) // end action for effect (called at end of colission)
+            {
+                if (e1_tf.position.x < effect2PlatformStart)
+                {
+                    e1_tf.position = new Vector3(e1_tf.position.x + platformSpeed, e1_tf.position.y, e1_tf.position.z);
 
-                player.platformLock(platformSpeed);
+                    player.platformLock(platformSpeed);
+                }
             }
         }
 
-        if (effect[2] > 0 && !effectActive[2]) // start action for effect (called at start of colission)
+        if (effectEnabled[2])
         {
+            if (effect[2] > 0 && !effectActive[2]) // start action for effect (called at start of colission)
+            {
 
-        }
-        else if (effectActive[2] && effect[2] <= 0) // end action for effect (called at end of colission)
-        {
+            }
+            else if (effectActive[2] && effect[2] <= 0) // end action for effect (called at end of colission)
+            {
 
-        }
-
-        if (effect[3] > 0 && !effectActive[3]) // start action for effect (called at start of colission)
-        {
-
-        }
-        else if (effectActive[3] && effect[3] <= 0) // end action for effect (called at end of colission)
-        {
-
+            }
         }
 
-        if (effect[4] > 0 && !effectActive[4]) // start action for effect (called at start of colission)
+        if (effectEnabled[3])
         {
+            if (effect[3] > 0 && !effectActive[3]) // start action for effect (called at start of colission)
+            {
 
+            }
+            else if (effectActive[3] && effect[3] <= 0) // end action for effect (called at end of colission)
+            {
+
+            }
         }
-        else if (effectActive[4] && effect[4] <= 0) // end action for effect (called at end of colission)
-        {
 
+        if (effectEnabled[4])
+        {
+            if (effect[4] > 0 && !effectActive[4]) // start action for effect (called at start of colission)
+            {
+
+            }
+            else if (effectActive[4] && effect[4] <= 0) // end action for effect (called at end of colission)
+            {
+
+            }
         }
     }
 
