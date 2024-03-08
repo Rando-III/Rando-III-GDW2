@@ -9,33 +9,45 @@ public class mouseFollow : MonoBehaviour
     [SerializeField] Camera mainCam;
     [SerializeField] Player player;
 
-    [SerializeField] GameObject door;
-    [SerializeField] GameObject platform;
-
     Renderer _renderer;
     PlayerInput playerInput;
 
     public float platformSpeed;
 
-    public int[] effect = { 0, 0, 0, 0, 0};
+    int[] effect = { 0, 0, 0, 0, 0};
 
-    public bool[] effectActive = { false, false, false, false, false};
+    bool[] effectActive = { false, false, false, false, false};
     public bool[] effectEnabled = { false, false, false, false, false };
+    public GameObject[] Effect1Door;
+    public GameObject[] Effect2Platform;
+    public GameObject[] Effect3Null;
+    public GameObject[] Effect4Null;
+    public GameObject[] Effect5Null;
 
-    float effect2PlatformStart;
+    bool Effect2Flip;
 
     Vector3 mouse;
     Vector2 mousePos;
 
-    Transform e1_tf;
 
     private void Start()
     {
         playerInput = GetComponent<PlayerInput>();
         _renderer = GetComponent<Renderer>();
 
-        e1_tf = platform.GetComponent<Transform>();
-        effect2PlatformStart = e1_tf.position.x;
+        if (effectEnabled[1])
+        {
+            Effect2Platform[0].transform.position = Effect2Platform[1].transform.position;
+
+            if (Effect2Platform[1].transform.position.x - Effect2Platform[2].transform.position.x < 0)
+            {
+                Effect2Flip = true;
+            }
+            else 
+            { 
+                Effect2Flip = false; 
+            }
+        }
     }
 
     private void FixedUpdate()
@@ -49,31 +61,77 @@ public class mouseFollow : MonoBehaviour
             if (effect[0] > 0 && !effectActive[0]) // start action for effect (called at start of colission)
             {
                 effectActive[0] = true;
-                door.SetActive(false);
+
+                foreach (GameObject i in Effect1Door)
+                {
+                    i.SetActive(false);
+                }
+
             }
             else if (effectActive[0] && effect[0] <= 0) // end action for effect (called at end of colission)
             {
                 effectActive[0] = false;
-                door.SetActive(true);
-            }
-        }
-        if (effectEnabled[1])
-        {
-            if (effect[1] > 0) // start action for effect (called at start of colission)
-            {
-                if (e1_tf.position.x > effect2PlatformStart - 15)
+                foreach (GameObject i in Effect1Door)
                 {
-                    e1_tf.position = new Vector3(e1_tf.position.x - platformSpeed, e1_tf.position.y, e1_tf.position.z);
-                    player.platformLock(-platformSpeed);
+                    i.SetActive(true);
                 }
             }
-            else if (effect[1] <= 0) // end action for effect (called at end of colission)
-            {
-                if (e1_tf.position.x < effect2PlatformStart)
-                {
-                    e1_tf.position = new Vector3(e1_tf.position.x + platformSpeed, e1_tf.position.y, e1_tf.position.z);
+        }
 
-                    player.platformLock(platformSpeed);
+        if (effectEnabled[1])
+        {
+            if (!Effect2Flip)
+            {
+                if (effect[1] > 0) // start action for effect (called at start of colission)
+                {
+
+                    
+                    if (Effect2Platform[0].transform.position.x > Effect2Platform[2].transform.position.x)
+                    {
+
+                        Effect2Platform[0].transform.Translate(new Vector3(-platformSpeed, 0, 0));
+                        player.platformLock(-platformSpeed);
+
+                    }
+                    
+                }
+                else if (effect[1] <= 0) // end action for effect (called at end of colission)
+                {
+
+                    if (Effect2Platform[0].transform.position.x < Effect2Platform[1].transform.position.x)
+                    {
+                        Effect2Platform[0].transform.Translate(new Vector3(platformSpeed, 0, 0));
+                        player.platformLock(platformSpeed);
+
+                    }
+                    
+                }
+            }
+            else
+            {
+                if (effect[1] > 0) // start action for effect (called at start of colission)
+                {
+
+
+                    if (Effect2Platform[0].transform.position.x < Effect2Platform[2].transform.position.x)
+                    {
+                        Effect2Platform[0].transform.Translate(new Vector3(platformSpeed, 0, 0));
+                        player.platformLock(platformSpeed);
+
+                    }
+                    
+                }
+
+                else if (effect[1] <= 0) // end action for effect (called at end of colission)
+                {
+
+                    if (Effect2Platform[0].transform.position.x > Effect2Platform[1].transform.position.x)
+                    {
+                        Effect2Platform[0].transform.Translate(new Vector3(-platformSpeed, 0, 0));
+                        player.platformLock(-platformSpeed);
+
+                    }
+                    
                 }
             }
         }
