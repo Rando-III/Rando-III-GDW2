@@ -22,7 +22,7 @@ public class Player : MonoBehaviour
     public bool isrolling = false;
     public SpriteRenderer sr;
     public float jumpforce= 40;
-    public Animator animator;
+    //public Animator animator;
     public bool canWalljump;
     public float rollforce = 0;
     public bool walljumping;
@@ -42,7 +42,7 @@ public class Player : MonoBehaviour
         InputManager.Init(this);
         InputManager.SetGameControls();
         rb = GetComponent<Rigidbody2D>();
-        animator.SetBool("Rolls", false);
+        //animator.SetBool("Rolls", false);
     }
     
 
