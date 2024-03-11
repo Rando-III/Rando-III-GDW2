@@ -57,10 +57,10 @@ public class Player : MonoBehaviour
         
         
         
-        if (rb.velocity.x >= maxV)
-        {
-            rb.velocity = new Vector2( 1,0);
-        }
+        //if (rb.velocity.x >= maxV)
+        //{
+            //rb.velocity = new Vector2( 1,0);
+        //}
         if (rb.velocity.x <= -maxV)
         {
             rb.velocity += new Vector2(1, 0);
@@ -92,7 +92,8 @@ public class Player : MonoBehaviour
         if (rolltimer > 0  && rolltimer < 0.6f)
         {
             jumpforce = 30;
-            maxV = 50;
+            maxV = 100;
+            minVelocityX = -50;
         }
         else
         {
@@ -100,7 +101,14 @@ public class Player : MonoBehaviour
             maxV = 50;
         }
         
-
+        if (rb.velocity.x > 0)
+        {
+            animator.SetBool("Run", true);
+        }
+        if (rb.velocity.x == 0)
+        {
+            animator.SetBool("Run", false);
+        }
 
           
         if (dead)
@@ -241,25 +249,29 @@ public class Player : MonoBehaviour
         
     }
 
-    internal void Roll()
+    public void Roll()
     {
-        
-        if (rolltimer <= 0 && sr.flipX == false && isGrounded)
+
+
+        if (rolltimer <= 0 && sr.flipX == true && isGrounded)
         {
             maxV = 20;
             rolltimer = 0.6f;
-            rb.AddForce(new Vector2(20, 0f), ForceMode2D.Impulse);
-            maxV = 10;
-           
-           
-            
-        }
-        if (rolltimer <= 0 && sr.flipX == true && isGrounded)
-        {
-           
-            rolltimer = 0.6f;
             rb.AddForce(new Vector2(-20, 0f), ForceMode2D.Impulse);
             maxV = 10;
+        }
+        else if (rolltimer <= 0 && sr.flipX == false && isGrounded)
+        {
+            
+            maxV = 20;
+            rolltimer = 0.6f;
+            rb.AddForce(new Vector2(20, 0), ForceMode2D.Impulse);
+            
+            maxV = 10;
+
+
+
+            
         }
         
         
