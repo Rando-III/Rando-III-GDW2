@@ -101,16 +101,17 @@ public class Player : MonoBehaviour
             maxV = 50;
         }
         
-        if (rb.velocity.x > 0)
+        if (_moveDirection.x != 0)
         {
             animator.SetBool("Run", true);
+
         }
-        if (rb.velocity.x == 0)
+        if (_moveDirection.x == 0)
         {
             animator.SetBool("Run", false);
         }
+        animator.SetBool("Run", true);
 
-          
         if (dead)
         {
             // Add Death Stuff Here
