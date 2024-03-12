@@ -56,10 +56,20 @@ public class Player : MonoBehaviour
             rolltimer = 0;
         }
         
+<<<<<<< HEAD
         if (rb.velocity.x >= maxV)
         {
             rb.velocity -= new Vector2( 1,0);
         }
+=======
+        
+        
+        
+        //if (rb.velocity.x >= maxV)
+        //{
+            //rb.velocity = new Vector2( 1,0);
+        //}
+>>>>>>> 113feaad1ffaff1232f26d9c02d413eff26ce506
         if (rb.velocity.x <= -maxV)
         {
             rb.velocity += new Vector2(1, 0);
@@ -75,7 +85,17 @@ public class Player : MonoBehaviour
         if (isGrounded)
         {
             rb.AddForce((new Vector2(50, 0) * _moveDirection));
+            if (rb.velocity.x != 0)
+            {
+                gameObject.GetComponent<Animator>().SetBool("Run", true);
+            }
+            if (rb.velocity.x == 0)
+            {
+                gameObject.GetComponent<Animator>().SetBool("Run", false);
+            }
+            
         }
+
         if (!isGrounded && !walljumping)
         {
             rb.AddForce((new Vector2(50, 0) * _moveDirection * 0.8f));
@@ -91,7 +111,8 @@ public class Player : MonoBehaviour
         if (rolltimer > 0  && rolltimer < 0.6f)
         {
             jumpforce = 30;
-            maxV = 50;
+            maxV = 100;
+            minVelocityX = -50;
         }
         else
         {
@@ -99,9 +120,17 @@ public class Player : MonoBehaviour
             maxV = 50;
         }
         
+<<<<<<< HEAD
         
 
           
+=======
+        if (isGrounded)
+        {
+            gameObject.GetComponent<Animator>().SetBool("Jumping", false);
+        }
+
+>>>>>>> 113feaad1ffaff1232f26d9c02d413eff26ce506
         if (dead)
         {
             // Add Death Stuff Here
@@ -218,6 +247,7 @@ public class Player : MonoBehaviour
                 
             
             isGrounded = false;
+            gameObject.GetComponent<Animator>().SetBool("Jumping", true);
         }
         if (canWalljump)
         {
@@ -243,25 +273,29 @@ public class Player : MonoBehaviour
         
     }
 
-    internal void Roll()
+    public void Roll()
     {
-        
-        if (rolltimer <= 0 && sr.flipX == false && isGrounded)
+
+
+        if (rolltimer <= 0 && sr.flipX == true && isGrounded)
         {
             maxV = 20;
             rolltimer = 0.6f;
-            rb.AddForce(new Vector2(20, 0f), ForceMode2D.Impulse);
-            maxV = 10;
-           
-           
-            
-        }
-        if (rolltimer <= 0 && sr.flipX == true && isGrounded)
-        {
-           
-            rolltimer = 0.6f;
             rb.AddForce(new Vector2(-20, 0f), ForceMode2D.Impulse);
             maxV = 10;
+        }
+        else if (rolltimer <= 0 && sr.flipX == false && isGrounded)
+        {
+            
+            maxV = 20;
+            rolltimer = 0.6f;
+            rb.AddForce(new Vector2(20, 0), ForceMode2D.Impulse);
+            
+            maxV = 10;
+
+
+
+            
         }
         
         
