@@ -56,12 +56,12 @@ public class Player : MonoBehaviour
             rolltimer = 0;
         }
         
-<<<<<<< HEAD
+
         if (rb.velocity.x >= maxV)
         {
             rb.velocity -= new Vector2( 1,0);
         }
-=======
+
         
         
         
@@ -69,7 +69,7 @@ public class Player : MonoBehaviour
         //{
             //rb.velocity = new Vector2( 1,0);
         //}
->>>>>>> 113feaad1ffaff1232f26d9c02d413eff26ce506
+
         if (rb.velocity.x <= -maxV)
         {
             rb.velocity += new Vector2(1, 0);
@@ -113,6 +113,7 @@ public class Player : MonoBehaviour
             jumpforce = 30;
             maxV = 100;
             minVelocityX = -50;
+            
         }
         else
         {
@@ -120,17 +121,16 @@ public class Player : MonoBehaviour
             maxV = 50;
         }
         
-<<<<<<< HEAD
+
         
 
-          
-=======
+
         if (isGrounded)
         {
             gameObject.GetComponent<Animator>().SetBool("Jumping", false);
         }
 
->>>>>>> 113feaad1ffaff1232f26d9c02d413eff26ce506
+
         if (dead)
         {
             // Add Death Stuff Here
@@ -283,6 +283,7 @@ public class Player : MonoBehaviour
             rolltimer = 0.6f;
             rb.AddForce(new Vector2(-20, 0f), ForceMode2D.Impulse);
             maxV = 10;
+           
         }
         else if (rolltimer <= 0 && sr.flipX == false && isGrounded)
         {

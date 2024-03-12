@@ -4742,7 +4742,7 @@ Transform:
   m_GameObject: {fileID: 1726301954}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 5, y: -3.9, z: -2}
+  m_LocalPosition: {x: 5, y: -3.376, z: -2}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -5079,7 +5079,7 @@ Transform:
   m_GameObject: {fileID: 1821529248}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -10.009159, y: -1.4011469, z: -2.0336218}
+  m_LocalPosition: {x: -10.009159, y: -0.8771467, z: -2.0336218}
   m_LocalScale: {x: 0.5, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -5234,6 +5234,7 @@ GameObject:
   - component: {fileID: 1929183242}
   - component: {fileID: 1929183246}
   - component: {fileID: 1929183247}
+  - component: {fileID: 1929183248}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -5300,7 +5301,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: -0.045951843, y: -0.26487207}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -5311,7 +5312,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 4.0326433, y: 17.53217}
   m_EdgeRadius: 0
 --- !u!212 &1929183244
 SpriteRenderer:
@@ -5374,9 +5375,9 @@ Transform:
   m_GameObject: {fileID: 1929183241}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 4.5, y: -3.9, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_LocalPosition: {x: 4.5, y: -3.376, z: 0}
+  m_LocalScale: {x: 0.15, y: 0.15, z: 0.15}
+  m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 2002310218}
   m_Father: {fileID: 0}
@@ -5406,7 +5407,7 @@ MonoBehaviour:
   isrolling: 0
   sr: {fileID: 0}
   jumpforce: 25
-  animator: {fileID: 0}
+  animator: {fileID: 1929183248}
   canWalljump: 0
   rollforce: 0
   walljumping: 0
@@ -5426,6 +5427,27 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   room1: {fileID: 1821529249}
   room2: {fileID: 391460457}
+--- !u!95 &1929183248
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1929183241}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: c098763ee1965ab4fb6a21402a01a2b8, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &1950954405
 GameObject:
   m_ObjectHideFlags: 0
