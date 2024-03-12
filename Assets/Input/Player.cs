@@ -76,7 +76,17 @@ public class Player : MonoBehaviour
         if (isGrounded)
         {
             rb.AddForce((new Vector2(50, 0) * _moveDirection));
+            if (rb.velocity.x != 0)
+            {
+                gameObject.GetComponent<Animator>().SetBool("Run", true);
+            }
+            if (rb.velocity.x == 0)
+            {
+                gameObject.GetComponent<Animator>().SetBool("Run", false);
+            }
+            
         }
+
         if (!isGrounded && !walljumping)
         {
             rb.AddForce((new Vector2(50, 0) * _moveDirection * 0.8f));
@@ -101,16 +111,10 @@ public class Player : MonoBehaviour
             maxV = 50;
         }
         
-        if (_moveDirection.x != 0)
+        if (isGrounded)
         {
-            animator.SetBool("Run", true);
-
+            gameObject.GetComponent<Animator>().SetBool("Jumping", false);
         }
-        if (_moveDirection.x == 0)
-        {
-            animator.SetBool("Run", false);
-        }
-        animator.SetBool("Run", true);
 
         if (dead)
         {
@@ -225,6 +229,7 @@ public class Player : MonoBehaviour
              isjumping = true;
             rb.AddForce(new Vector2(0f, jumpforce), ForceMode2D.Impulse);
             isGrounded = false;
+            gameObject.GetComponent<Animator>().SetBool("Jumping", true);
         }
         if (canWalljump)
         {
