@@ -96,7 +96,7 @@ public partial class @InputActions: IInputActionCollection2, IDisposable
                     ""isPartOfComposite"": false
                 },
                 {
-                    ""name"": ""Button"",
+                    ""name"": ""Modifier"",
                     ""id"": ""b576b0c9-c0b2-4a8f-b25f-dee5d9fc0b58"",
                     ""path"": ""<Keyboard>/space"",
                     ""interactions"": """",

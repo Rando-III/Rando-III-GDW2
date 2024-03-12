@@ -30,6 +30,8 @@ public class Player : MonoBehaviour
     public bool platLock = false;
     Transform tf;
 
+    
+
     bool onPlat = false;
     bool onFloor = false;
 
@@ -54,6 +56,12 @@ public class Player : MonoBehaviour
             rolltimer = 0;
         }
         
+
+        if (rb.velocity.x >= maxV)
+        {
+            rb.velocity -= new Vector2( 1,0);
+        }
+
         
         
         
@@ -61,6 +69,7 @@ public class Player : MonoBehaviour
         //{
             //rb.velocity = new Vector2( 1,0);
         //}
+
         if (rb.velocity.x <= -maxV)
         {
             rb.velocity += new Vector2(1, 0);
@@ -104,6 +113,7 @@ public class Player : MonoBehaviour
             jumpforce = 30;
             maxV = 100;
             minVelocityX = -50;
+            
         }
         else
         {
@@ -111,10 +121,15 @@ public class Player : MonoBehaviour
             maxV = 50;
         }
         
+
+        
+
+
         if (isGrounded)
         {
             gameObject.GetComponent<Animator>().SetBool("Jumping", false);
         }
+
 
         if (dead)
         {
@@ -226,8 +241,11 @@ public class Player : MonoBehaviour
     {
         if (isGrounded) 
         {
-             isjumping = true;
+            
+            isjumping = true;
             rb.AddForce(new Vector2(0f, jumpforce), ForceMode2D.Impulse);
+                
+            
             isGrounded = false;
             gameObject.GetComponent<Animator>().SetBool("Jumping", true);
         }
@@ -265,6 +283,7 @@ public class Player : MonoBehaviour
             rolltimer = 0.6f;
             rb.AddForce(new Vector2(-20, 0f), ForceMode2D.Impulse);
             maxV = 10;
+           
         }
         else if (rolltimer <= 0 && sr.flipX == false && isGrounded)
         {
