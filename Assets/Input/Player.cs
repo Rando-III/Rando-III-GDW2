@@ -57,10 +57,10 @@ public class Player : MonoBehaviour
         
         
         
-        if (rb.velocity.x >= maxV)
-        {
-            rb.velocity = new Vector2( 1,0);
-        }
+        //if (rb.velocity.x >= maxV)
+        //{
+          //  rb.velocity = new Vector2( 1,0);
+        //}
         if (rb.velocity.x <= -maxV)
         {
             rb.velocity += new Vector2(1, 0);
