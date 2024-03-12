@@ -35,7 +35,6 @@ public class CameraManager : MonoBehaviour
     public void CamCheck()
     {
         CamCount = 4;
-        CamSizeChange(CamSize);
     }
 
     public void CamSizeChange(float size)

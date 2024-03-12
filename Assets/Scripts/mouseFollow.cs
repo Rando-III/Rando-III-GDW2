@@ -20,11 +20,12 @@ public class mouseFollow : MonoBehaviour
     public bool[] effectEnabled = { false, false, false, false, false };
     public GameObject[] Effect1Door;
     public GameObject[] Effect2Platform;
-    public GameObject[] Effect3Null;
+    public GameObject[] Effect3Platform;
     public GameObject[] Effect4Null;
     public GameObject[] Effect5Null;
 
     bool Effect2Flip;
+    bool Effect3Flip;
 
     Vector3 mouse;
     Vector2 mousePos;
@@ -46,6 +47,15 @@ public class mouseFollow : MonoBehaviour
             else 
             { 
                 Effect2Flip = false; 
+            }
+
+            if (Effect3Platform[1].transform.position.y - Effect3Platform[2].transform.position.y < 0)
+            {
+                Effect3Flip = false;
+            }
+            else
+            {
+                Effect3Flip = true;
             }
         }
     }
@@ -136,17 +146,64 @@ public class mouseFollow : MonoBehaviour
             }
         }
 
-        if (effectEnabled[2])
+        
+        
+        if (!Effect3Flip)
         {
-            if (effect[2] > 0 && !effectActive[2]) // start action for effect (called at start of colission)
+            if (effect[2] > 0) // start action for effect (called at start of colission)
             {
 
+
+                if (Effect3Platform[0].transform.position.y > Effect3Platform[2].transform.position.y)
+                {
+
+                    Effect3Platform[0].transform.Translate(new Vector3( 0, -platformSpeed, 0));
+                    player.platformLock(-platformSpeed);
+
+                }
+
             }
-            else if (effectActive[2] && effect[2] <= 0) // end action for effect (called at end of colission)
+            else if (effect[2] <= 0) // end action for effect (called at end of colission)
             {
+
+                if (Effect3Platform[0].transform.position.y < Effect3Platform[1].transform.position.y)
+                {
+                    Effect3Platform[0].transform.Translate(new Vector3(0, platformSpeed, 0));
+                    player.platformLock(platformSpeed);
+
+                }
 
             }
         }
+        else
+        {
+            if (effect[1] > 0) // start action for effect (called at start of colission)
+            {
+
+
+                if (Effect3Platform[0].transform.position.y < Effect3Platform[2].transform.position.y)
+                {
+                    Effect3Platform[0].transform.Translate(new Vector3(0, platformSpeed, 0));
+                    player.platformLock(platformSpeed);
+
+                }
+
+            }
+
+            else if (effect[1] <= 0) // end action for effect (called at end of colission)
+            {
+
+                if (Effect3Platform[0].transform.position.y > Effect3Platform[1].transform.position.y)
+                {
+                    Effect3Platform[0].transform.Translate(new Vector3( 0, -platformSpeed, 0));
+                    player.platformLock(-platformSpeed);
+
+                }
+
+            }
+        }
+        
+    
 
         if (effectEnabled[3])
         {
