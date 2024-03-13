@@ -184,7 +184,7 @@ public partial class @InputActions: IInputActionCollection2, IDisposable
                 {
                     ""name"": ""Button"",
                     ""id"": ""5bc46c0f-040b-405e-95b8-ace813c606e4"",
-                    ""path"": ""<Keyboard>/shift"",
+                    ""path"": ""<Keyboard>/f"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",

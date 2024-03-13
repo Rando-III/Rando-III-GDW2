@@ -15,18 +15,17 @@ public class mouseFollow : MonoBehaviour
     public float platformSpeed;
 
     int[] effect = { 0, 0, 0, 0, 0};
-    public int[] effectType = { 0, 0, 0, 0, 0 };
-    public string[] TYPE_INFO = { "0 = No Effect", "1 = Door", "2 = Left/Right Platform", "3 = Up/Down Platform" };
+
     bool[] effectActive = { false, false, false, false, false};
     public bool[] effectEnabled = { false, false, false, false, false };
-    public string[] OBJECT_INFO = { "DOOR = all objects will be disabled on enable", "MOVING PLATFORM = First Object MUST be the Platform followed by the startpoint and end point" };
-    public GameObject[] Effect1Objects;
-    public GameObject[] Effect2Objects;
-    public GameObject[] Effect3Objects;
-    public GameObject[] Effect4Objects;
-    public GameObject[] Effect5Objects;
+    public GameObject[] Effect1Door;
+    public GameObject[] Effect2Platform;
+    public GameObject[] Effect3Platform;
+    public GameObject[] Effect4Null;
+    public GameObject[] Effect5Null;
 
-
+    bool Effect2Flip;
+    bool Effect3Flip;
 
     Vector3 mouse;
     Vector2 mousePos;
@@ -37,6 +36,28 @@ public class mouseFollow : MonoBehaviour
         playerInput = GetComponent<PlayerInput>();
         _renderer = GetComponent<Renderer>();
 
+        if (effectEnabled[1])
+        {
+            Effect2Platform[0].transform.position = Effect2Platform[1].transform.position;
+
+            if (Effect2Platform[1].transform.position.x - Effect2Platform[2].transform.position.x < 0)
+            {
+                Effect2Flip = true;
+            }
+            else 
+            { 
+                Effect2Flip = false; 
+            }
+
+            if (Effect3Platform[1].transform.position.y - Effect3Platform[2].transform.position.y < 0)
+            {
+                Effect3Flip = false;
+            }
+            else
+            {
+                Effect3Flip = true;
+            }
+        }
     }
 
     private void FixedUpdate()
@@ -47,45 +68,168 @@ public class mouseFollow : MonoBehaviour
 
         if (effectEnabled[0])
         {
-            effectCheck(Effect1Objects, 0);
+            if (effect[0] > 0 && !effectActive[0]) // start action for effect (called at start of colission)
+            {
+                effectActive[0] = true;
+
+                foreach (GameObject i in Effect1Door)
+                {
+                    i.SetActive(false);
+                }
+
+            }
+            else if (effectActive[0] && effect[0] <= 0) // end action for effect (called at end of colission)
+            {
+                effectActive[0] = false;
+                foreach (GameObject i in Effect1Door)
+                {
+                    i.SetActive(true);
+                }
+            }
         }
+
         if (effectEnabled[1])
         {
-            effectCheck(Effect2Objects, 1);
-        }
-        if (effectEnabled[2])
-        {
-            effectCheck(Effect3Objects, 2);
-        }
-        if (effectEnabled[3])
-        {
-            effectCheck(Effect4Objects, 3);
-        }
-        if (effectEnabled[4])
-        {
-            effectCheck(Effect5Objects, 4);
-        }
-    }
+            if (!Effect2Flip)
+            {
+                if (effect[1] > 0) // start action for effect (called at start of colission)
+                {
 
-    void effectCheck(GameObject[] Objects, int num)
-    {
-        if (effectType[num] == 1)
-        {
-            EffectDoor(Objects, num);
+                    
+                    if (Effect2Platform[0].transform.position.x > Effect2Platform[2].transform.position.x)
+                    {
+
+                        Effect2Platform[0].transform.Translate(new Vector3(-platformSpeed, 0, 0));
+                        player.platformLock(-platformSpeed);
+
+                    }
+                    
+                }
+                else if (effect[1] <= 0) // end action for effect (called at end of colission)
+                {
+
+                    if (Effect2Platform[0].transform.position.x < Effect2Platform[1].transform.position.x)
+                    {
+                        Effect2Platform[0].transform.Translate(new Vector3(platformSpeed, 0, 0));
+                        player.platformLock(platformSpeed);
+
+                    }
+                    
+                }
+            }
+            else
+            {
+                if (effect[1] > 0) // start action for effect (called at start of colission)
+                {
+
+
+                    if (Effect2Platform[0].transform.position.x < Effect2Platform[2].transform.position.x)
+                    {
+                        Effect2Platform[0].transform.Translate(new Vector3(platformSpeed, 0, 0));
+                        player.platformLock(platformSpeed);
+
+                    }
+                    
+                }
+
+                else if (effect[1] <= 0) // end action for effect (called at end of colission)
+                {
+
+                    if (Effect2Platform[0].transform.position.x > Effect2Platform[1].transform.position.x)
+                    {
+                        Effect2Platform[0].transform.Translate(new Vector3(-platformSpeed, 0, 0));
+                        player.platformLock(-platformSpeed);
+
+                    }
+                    
+                }
+            }
         }
-        else if (effectType[num] == 2) 
-        { 
-            EffectPlatformH(Objects, num); 
-        }
-        else if (effectType[num] == 3)
+
+        
+        
+        if (!Effect3Flip)
         {
-            EffectPlatformV(Objects, num);
+            if (effect[2] > 0) // start action for effect (called at start of colission)
+            {
+
+
+                if (Effect3Platform[0].transform.position.y > Effect3Platform[2].transform.position.y)
+                {
+
+                    Effect3Platform[0].transform.Translate(new Vector3( 0, -platformSpeed, 0));
+                    player.platformLock(-platformSpeed);
+
+                }
+
+            }
+            else if (effect[2] <= 0) // end action for effect (called at end of colission)
+            {
+
+                if (Effect3Platform[0].transform.position.y < Effect3Platform[1].transform.position.y)
+                {
+                    Effect3Platform[0].transform.Translate(new Vector3(0, platformSpeed, 0));
+                    player.platformLock(platformSpeed);
+
+                }
+
+            }
         }
         else
         {
-            effectEnabled[num] = false;
+            if (effect[1] > 0) // start action for effect (called at start of colission)
+            {
+
+
+                if (Effect3Platform[0].transform.position.y < Effect3Platform[2].transform.position.y)
+                {
+                    Effect3Platform[0].transform.Translate(new Vector3(0, platformSpeed, 0));
+                    player.platformLock(platformSpeed);
+
+                }
+
+            }
+
+            else if (effect[1] <= 0) // end action for effect (called at end of colission)
+            {
+
+                if (Effect3Platform[0].transform.position.y > Effect3Platform[1].transform.position.y)
+                {
+                    Effect3Platform[0].transform.Translate(new Vector3( 0, -platformSpeed, 0));
+                    player.platformLock(-platformSpeed);
+
+                }
+
+            }
+        }
+        
+    
+
+        if (effectEnabled[3])
+        {
+            if (effect[3] > 0 && !effectActive[3]) // start action for effect (called at start of colission)
+            {
+
+            }
+            else if (effectActive[3] && effect[3] <= 0) // end action for effect (called at end of colission)
+            {
+
+            }
+        }
+
+        if (effectEnabled[4])
+        {
+            if (effect[4] > 0 && !effectActive[4]) // start action for effect (called at start of colission)
+            {
+
+            }
+            else if (effectActive[4] && effect[4] <= 0) // end action for effect (called at end of colission)
+            {
+
+            }
         }
     }
+
 
     private void OnMouse(InputValue value)
     {
@@ -120,7 +264,7 @@ public class mouseFollow : MonoBehaviour
 
     private void OnTriggerExit2D(Collider2D collision)
     {
-
+        
         if (collision.tag == "Effect1")
         {
             effect[1]--;
@@ -141,151 +285,6 @@ public class mouseFollow : MonoBehaviour
         {
             effect[4]--;
         }
+
     }
-
-
-
-        void EffectDoor(GameObject[] Objects, int num)
-        {
-            if (effect[num] > 0 && !effectActive[num]) // start action for effect (called at start of colission)
-            {
-                effectActive[num] = true;
-
-                foreach (GameObject i in Objects)
-                {
-                    i.SetActive(false);
-                }
-
-            }
-            else if (effectActive[num] && effect[num] <= 0) // end action for effect (called at end of colission)
-            {
-                effectActive[num] = false;
-                foreach (GameObject i in Objects)
-                {
-                    i.SetActive(true);
-                }
-            }
-        }
-
-        void EffectPlatformH(GameObject[] Objects, int num)
-        {
-            if (Objects[1].transform.position.x - Objects[2].transform.position.x < 0)
-            {
-                if (effect[num] > 0) // start action for effect (called at start of colission)
-                {
-
-
-                    if (Objects[0].transform.position.x < Objects[2].transform.position.x)
-                    {
-                        Objects[0].transform.Translate(new Vector3(platformSpeed, 0, 0));
-                        player.platformLock(platformSpeed, true);
-
-                    }
-
-                }
-
-                else if (effect[num] <= 0) // end action for effect (called at end of colission)
-                {
-
-                    if (Objects[0].transform.position.x > Objects[1].transform.position.x)
-                    {
-                        Objects[0].transform.Translate(new Vector3(-platformSpeed, 0, 0));
-                        player.platformLock(-platformSpeed, true);
-
-                    }
-
-                }
-            }
-            else
-            {
-                if (effect[num] > 0)
-                {
-
-
-                    if (Objects[0].transform.position.x > Objects[2].transform.position.x)
-                    {
-
-                        Objects[0].transform.Translate(new Vector3(-platformSpeed, 0, 0));
-                        player.platformLock(-platformSpeed, true);
-
-                    }
-
-                }
-                else if (effect[num] <= 0) // end action for effect (called at end of colission)
-                {
-
-                    if (Objects[0].transform.position.x < Objects[1].transform.position.x)
-                    {
-                        Objects[0].transform.Translate(new Vector3(platformSpeed, 0, 0));
-                        player.platformLock(platformSpeed, true);
-
-                    }
-
-                }
-            }
-        }
-
-        void EffectPlatformV(GameObject[] Objects, int num)
-        {
-            if (Objects[1].transform.position.y - Objects[2].transform.position.y < 0)
-            {
-                // UP
-                if (effect[num] > 0) // start action for effect (called at start of colission)
-                {
-                    if (Objects[0].transform.position.y < Objects[2].transform.position.y)
-                    {
-                        Debug.Log("UP");
-                        Objects[0].transform.Translate(new Vector3(0, platformSpeed, 0));
-                        player.platformLock(platformSpeed, false); 
-
-                    }
-
-                }
-
-                else if (effect[num] <= 0) // end action for effect (called at end of colission)
-                {
-
-                    if (Objects[0].transform.position.y > Objects[1].transform.position.y)
-                    {
-                        Debug.Log("DOWN");
-                        Objects[0].transform.Translate(new Vector3( 0, -platformSpeed, 0));
-                        player.platformLock(-platformSpeed, false); 
-
-                    }
-
-                }
-            }
-            else
-            {
-                
-                if (effect[num] > 0)
-                {
-
-
-                    if (Objects[0].transform.position.y > Objects[2].transform.position.y)
-                    {
-                        Debug.Log("Up");
-                        Objects[0].transform.Translate(new Vector3( 0, -platformSpeed, 0));
-                        player.platformLock(-platformSpeed, false);
-
-                    }
-
-                }
-                else if (effect[num] <= 0) // end action for effect (called at end of colission)
-                {
-                    
-                    if (Objects[0].transform.position.y < Objects[1].transform.position.y)
-                    {
-                        Debug.Log("Down");
-                        Objects[0].transform.Translate(new Vector3( 0, platformSpeed, 0));
-                        player.platformLock(platformSpeed, false);
-
-                    }
-
-                }
-            }
-        }
-
-
-    
 }
