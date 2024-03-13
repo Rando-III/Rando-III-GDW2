@@ -55,13 +55,14 @@ public class Player : MonoBehaviour
 
     void FixedUpdate()
     {
+        rolltimer -= Time.deltaTime;
+        if (rolltimer < 0)
+        {
+            rolltimer = 0;
+        }
         if (!dead)
         {
-            rolltimer -= Time.deltaTime;
-            if (rolltimer < 0)
-            {
-                rolltimer = 0;
-            }
+            
             if (isGrounded)
             {
                 gameObject.GetComponent<Animator>().SetBool("Jump", false);
