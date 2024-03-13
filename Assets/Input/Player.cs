@@ -51,96 +51,108 @@ public class Player : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         //animator.SetBool("Rolls", false);
     }
-    
+
 
     void FixedUpdate()
     {
-        rolltimer -= Time.deltaTime;
-        if (rolltimer < 0) 
+        if (!dead)
         {
-            rolltimer = 0;
-        }
-        if (isGrounded)
-        {
-            gameObject.GetComponent<Animator>().SetBool("Jump", false);
-        }
-        
-        if (rb.velocity.x != 0 && isGrounded)
-        {
-            gameObject.GetComponent<Animator>().SetBool("Run", true);
-        }
-        else
-        {
-            gameObject.GetComponent<Animator>().SetBool("Run", false);
-        }
-        if (canWalljump || canwalljumpleft)
-        {
-            gameObject.GetComponent<Animator>().SetBool("walljump", true);
+            rolltimer -= Time.deltaTime;
+            if (rolltimer < 0)
+            {
+                rolltimer = 0;
+            }
+            if (isGrounded)
+            {
+                gameObject.GetComponent<Animator>().SetBool("Jump", false);
+            }
 
-        }
-        else
-        {
+            if (rb.velocity.x != 0 && isGrounded)
+            {
+                gameObject.GetComponent<Animator>().SetBool("Run", true);
+            }
+            else
+            {
+                gameObject.GetComponent<Animator>().SetBool("Run", false);
+            }
+            if (canWalljump || canwalljumpleft)
+            {
+                gameObject.GetComponent<Animator>().SetBool("walljump", true);
 
-            gameObject.GetComponent<Animator>().SetBool("walljump", false);
-        }
-        
-        //if (rb.velocity.x >= maxV)
-        //{
-          //  rb.velocity = new Vector2( 1,0);
-        //}
-        if (rb.velocity.x <= -maxV)
-        {
-            rb.velocity += new Vector2(1, 0);
-        }
-        if (_moveDirection.x == -1)
-        {
-            sr.flipX = true;
-        }
-        if (_moveDirection.x == 1)
-        {
-            sr.flipX = false;
-        }
-        if (isGrounded)
-        {
-            rb.AddForce((new Vector2(50, 0) * _moveDirection));
-        }
-        if (!isGrounded && !walljumping)
-        {
-            rb.AddForce((new Vector2(50, 0) * _moveDirection * 0.8f));
-        }
-        if (rb.velocity.y >= 0)
-        {
-            rb.gravityScale = 4;
-        }
-        if (rb.velocity.y < 0 )
-        {
-            rb.gravityScale = 6;
-        }
-        if (rolltimer > 0  && rolltimer < 0.6f)
-        {
-            jumpforce = 30;
-            maxV = 50;
-        }
-        else
-        {
-            jumpforce = 30;
-            maxV = 50;
-        }
-        
+            }
+            else
+            {
 
+                gameObject.GetComponent<Animator>().SetBool("walljump", false);
+            }
+
+            //if (rb.velocity.x >= maxV)
+            //{
+            //  rb.velocity = new Vector2( 1,0);
+            //}
+            if (rb.velocity.x <= -maxV)
+            {
+                rb.velocity += new Vector2(1, 0);
+            }
+            if (_moveDirection.x == -1)
+            {
+                sr.flipX = true;
+            }
+            if (_moveDirection.x == 1)
+            {
+                sr.flipX = false;
+            }
+            if (isGrounded)
+            {
+                rb.AddForce((new Vector2(50, 0) * _moveDirection));
+            }
+            if (!isGrounded && !walljumping)
+            {
+                rb.AddForce((new Vector2(50, 0) * _moveDirection * 0.8f));
+            }
+            if (rb.velocity.y >= 0)
+            {
+                rb.gravityScale = 4;
+            }
+            if (rb.velocity.y < 0)
+            {
+                rb.gravityScale = 6;
+            }
+            if (rolltimer > 0 && rolltimer < 0.6f)
+            {
+                jumpforce = 30;
+                maxV = 50;
+            }
+            else
+            {
+                jumpforce = 30;
+                maxV = 50;
+            }
+
+        }    
 
           
         if (dead)
         {
+            gameObject.GetComponent<Animator>().SetBool("Dead", true);
+            
             deathtimer -= Time.deltaTime;
+            if (deathtimer < 0) 
+            {
+                gameObject.GetComponent<Animator>().SetBool("Dead", false);
+                gameObject.transform.position = respawn.position + new Vector3(0, 5, 0);
+                dead = false;
+                deathtimer = 1;
+                
+            }
             // Add Death Stuff Here
             //Destroy(gameObject); // temp
             
-            gameObject.transform.position = respawn.position + new Vector3(0, 3, 0);
+            
                 
             
             
-            dead = false;
+            
         }
 
     }
