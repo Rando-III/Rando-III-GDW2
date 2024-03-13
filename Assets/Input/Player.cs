@@ -28,7 +28,6 @@ public class Player : MonoBehaviour
     public bool walljumping;
     public bool canwalljumpleft;
     public bool platLock = false;
-    Transform tf;
 
     bool onPlat = false;
     bool onFloor = false;
@@ -114,12 +113,18 @@ public class Player : MonoBehaviour
     }
 
 
-    public void platformLock(float move)
+    public void platformLock(float move, bool moveOnX)
     {
         if (platLock)
         {
-            tf = GetComponent<Transform>();
-            tf.position = new Vector3(move + tf.position.x, tf.position.y, tf.position.z);
+            if (moveOnX)
+            {
+                transform.position = new Vector3(move + transform.position.x, transform.position.y, transform.position.z);
+            }
+            else
+            {
+                transform.position = new Vector3(transform.position.x, move + transform.position.y, transform.position.z);
+            }
         }
     }
 
