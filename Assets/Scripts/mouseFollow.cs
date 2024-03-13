@@ -234,6 +234,7 @@ public class mouseFollow : MonoBehaviour
                 {
                     if (Objects[0].transform.position.y < Objects[2].transform.position.y)
                     {
+                        Debug.Log("UP");
                         Objects[0].transform.Translate(new Vector3(0, platformSpeed, 0));
                         player.platformLock(platformSpeed, false); 
 
@@ -246,6 +247,7 @@ public class mouseFollow : MonoBehaviour
 
                     if (Objects[0].transform.position.y > Objects[1].transform.position.y)
                     {
+                        Debug.Log("DOWN");
                         Objects[0].transform.Translate(new Vector3( 0, -platformSpeed, 0));
                         player.platformLock(-platformSpeed, false); 
 
@@ -255,14 +257,14 @@ public class mouseFollow : MonoBehaviour
             }
             else
             {
-                // DOWN
+                
                 if (effect[num] > 0)
                 {
 
 
                     if (Objects[0].transform.position.y > Objects[2].transform.position.y)
                     {
-
+                        Debug.Log("Up");
                         Objects[0].transform.Translate(new Vector3( 0, -platformSpeed, 0));
                         player.platformLock(-platformSpeed, false);
 
@@ -271,9 +273,10 @@ public class mouseFollow : MonoBehaviour
                 }
                 else if (effect[num] <= 0) // end action for effect (called at end of colission)
                 {
-
+                    
                     if (Objects[0].transform.position.y < Objects[1].transform.position.y)
                     {
+                        Debug.Log("Down");
                         Objects[0].transform.Translate(new Vector3( 0, platformSpeed, 0));
                         player.platformLock(platformSpeed, false);
 
