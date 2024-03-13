@@ -9,6 +9,7 @@ using UnityEngine.UIElements;
 
 public class Player : MonoBehaviour
 {
+    
     public Vector2 _moveDirection;
     public float speed;
     public bool isGrounded = true;
@@ -72,7 +73,16 @@ public class Player : MonoBehaviour
         {
             gameObject.GetComponent<Animator>().SetBool("Run", false);
         }
-        
+        if (canWalljump || canwalljumpleft)
+        {
+            gameObject.GetComponent<Animator>().SetBool("walljump", true);
+
+        }
+        else
+        {
+
+            gameObject.GetComponent<Animator>().SetBool("walljump", false);
+        }
         
         //if (rb.velocity.x >= maxV)
         //{
