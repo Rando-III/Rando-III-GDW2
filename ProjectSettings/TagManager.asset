@@ -24,8 +24,8 @@ TagManager:
   - UI
   - Circle
   - block
-  - WallLeft
-  - wallRight
+  - RightWall
+  - LeftWall
   - Key
   - platform
   - 
