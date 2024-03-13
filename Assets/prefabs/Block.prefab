@@ -212,6 +212,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2562207529552436792}
   - component: {fileID: 5476344674256071068}
+  - component: {fileID: 6177914929064365805}
   m_Layer: 8
   m_Name: Left Side
   m_TagString: Untagged
@@ -286,3 +287,21 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!252 &6177914929064365805
+SurfaceEffector2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6011156223830996128}
+  m_Enabled: 1
+  m_UseColliderMask: 1
+  m_ColliderMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_Speed: 0
+  m_SpeedVariation: 0
+  m_ForceScale: 0.3
+  m_UseContactForce: 0
+  m_UseFriction: 1
+  m_UseBounce: 1
