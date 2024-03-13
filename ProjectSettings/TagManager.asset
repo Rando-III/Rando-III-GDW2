@@ -15,7 +15,6 @@ TagManager:
   - room1
   - room3
   - CamZone
-  - Checkpoint
   layers:
   - Default
   - TransparentFX

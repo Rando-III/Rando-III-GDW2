@@ -35,15 +35,8 @@ public class Player : MonoBehaviour
     bool dead = false;
 
 
-
-    //Respawn points
-    public Transform respawn;
-    public float deathtimer;
-
-
     void Start()
     {
-        deathtimer = 1;
         sr = GetComponent<SpriteRenderer>();
         InputManager.Init(this);
         InputManager.SetGameControls();
@@ -59,19 +52,8 @@ public class Player : MonoBehaviour
         {
             rolltimer = 0;
         }
-        if (isGrounded)
-        {
-            gameObject.GetComponent<Animator>().SetBool("Jump", false);
-        }
         
-        if (rb.velocity.x != 0 && isGrounded)
-        {
-            gameObject.GetComponent<Animator>().SetBool("Run", true);
-        }
-        else
-        {
-            gameObject.GetComponent<Animator>().SetBool("Run", false);
-        }
+        
         
         
         //if (rb.velocity.x >= maxV)
@@ -122,14 +104,9 @@ public class Player : MonoBehaviour
           
         if (dead)
         {
-            deathtimer -= Time.deltaTime;
             // Add Death Stuff Here
             //Destroy(gameObject); // temp
-            
-            gameObject.transform.position = respawn.position + new Vector3(0, 3, 0);
-                
-            
-            
+            gameObject.transform.position = new Vector2(4.5f, -3.9f);
             dead = false;
         }
 
@@ -160,20 +137,12 @@ public class Player : MonoBehaviour
         
 
     }
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-        if (collision.tag == "Checkpoint")
-        {
-            respawn = collision.gameObject.transform;
-        }
-    }
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.tag == "Kill")
         {
             dead = true;
         }
-        
 
         if (collision.gameObject.layer == 3)
         {
@@ -249,15 +218,14 @@ public class Player : MonoBehaviour
     {
         if (isGrounded) 
         {
-            gameObject.GetComponent<Animator>().SetBool("Jump", true);
-            isjumping = true;
+             isjumping = true;
             rb.AddForce(new Vector2(0f, jumpforce), ForceMode2D.Impulse);
             isGrounded = false;
         }
         if (canWalljump)
         {
 
-            sr.flipX = false;
+            
             rb.AddForce(Vector2.right * 20, ForceMode2D.Impulse);
             rb.AddForce(Vector2.up * 35, ForceMode2D.Impulse);
            
@@ -269,10 +237,9 @@ public class Player : MonoBehaviour
         }
         if (canwalljumpleft)
         {
-
             rb.AddForce(Vector2.left * 20, ForceMode2D.Impulse);
             rb.AddForce(Vector2.up * 35, ForceMode2D.Impulse);
-            sr.flipX = true;
+
             canwalljumpleft = false;
             
         }
