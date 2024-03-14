@@ -238,57 +238,68 @@ public class Player : MonoBehaviour
 
     internal void Jump()
     {
-        if (isGrounded) 
+        if (!dead)
         {
-             isjumping = true;
-            rb.AddForce(new Vector2(0f, jumpforce), ForceMode2D.Impulse);
-            isGrounded = false;
-        }
-        if (canWalljump)
-        {
+            if (isGrounded)
+            {
+                
+                rb.AddForce(new Vector2(10 * _moveDirection.x, 5), ForceMode2D.Impulse);
+                
+                isjumping = true;
+                rb.AddForce(new Vector2(0f, jumpforce), ForceMode2D.Impulse);
+                isGrounded = false;
+            }
+            if (canWalljump)
+            {
 
-            
-            rb.AddForce(Vector2.right * 20, ForceMode2D.Impulse);
-            rb.AddForce(Vector2.up * 35, ForceMode2D.Impulse);
-           
 
-          
-            
-            canWalljump = false;
-            
-        }
-        if (canwalljumpleft)
-        {
-            rb.AddForce(Vector2.left * 20, ForceMode2D.Impulse);
-            rb.AddForce(Vector2.up * 35, ForceMode2D.Impulse);
+                rb.AddForce(Vector2.right * 20, ForceMode2D.Impulse);
+                rb.AddForce(Vector2.up * 35, ForceMode2D.Impulse);
 
-            canwalljumpleft = false;
-            
+
+
+
+                canWalljump = false;
+
+            }
+            if (canwalljumpleft)
+            {
+                rb.AddForce(Vector2.left * 20, ForceMode2D.Impulse);
+                rb.AddForce(Vector2.up * 35, ForceMode2D.Impulse);
+
+                canwalljumpleft = false;
+
+            }
         }
+    
         
     }
 
     internal void Roll()
     {
-        
-        if (rolltimer <= 0 && sr.flipX == false && isGrounded)
+        if (!dead)
         {
-            maxV = 20;
-            rolltimer = 0.6f;
-            rb.AddForce(new Vector2(20, 0f), ForceMode2D.Impulse);
-            maxV = 10;
-           
-           
-            
+
+
+
+            if (rolltimer <= 0 && sr.flipX == false && isGrounded)
+            {
+                maxV = 20;
+                rolltimer = 0.6f;
+                rb.AddForce(new Vector2(20, 0f), ForceMode2D.Impulse);
+                maxV = 10;
+
+
+
+            }
+            if (rolltimer <= 0 && sr.flipX == true && isGrounded)
+            {
+
+                rolltimer = 0.6f;
+                rb.AddForce(new Vector2(-20, 0f), ForceMode2D.Impulse);
+                maxV = 10;
+            }
         }
-        if (rolltimer <= 0 && sr.flipX == true && isGrounded)
-        {
-           
-            rolltimer = 0.6f;
-            rb.AddForce(new Vector2(-20, 0f), ForceMode2D.Impulse);
-            maxV = 10;
-        }
-        
         
     }
     
