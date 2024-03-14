@@ -28,6 +28,7 @@ public class Player : MonoBehaviour
     public bool walljumping;
     public bool canwalljumpleft;
     public bool platLock = false;
+    string platTag;
 
     bool onPlat = false;
     bool onFloor = false;
@@ -124,9 +125,9 @@ public class Player : MonoBehaviour
     }
 
 
-    public void platformLock(float move, bool moveOnX)
+    public void platformLock(float move, bool moveOnX, string effect)
     {
-        if (platLock)
+        if (platLock && platTag == effect)
         {
             if (moveOnX)
             {

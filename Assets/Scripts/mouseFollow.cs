@@ -243,7 +243,7 @@ public class mouseFollow : MonoBehaviour
                     if (Objects[0].transform.position.x < Objects[2].transform.position.x)
                     {
                         Objects[0].transform.Translate(new Vector3(platformSpeed, 0, 0));
-                        player.platformLock(platformSpeed, true);
+                        player.platformLock(platformSpeed, true, "Effect" + num.ToString());
 
                     }
 
@@ -255,7 +255,7 @@ public class mouseFollow : MonoBehaviour
                     if (Objects[0].transform.position.x > Objects[1].transform.position.x)
                     {
                         Objects[0].transform.Translate(new Vector3(-platformSpeed, 0, 0));
-                        player.platformLock(-platformSpeed, true);
+                        player.platformLock(-platformSpeed, true, "Effect" + num.ToString());
 
                     }
 
@@ -271,7 +271,7 @@ public class mouseFollow : MonoBehaviour
                     {
 
                         Objects[0].transform.Translate(new Vector3(-platformSpeed, 0, 0));
-                        player.platformLock(-platformSpeed, true);
+                        player.platformLock(-platformSpeed, true, "Effect" + num.ToString());
 
                     }
 
@@ -282,7 +282,7 @@ public class mouseFollow : MonoBehaviour
                     if (Objects[0].transform.position.x < Objects[1].transform.position.x)
                     {
                         Objects[0].transform.Translate(new Vector3(platformSpeed, 0, 0));
-                        player.platformLock(platformSpeed, true);
+                        player.platformLock(platformSpeed, true, "Effect" + num.ToString());
 
                     }
 
@@ -301,7 +301,7 @@ public class mouseFollow : MonoBehaviour
                     {
                         Debug.Log("UP");
                         Objects[0].transform.Translate(new Vector3(0, platformSpeed, 0));
-                        player.platformLock(platformSpeed, false); 
+                        player.platformLock(platformSpeed, false, "Effect" + num.ToString()); 
 
                     }
 
@@ -314,7 +314,7 @@ public class mouseFollow : MonoBehaviour
                     {
                         Debug.Log("DOWN");
                         Objects[0].transform.Translate(new Vector3( 0, -platformSpeed, 0));
-                        player.platformLock(-platformSpeed, false); 
+                        player.platformLock(-platformSpeed, false, "Effect" + num.ToString()); 
 
                     }
 
@@ -331,7 +331,7 @@ public class mouseFollow : MonoBehaviour
                     {
                         Debug.Log("Up");
                         Objects[0].transform.Translate(new Vector3( 0, -platformSpeed, 0));
-                        player.platformLock(-platformSpeed, false);
+                        player.platformLock(-platformSpeed, false, "Effect" + num.ToString());
 
                     }
 
@@ -343,7 +343,7 @@ public class mouseFollow : MonoBehaviour
                     {
                         Debug.Log("Down");
                         Objects[0].transform.Translate(new Vector3( 0, platformSpeed, 0));
-                        player.platformLock(platformSpeed, false);
+                        player.platformLock(platformSpeed, false, "Effect" + num.ToString());
 
                     }
 
