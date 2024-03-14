@@ -247,7 +247,7 @@ public class Player : MonoBehaviour
                 rb.AddForce(new Vector2(0, jumpforce), ForceMode2D.Impulse);
                 
                 isjumping = true;
-                rb.AddForce(new Vector2(0f, jumpforce), ForceMode2D.Impulse);
+                
                 isGrounded = false;
             }
             if (canWalljump)
