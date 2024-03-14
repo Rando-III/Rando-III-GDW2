@@ -15,6 +15,11 @@ TagManager:
   - room1
   - room3
   - CamZone
+  - Effect5
+  - Effect6
+  - Effect7
+  - Effect8
+  - Effect9
   layers:
   - Default
   - TransparentFX

@@ -16,15 +16,20 @@ public class mouseFollow : MonoBehaviour
 
     int[] effect = { 0, 0, 0, 0, 0};
     public int[] effectType = { 0, 0, 0, 0, 0 };
-    public string[] TYPE_INFO = { "0 = No Effect", "1 = Door", "2 = Left/Right Platform", "3 = Up/Down Platform" };
+    public string[] TYPE_HELP = { "0 = No Effect", "1 = Door", "2 = Left/Right Platform", "3 = Up/Down Platform" };
     bool[] effectActive = { false, false, false, false, false};
     public bool[] effectEnabled = { false, false, false, false, false };
-    public string[] OBJECT_INFO = { "DOOR = all objects will be disabled on enable", "MOVING PLATFORM = First Object MUST be the Platform followed by the startpoint and end point" };
+    public string[] OBJECT_HELP = { "DOOR = all objects will be disabled on enable", "MOVING PLATFORM", "1. Platform", "2. Start Point", "3. End Point" };
     public GameObject[] Effect1Objects;
     public GameObject[] Effect2Objects;
     public GameObject[] Effect3Objects;
     public GameObject[] Effect4Objects;
     public GameObject[] Effect5Objects;
+    public GameObject[] Effect6Objects;
+    public GameObject[] Effect7Objects;
+    public GameObject[] Effect8Objects;
+    public GameObject[] Effect9Objects;
+    public GameObject[] Effect10Objects;
 
 
 
@@ -64,6 +69,26 @@ public class mouseFollow : MonoBehaviour
         if (effectEnabled[4])
         {
             effectCheck(Effect5Objects, 4);
+        }
+        if (effectEnabled[5])
+        {
+            effectCheck(Effect6Objects, 5);
+        }
+        if (effectEnabled[6])
+        {
+            effectCheck(Effect7Objects, 6);
+        }
+        if (effectEnabled[7])
+        {
+            effectCheck(Effect8Objects, 7);
+        }
+        if (effectEnabled[8])
+        {
+            effectCheck(Effect9Objects, 8);
+        }
+        if (effectEnabled[9])
+        {
+            effectCheck(Effect10Objects, 9);
         }
     }
 
@@ -115,6 +140,26 @@ public class mouseFollow : MonoBehaviour
         {
             effect[4]++;
         }
+        else if (collision.tag == "Effect5")
+        {
+            effect[5]++;
+        }
+        else if (collision.tag == "Effect6")
+        {
+            effect[6]++;
+        }
+        else if (collision.tag == "Effect7")
+        {
+            effect[7]++;
+        }
+        else if (collision.tag == "Effect8")
+        {
+            effect[8]++;
+        }
+        else if (collision.tag == "Effect9")
+        {
+            effect[9]++;
+        }
 
     }
 
@@ -140,6 +185,26 @@ public class mouseFollow : MonoBehaviour
         else if (collision.tag == "Effect4")
         {
             effect[4]--;
+        }
+        else if (collision.tag == "Effect5")
+        {
+            effect[5]--;
+        }
+        else if (collision.tag == "Effect6")
+        {
+            effect[6]--;
+        }
+        else if (collision.tag == "Effect7")
+        {
+            effect[7]--;
+        }
+        else if (collision.tag == "Effect8")
+        {
+            effect[8]--;
+        }
+        else if (collision.tag == "Effect9")
+        {
+            effect[9]--;
         }
     }
 
