@@ -14,11 +14,11 @@ public class mouseFollow : MonoBehaviour
 
     public float platformSpeed;
 
-    int[] effect = { 0, 0, 0, 0, 0};
-    public int[] effectType = { 0, 0, 0, 0, 0 };
+    int[] effect = { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
+    public int[] effectType = { 0, 0, 0, 0, 0 , 0, 0, 0, 0, 0};
     public string[] TYPE_HELP = { "0 = No Effect", "1 = Door", "2 = Left/Right Platform", "3 = Up/Down Platform" };
-    bool[] effectActive = { false, false, false, false, false};
-    public bool[] effectEnabled = { false, false, false, false, false };
+    bool[] effectActive = { false, false, false, false, false, false, false, false, false, false};
+    public bool[] effectEnabled = { false, false, false, false, false, false, false, false, false, false};
     public string[] OBJECT_HELP = { "DOOR = all objects will be disabled on enable", "MOVING PLATFORM", "1. Platform", "2. Start Point", "3. End Point" };
     public GameObject[] Effect1Objects;
     public GameObject[] Effect2Objects;
