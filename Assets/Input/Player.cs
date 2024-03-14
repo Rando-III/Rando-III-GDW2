@@ -244,7 +244,7 @@ public class Player : MonoBehaviour
             if (isGrounded)
             {
                 
-                rb.AddForce(new Vector2(10 * _moveDirection.x, 5), ForceMode2D.Impulse);
+                rb.AddForce(new Vector2(0, jumpforce), ForceMode2D.Impulse);
                 
                 isjumping = true;
                 rb.AddForce(new Vector2(0f, jumpforce), ForceMode2D.Impulse);
