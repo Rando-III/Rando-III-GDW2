@@ -34,9 +34,11 @@ public class Player : MonoBehaviour
 
     bool dead = false;
     public Transform respawn;
+    public float deadtimer;
 
     void Start()
     {
+        deadtimer = 1;
         sr = GetComponent<SpriteRenderer>();
         InputManager.Init(this);
         InputManager.SetGameControls();
@@ -52,62 +54,71 @@ public class Player : MonoBehaviour
         {
             rolltimer = 0;
         }
-        
-        
-        
-        
-        //if (rb.velocity.x >= maxV)
-        //{
-          //  rb.velocity = new Vector2( 1,0);
-        //}
-        if (rb.velocity.x <= -maxV)
-        {
-            rb.velocity += new Vector2(1, 0);
-        }
-        if (_moveDirection.x == -1)
-        {
-            sr.flipX = true;
-        }
-        if (_moveDirection.x == 1)
-        {
-            sr.flipX = false;
-        }
-        if (isGrounded)
-        {
-            rb.AddForce((new Vector2(50, 0) * _moveDirection));
-        }
-        if (!isGrounded && !walljumping)
-        {
-            rb.AddForce((new Vector2(50, 0) * _moveDirection * 0.8f));
-        }
-        if (rb.velocity.y >= 0)
-        {
-            rb.gravityScale = 4;
-        }
-        if (rb.velocity.y < 0 )
-        {
-            rb.gravityScale = 6;
-        }
-        if (rolltimer > 0  && rolltimer < 0.6f)
-        {
-            jumpforce = 30;
-            maxV = 50;
-        }
-        else
-        {
-            jumpforce = 30;
-            maxV = 50;
-        }
-        
 
 
+
+        if (!dead)
+        {
+            //if (rb.velocity.x >= maxV)
+            //{
+            //  rb.velocity = new Vector2( 1,0);
+            //}
+            if (rb.velocity.x <= -maxV)
+            {
+                rb.velocity += new Vector2(1, 0);
+            }
+            if (_moveDirection.x == -1)
+            {
+                sr.flipX = true;
+            }
+            if (_moveDirection.x == 1)
+            {
+                sr.flipX = false;
+            }
+            if (isGrounded)
+            {
+                rb.AddForce((new Vector2(50, 0) * _moveDirection));
+            }
+            if (!isGrounded && !walljumping)
+            {
+                rb.AddForce((new Vector2(50, 0) * _moveDirection * 0.8f));
+            }
+            if (rb.velocity.y >= 0)
+            {
+                rb.gravityScale = 4;
+            }
+            if (rb.velocity.y < 0)
+            {
+                rb.gravityScale = 6;
+            }
+            if (rolltimer > 0 && rolltimer < 0.6f)
+            {
+                jumpforce = 30;
+                maxV = 50;
+            }
+            else
+            {
+                jumpforce = 30;
+                maxV = 50;
+            }
+
+
+        }
           
         if (dead)
         {
+            deadtimer -= Time.deltaTime;
+            {
+                if (deadtimer <= 0 )
+                {
+                    gameObject.transform.position = respawn.transform.position + new Vector3(0, 5f, 0);
+                    dead = false;
+                    deadtimer = 1;
+                }
+            }
             // Add Death Stuff Here
             //Destroy(gameObject); // temp
-            gameObject.transform.position = new Vector2(4.5f, -3.9f);
-            dead = false;
+            
         }
 
     }
@@ -215,6 +226,13 @@ public class Player : MonoBehaviour
                 canMove = false;
             }
             onPlat = false;
+        }
+    }
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.tag == "Respawn")
+        {
+            respawn = collision.transform;
         }
     }
 
