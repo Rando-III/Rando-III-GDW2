@@ -33,7 +33,7 @@ public class Player : MonoBehaviour
     bool onFloor = false;
 
     bool dead = false;
-
+    public Transform respawn;
 
     void Start()
     {
@@ -168,6 +168,10 @@ public class Player : MonoBehaviour
     }
     private void OnCollisionStay2D(Collision2D collision)
     {
+        if (collision.gameObject.layer == 3)
+        {
+            isGrounded = true;
+        }
         if (collision.gameObject.layer == 8)
         {
             
