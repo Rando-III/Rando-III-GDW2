@@ -48,7 +48,6 @@ public class mouseFollow : MonoBehaviour
     {
         mouse = mainCam.ScreenToWorldPoint(mousePos);
         transform.position = new Vector3(mouse.x, mouse.y);
-        _renderer.material.color = new Color(effect[2] * 130, effect[0] * 130, effect[1] * 130);
 
         if (effectEnabled[0])
         {
