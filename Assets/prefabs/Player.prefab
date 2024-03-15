@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 7728815286477142408}
   - component: {fileID: 3551294952454934822}
   - component: {fileID: 7793911474099135813}
+  - component: {fileID: 4961464944208169541}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -31,8 +32,8 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 4.91, y: -3.64, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_LocalScale: {x: 0.15, y: 0.15, z: 0.15}
+  m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 8050809972652803772}
   m_Father: {fileID: 0}
@@ -78,7 +79,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 59dc7867e7cdf1c419d8e4a13d34d98d, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -121,18 +122,18 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: 0.39011216, y: -0.35464764}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1, y: 1}
+    oldSize: {x: 15, y: 20}
     newSize: {x: 1, y: 1}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 6.461572, y: 19.157957}
   m_EdgeRadius: 0
 --- !u!50 &7728815286477142408
 Rigidbody2D:
@@ -186,12 +187,13 @@ MonoBehaviour:
   isrolling: 0
   sr: {fileID: 0}
   jumpforce: 25
-  animator: {fileID: 0}
   canWalljump: 0
   rollforce: 0
   walljumping: 0
   canwalljumpleft: 0
   platLock: 0
+  respawn: {fileID: 0}
+  deadtimer: 0
 --- !u!114 &7793911474099135813
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -206,6 +208,27 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   MainCamera: {fileID: 0}
   CamSize: 8
+--- !u!95 &4961464944208169541
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1266782145911103784}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 4b230e5d0cd0b0d44b6d581bab1ca1f4, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &7847102989280625100
 GameObject:
   m_ObjectHideFlags: 0
@@ -238,8 +261,8 @@ Transform:
   m_GameObject: {fileID: 7847102989280625100}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 4.82, y: 13.76, z: 0}
-  m_LocalScale: {x: 3, y: 3, z: 3}
+  m_LocalPosition: {x: 19.5, y: 29.9, z: 0}
+  m_LocalScale: {x: 20, y: 20, z: 20}
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 2553370491425075742}
@@ -310,11 +333,30 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   mainCam: {fileID: 0}
   player: {fileID: 3551294952454934822}
-  door: {fileID: 0}
-  platform: {fileID: 0}
   platformSpeed: 0.1
-  effect: 0000000000000000000000000000000000000000
-  effectActive: 0000000000
+  effectType: 00000000000000000000000000000000000000000000000000000000000000000000000000000000
+  TYPE_HELP:
+  - 0 = No Effect
+  - 1 = Door
+  - 2 = Left/Right Platform
+  - 3 = Up/Down Platform
+  effectEnabled: 00000000000000000000
+  OBJECT_HELP:
+  - DOOR = all objects will be disabled on enable
+  - MOVING PLATFORM
+  - 1. Platform
+  - 2. Start Point
+  - 3. End Point
+  Effect1Objects: []
+  Effect2Objects: []
+  Effect3Objects: []
+  Effect4Objects: []
+  Effect5Objects: []
+  Effect6Objects: []
+  Effect7Objects: []
+  Effect8Objects: []
+  Effect9Objects: []
+  Effect10Objects: []
 --- !u!114 &3140386665060849867
 MonoBehaviour:
   m_ObjectHideFlags: 0

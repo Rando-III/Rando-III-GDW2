@@ -50,14 +50,30 @@ public class Player : MonoBehaviour
 
     void FixedUpdate()
     {
+
         rolltimer -= Time.deltaTime;
         if (rolltimer < 0) 
         {
             rolltimer = 0;
         }
-
-
-
+        if (rb.velocity.x != 0)
+        {
+            gameObject.GetComponent<Animator>().SetBool("run", true);
+            
+        }
+        else if (rb.velocity.x == 0)
+        {
+            gameObject.GetComponent<Animator>().SetBool("run", false);
+        }
+        if (canWalljump || canwalljumpleft)
+        {
+            gameObject.GetComponent<Animator>().SetBool("wall", true);
+        }
+        else
+        {
+            gameObject.GetComponent<Animator>().SetBool("wall", false);
+        }
+        
         if (!dead)
         {
             //if (rb.velocity.x >= maxV)
@@ -108,10 +124,12 @@ public class Player : MonoBehaviour
           
         if (dead)
         {
+            gameObject.GetComponent<Animator>().SetBool("dead", true);
             deadtimer -= Time.deltaTime;
             {
                 if (deadtimer <= 0 )
                 {
+                    gameObject.GetComponent<Animator>().SetBool("dead", false);
                     gameObject.transform.position = respawn.transform.position + new Vector3(0, 5f, 0);
                     dead = false;
                     deadtimer = 1;
@@ -159,7 +177,8 @@ public class Player : MonoBehaviour
         if (collision.gameObject.layer == 3)
         {
             onFloor = true;
-
+            gameObject.GetComponent<Animator>().SetBool("jump", false);
+            
             isGrounded = true;
             canMove = true;
             isjumping = false;
@@ -188,6 +207,7 @@ public class Player : MonoBehaviour
         {
             
             canWalljump = true;
+            
         }
         if (collision.gameObject.layer == 9)
         {
@@ -241,9 +261,11 @@ public class Player : MonoBehaviour
     {
         if (!dead)
         {
+            gameObject.GetComponent<Animator>().SetBool("jump", true);
             if (isGrounded)
             {
                 
+
                 rb.AddForce(new Vector2(0, jumpforce), ForceMode2D.Impulse);
                 
                 isjumping = true;
@@ -256,7 +278,7 @@ public class Player : MonoBehaviour
 
                 rb.AddForce(Vector2.right * 20, ForceMode2D.Impulse);
                 rb.AddForce(Vector2.up * 35, ForceMode2D.Impulse);
-
+                sr.flipX = true;
 
 
 
