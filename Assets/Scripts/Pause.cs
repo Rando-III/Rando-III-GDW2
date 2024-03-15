@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class Pause : MonoBehaviour
@@ -12,7 +13,10 @@ public class Pause : MonoBehaviour
 
     bool isPaused = false;
 
-
+    public void MainMenu()
+    {
+        SceneManager.LoadScene(0);
+    }
 
     public void OnEscape()
     {
