@@ -28,15 +28,15 @@ public class Player : MonoBehaviour
     public bool walljumping;
     public bool canwalljumpleft;
     public bool platLock = false;
-    string platTag;
+    public string platTag;
 
-    bool onPlat = false;
+    public bool onPlat = false;
     bool onFloor = false;
 
     bool dead = false;
     public Transform respawn;
     public float deadtimer;
-
+    int i;
     void Start()
     {
         deadtimer = 1;
@@ -178,8 +178,11 @@ public class Player : MonoBehaviour
         {
             onFloor = true;
             gameObject.GetComponent<Animator>().SetBool("jump", false);
-            
-            isGrounded = true;
+            if (!canWalljump && !canwalljumpleft)
+            {
+                isGrounded = true;
+            }
+
             canMove = true;
             isjumping = false;
             walljumping = false;
@@ -188,7 +191,7 @@ public class Player : MonoBehaviour
         if (collision.gameObject.layer == 11)
         {
             platLock = true;
-
+            platTag = collision.gameObject.tag;
             onPlat = true;
 
             isGrounded = true;
@@ -199,17 +202,17 @@ public class Player : MonoBehaviour
     }
     private void OnCollisionStay2D(Collision2D collision)
     {
-        if (collision.gameObject.layer == 3)
+        if (collision.gameObject.layer == 3 && !canWalljump && !canwalljumpleft)
         {
             isGrounded = true;
         }
-        if (collision.gameObject.layer == 8)
+        if (collision.gameObject.layer == 8 && !isGrounded)
         {
-            
+ 
             canWalljump = true;
             
         }
-        if (collision.gameObject.layer == 9)
+        if (collision.gameObject.layer == 9 && !isGrounded)
         {
             
             canwalljumpleft = true;
@@ -259,7 +262,8 @@ public class Player : MonoBehaviour
 
     internal void Jump()
     {
-        if (!dead)
+        i++;
+        if (!dead && i % 2 != 0)
         {
             gameObject.GetComponent<Animator>().SetBool("jump", true);
             if (isGrounded)

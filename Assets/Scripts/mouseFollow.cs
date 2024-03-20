@@ -16,10 +16,10 @@ public class mouseFollow : MonoBehaviour
 
     int[] effect = { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
     public int[] effectType = { 0, 0, 0, 0, 0 , 0, 0, 0, 0, 0};
-    public string[] TYPE_HELP = { "0 = No Effect", "1 = Door", "2 = Left/Right Platform", "3 = Up/Down Platform" };
+    public string[] TYPE_HELP = { "0 = No Effect", "1 = Door", "2 = Left/Right Platform", "3 = Up/Down Platform", "On Off Blocks (OnEnable)","On Off Blocks (OnEnable AND Disable)" };
     bool[] effectActive = { false, false, false, false, false, false, false, false, false, false};
     public bool[] effectEnabled = { false, false, false, false, false, false, false, false, false, false};
-    public string[] OBJECT_HELP = { "DOOR = all objects will be disabled on enable", "MOVING PLATFORM", "1. Platform", "2. Start Point", "3. End Point" };
+    public string[] OBJECT_HELP = { "DOOR = all objects will be disabled on enable", "MOVING PLATFORM", "1. Platform", "2. Start Point", "3. End Point" , "ON OFF = objects will flip active state"};
     public GameObject[] Effect1Objects;
     public GameObject[] Effect2Objects;
     public GameObject[] Effect3Objects;
@@ -105,9 +105,18 @@ public class mouseFollow : MonoBehaviour
         {
             EffectPlatformV(Objects, num);
         }
+        else if (effectType[num] == 4)
+        {
+            OnOffBlocks1(Objects, num);
+        }
+        else if (effectType[num] == 5)
+        {
+            OnOffBlocks2(Objects, num);
+        }
         else
         {
             effectEnabled[num] = false;
+            Debug.Log($"ERROR Effect {num} was set active but no valid effect type was set");
         }
     }
 
@@ -207,148 +216,205 @@ public class mouseFollow : MonoBehaviour
         }
     }
 
+    void OnOffBlocks1(GameObject[] Objects, int num)
+    {
 
-
-        void EffectDoor(GameObject[] Objects, int num)
+        if (effect[num] > 0 && !effectActive[num])
         {
-            if (effect[num] > 0 && !effectActive[num]) // start action for effect (called at start of colission)
+            effectActive[num] = true;
+            foreach (GameObject obj in Objects)
             {
-                effectActive[num] = true;
-
-                foreach (GameObject i in Objects)
+                if (obj.activeInHierarchy == false)
                 {
-                    i.SetActive(false);
+                    obj.SetActive(true);
                 }
-
-            }
-            else if (effectActive[num] && effect[num] <= 0) // end action for effect (called at end of colission)
-            {
-                effectActive[num] = false;
-                foreach (GameObject i in Objects)
+                else
                 {
-                    i.SetActive(true);
+                    obj.SetActive(false);
                 }
             }
         }
-
-        void EffectPlatformH(GameObject[] Objects, int num)
+        else if (effectActive[num] && effect[num] <= 0) 
         {
-            if (Objects[1].transform.position.x - Objects[2].transform.position.x < 0)
+            effectActive[num] = false;
+            
+        }
+    }
+
+    void OnOffBlocks2(GameObject[] Objects, int num)
+    {
+
+        if (effect[num] > 0 && !effectActive[num])
+        {
+            effectActive[num] = true;
+            foreach (GameObject obj in Objects)
             {
-                if (effect[num] > 0) // start action for effect (called at start of colission)
+                if (obj.activeInHierarchy == false)
                 {
-
-
-                    if (Objects[0].transform.position.x < Objects[2].transform.position.x)
-                    {
-                        Objects[0].transform.Translate(new Vector3(platformSpeed, 0, 0));
-                        player.platformLock(platformSpeed, true, "Effect" + num.ToString());
-
-                    }
-
+                    obj.SetActive(true);
                 }
-
-                else if (effect[num] <= 0) // end action for effect (called at end of colission)
+                else
                 {
-
-                    if (Objects[0].transform.position.x > Objects[1].transform.position.x)
-                    {
-                        Objects[0].transform.Translate(new Vector3(-platformSpeed, 0, 0));
-                        player.platformLock(-platformSpeed, true, "Effect" + num.ToString());
-
-                    }
-
-                }
-            }
-            else
-            {
-                if (effect[num] > 0)
-                {
-
-
-                    if (Objects[0].transform.position.x > Objects[2].transform.position.x)
-                    {
-
-                        Objects[0].transform.Translate(new Vector3(-platformSpeed, 0, 0));
-                        player.platformLock(-platformSpeed, true, "Effect" + num.ToString());
-
-                    }
-
-                }
-                else if (effect[num] <= 0) // end action for effect (called at end of colission)
-                {
-
-                    if (Objects[0].transform.position.x < Objects[1].transform.position.x)
-                    {
-                        Objects[0].transform.Translate(new Vector3(platformSpeed, 0, 0));
-                        player.platformLock(platformSpeed, true, "Effect" + num.ToString());
-
-                    }
-
+                    obj.SetActive(false);
                 }
             }
         }
-
-        void EffectPlatformV(GameObject[] Objects, int num)
+        else if (effectActive[num] && effect[num] <= 0)
         {
-            if (Objects[1].transform.position.y - Objects[2].transform.position.y < 0)
+            effectActive[num] = false;
+            foreach (GameObject obj in Objects)
             {
-                // UP
-                if (effect[num] > 0) // start action for effect (called at start of colission)
+                if (obj.activeInHierarchy == false)
                 {
-                    if (Objects[0].transform.position.y < Objects[2].transform.position.y)
-                    {
-                        Debug.Log("UP");
-                        Objects[0].transform.Translate(new Vector3(0, platformSpeed, 0));
-                        player.platformLock(platformSpeed, false, "Effect" + num.ToString()); 
-
-                    }
-
+                    obj.SetActive(true);
                 }
-
-                else if (effect[num] <= 0) // end action for effect (called at end of colission)
+                else
                 {
-
-                    if (Objects[0].transform.position.y > Objects[1].transform.position.y)
-                    {
-                        Debug.Log("DOWN");
-                        Objects[0].transform.Translate(new Vector3( 0, -platformSpeed, 0));
-                        player.platformLock(-platformSpeed, false, "Effect" + num.ToString()); 
-
-                    }
-
+                    obj.SetActive(false);
                 }
             }
-            else
+        }
+    }
+
+
+    void EffectDoor(GameObject[] Objects, int num)
+    {
+        if (effect[num] > 0 && !effectActive[num]) // start action for effect (called at start of colission)
+        {
+            effectActive[num] = true;
+
+            foreach (GameObject i in Objects)
             {
+                i.SetActive(false);
+            }
+
+        }
+        else if (effectActive[num] && effect[num] <= 0) // end action for effect (called at end of colission)
+        {
+            effectActive[num] = false;
+            foreach (GameObject i in Objects)
+            {
+                i.SetActive(true);
+            }
+        }
+    }
+
+    void EffectPlatformH(GameObject[] Objects, int num)
+    {
+        if (Objects[1].transform.position.x - Objects[2].transform.position.x < 0)
+        {
+            if (effect[num] > 0) // start action for effect (called at start of colission)
+            {
+
+
+                if (Objects[0].transform.position.x < Objects[2].transform.position.x)
+                {
+                    Objects[0].transform.Translate(new Vector3(platformSpeed, 0, 0));
+                    player.platformLock(platformSpeed, true, "Effect" + num.ToString());
+
+                }
+
+            }
+
+            else if (effect[num] <= 0) // end action for effect (called at end of colission)
+            {
+
+                if (Objects[0].transform.position.x > Objects[1].transform.position.x)
+                {
+                    Objects[0].transform.Translate(new Vector3(-platformSpeed, 0, 0));
+                    player.platformLock(-platformSpeed, true, "Effect" + num.ToString());
+
+                }
+
+            }
+        }
+        else
+        {
+            if (effect[num] > 0)
+            {
+
+
+                if (Objects[0].transform.position.x > Objects[2].transform.position.x)
+                {
+
+                    Objects[0].transform.Translate(new Vector3(-platformSpeed, 0, 0));
+                    player.platformLock(-platformSpeed, true, "Effect" + num.ToString());
+
+                }
+
+            }
+            else if (effect[num] <= 0) // end action for effect (called at end of colission)
+            {
+
+                if (Objects[0].transform.position.x < Objects[1].transform.position.x)
+                {
+                    Objects[0].transform.Translate(new Vector3(platformSpeed, 0, 0));
+                    player.platformLock(platformSpeed, true, "Effect" + num.ToString());
+
+                }
+
+            }
+        }
+    }
+
+    void EffectPlatformV(GameObject[] Objects, int num)
+    {
+        if (Objects[1].transform.position.y - Objects[2].transform.position.y < 0)
+        {
+            // UP
+            if (effect[num] > 0) // start action for effect (called at start of colission)
+            {
+                if (Objects[0].transform.position.y < Objects[2].transform.position.y)
+                {
+                    Objects[0].transform.Translate(new Vector3(0, platformSpeed, 0));
+                    player.platformLock(platformSpeed, false, "Effect" + num.ToString()); 
+
+                }
+
+            }
+
+            else if (effect[num] <= 0) // end action for effect (called at end of colission)
+            {
+
+                if (Objects[0].transform.position.y > Objects[1].transform.position.y)
+                {
+                    Objects[0].transform.Translate(new Vector3( 0, -platformSpeed, 0));
+                    player.platformLock(-platformSpeed, false, "Effect" + num.ToString()); 
+
+                }
+
+            }
+        }
+        else
+        {
                 
-                if (effect[num] > 0)
+            if (effect[num] > 0)
+            {
+
+
+                if (Objects[0].transform.position.y > Objects[2].transform.position.y)
                 {
-
-
-                    if (Objects[0].transform.position.y > Objects[2].transform.position.y)
-                    {
-                        Debug.Log("Up");
-                        Objects[0].transform.Translate(new Vector3( 0, -platformSpeed, 0));
-                        player.platformLock(-platformSpeed, false, "Effect" + num.ToString());
-
-                    }
+                    Debug.Log("Up");
+                    Objects[0].transform.Translate(new Vector3( 0, -platformSpeed, 0));
+                    player.platformLock(-platformSpeed, false, "Effect" + num.ToString());
 
                 }
-                else if (effect[num] <= 0) // end action for effect (called at end of colission)
-                {
+
+            }
+            else if (effect[num] <= 0) // end action for effect (called at end of colission)
+            {
                     
-                    if (Objects[0].transform.position.y < Objects[1].transform.position.y)
-                    {
-                        Debug.Log("Down");
-                        Objects[0].transform.Translate(new Vector3( 0, platformSpeed, 0));
-                        player.platformLock(platformSpeed, false, "Effect" + num.ToString());
-
-                    }
+                if (Objects[0].transform.position.y < Objects[1].transform.position.y)
+                {
+                    Debug.Log("Down");
+                    Objects[0].transform.Translate(new Vector3( 0, platformSpeed, 0));
+                    player.platformLock(platformSpeed, false, "Effect" + num.ToString());
 
                 }
+
             }
         }
+    }
 
 
     
