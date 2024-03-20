@@ -36,7 +36,7 @@ public class Player : MonoBehaviour
     bool dead = false;
     public Transform respawn;
     public float deadtimer;
-
+    int i;
     void Start()
     {
         deadtimer = 1;
@@ -262,7 +262,8 @@ public class Player : MonoBehaviour
 
     internal void Jump()
     {
-        if (!dead)
+        i++;
+        if (!dead && i % 2 != 0)
         {
             gameObject.GetComponent<Animator>().SetBool("jump", true);
             if (isGrounded)
