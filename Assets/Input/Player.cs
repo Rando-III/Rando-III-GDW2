@@ -178,8 +178,11 @@ public class Player : MonoBehaviour
         {
             onFloor = true;
             gameObject.GetComponent<Animator>().SetBool("jump", false);
-            
-            isGrounded = true;
+            if (!canWalljump && !canwalljumpleft)
+            {
+                isGrounded = true;
+            }
+
             canMove = true;
             isjumping = false;
             walljumping = false;
@@ -199,17 +202,17 @@ public class Player : MonoBehaviour
     }
     private void OnCollisionStay2D(Collision2D collision)
     {
-        if (collision.gameObject.layer == 3)
+        if (collision.gameObject.layer == 3 && !canWalljump && !canwalljumpleft)
         {
             isGrounded = true;
         }
-        if (collision.gameObject.layer == 8)
+        if (collision.gameObject.layer == 8 && !isGrounded)
         {
-            
+ 
             canWalljump = true;
             
         }
-        if (collision.gameObject.layer == 9)
+        if (collision.gameObject.layer == 9 && !isGrounded)
         {
             
             canwalljumpleft = true;
