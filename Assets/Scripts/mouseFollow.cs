@@ -116,6 +116,7 @@ public class mouseFollow : MonoBehaviour
         else
         {
             effectEnabled[num] = false;
+            Debug.Log($"ERROR Effect {num} was set active but no valid effect type was set");
         }
     }
 
@@ -365,7 +366,6 @@ public class mouseFollow : MonoBehaviour
             {
                 if (Objects[0].transform.position.y < Objects[2].transform.position.y)
                 {
-                    Debug.Log("UP");
                     Objects[0].transform.Translate(new Vector3(0, platformSpeed, 0));
                     player.platformLock(platformSpeed, false, "Effect" + num.ToString()); 
 
@@ -378,7 +378,6 @@ public class mouseFollow : MonoBehaviour
 
                 if (Objects[0].transform.position.y > Objects[1].transform.position.y)
                 {
-                    Debug.Log("DOWN");
                     Objects[0].transform.Translate(new Vector3( 0, -platformSpeed, 0));
                     player.platformLock(-platformSpeed, false, "Effect" + num.ToString()); 
 

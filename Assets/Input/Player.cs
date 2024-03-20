@@ -28,9 +28,9 @@ public class Player : MonoBehaviour
     public bool walljumping;
     public bool canwalljumpleft;
     public bool platLock = false;
-    string platTag;
+    public string platTag;
 
-    bool onPlat = false;
+    public bool onPlat = false;
     bool onFloor = false;
 
     bool dead = false;
@@ -191,7 +191,7 @@ public class Player : MonoBehaviour
         if (collision.gameObject.layer == 11)
         {
             platLock = true;
-
+            platTag = collision.gameObject.tag;
             onPlat = true;
 
             isGrounded = true;
