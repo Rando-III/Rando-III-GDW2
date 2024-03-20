@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -14,12 +15,15 @@ public class mouseFollow : MonoBehaviour
 
     public float platformSpeed;
 
-    int[] effect = { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
-    public int[] effectType = { 0, 0, 0, 0, 0 , 0, 0, 0, 0, 0};
-    public string[] TYPE_HELP = { "0 = No Effect", "1 = Door", "2 = Left/Right Platform", "3 = Up/Down Platform", "On Off Blocks (OnEnable)","On Off Blocks (OnEnable AND Disable)" };
-    bool[] effectActive = { false, false, false, false, false, false, false, false, false, false};
-    public bool[] effectEnabled = { false, false, false, false, false, false, false, false, false, false};
-    public string[] OBJECT_HELP = { "DOOR = all objects will be disabled on enable", "MOVING PLATFORM", "1. Platform", "2. Start Point", "3. End Point" , "ON OFF = objects will flip active state"};
+    int[] effect = { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 };
+    public int[] effectType = { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 };
+    public string[] TYPE_HELP = { "0 = No Effect", "1 = Door", "2 = Left/Right Platform", "3 = Up/Down Platform", "4 = On Off Blocks (OnClick)", "5 = L/R Constant moving platform", "6 = U/D Constant moving platform", "7 = L/R Stopable Constant moving platform", "8 = U/D Stopable Constant moving platform" };
+    bool[] effectActive = { false, false, false, false, false, false, false, false, false, false };
+    public bool[] effectEnabled = { false, false, false, false, false, false, false, false, false, false };
+    public string[] OBJECT_HELP = { "DOOR = all objects will be disabled on enable", "MOVING PLATFORMS (ALL TYPES (2,3,5 - 8))", "1. Platform", "2. Start Point", "3. End Point", "ON OFF = objects will flip active state" };
+    bool[] directionFlip = { false, false, false, false, false, false, false, false, false, false };
+    float[] moveStop = { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 };
+    public float stopTime = 3;
     public GameObject[] Effect1Objects;
     public GameObject[] Effect2Objects;
     public GameObject[] Effect3Objects;
@@ -31,7 +35,7 @@ public class mouseFollow : MonoBehaviour
     public GameObject[] Effect9Objects;
     public GameObject[] Effect10Objects;
 
-
+    bool Click;
 
     Vector3 mouse;
     Vector2 mousePos;
@@ -89,6 +93,7 @@ public class mouseFollow : MonoBehaviour
         {
             effectCheck(Effect10Objects, 9);
         }
+        Click = false;
     }
 
     void effectCheck(GameObject[] Objects, int num)
@@ -97,9 +102,9 @@ public class mouseFollow : MonoBehaviour
         {
             EffectDoor(Objects, num);
         }
-        else if (effectType[num] == 2) 
-        { 
-            EffectPlatformH(Objects, num); 
+        else if (effectType[num] == 2)
+        {
+            EffectPlatformH(Objects, num);
         }
         else if (effectType[num] == 3)
         {
@@ -107,11 +112,23 @@ public class mouseFollow : MonoBehaviour
         }
         else if (effectType[num] == 4)
         {
-            OnOffBlocks1(Objects, num);
+            OnOffBlocks(Objects, num);
         }
         else if (effectType[num] == 5)
         {
-            OnOffBlocks2(Objects, num);
+            ConstantPlatformH(Objects, num);
+        }
+        else if (effectType[num] == 6)
+        {
+            ConstantPlatformV(Objects, num);
+        }
+        else if (effectType[num] == 7)
+        {
+            StopPlatformH(Objects, num);
+        }
+        else if (effectType[num] == 8)
+        {
+            StopPlatformV(Objects, num);
         }
         else
         {
@@ -125,9 +142,13 @@ public class mouseFollow : MonoBehaviour
         mousePos = value.Get<Vector2>();
     }
 
+    void OnClick()
+    {
+        Click = true;
+    }
     private void OnTriggerEnter2D(Collider2D collision)
     {
-       
+
         if (collision.tag == "Effect1")
         {
             effect[1]++;
@@ -216,52 +237,11 @@ public class mouseFollow : MonoBehaviour
         }
     }
 
-    void OnOffBlocks1(GameObject[] Objects, int num)
+    void OnOffBlocks(GameObject[] Objects, int num)
     {
-
-        if (effect[num] > 0 && !effectActive[num])
+        if (effect[num] > 0 && Click)
         {
-            effectActive[num] = true;
-            foreach (GameObject obj in Objects)
-            {
-                if (obj.activeInHierarchy == false)
-                {
-                    obj.SetActive(true);
-                }
-                else
-                {
-                    obj.SetActive(false);
-                }
-            }
-        }
-        else if (effectActive[num] && effect[num] <= 0) 
-        {
-            effectActive[num] = false;
-            
-        }
-    }
-
-    void OnOffBlocks2(GameObject[] Objects, int num)
-    {
-
-        if (effect[num] > 0 && !effectActive[num])
-        {
-            effectActive[num] = true;
-            foreach (GameObject obj in Objects)
-            {
-                if (obj.activeInHierarchy == false)
-                {
-                    obj.SetActive(true);
-                }
-                else
-                {
-                    obj.SetActive(false);
-                }
-            }
-        }
-        else if (effectActive[num] && effect[num] <= 0)
-        {
-            effectActive[num] = false;
+            Click = false;
             foreach (GameObject obj in Objects)
             {
                 if (obj.activeInHierarchy == false)
@@ -275,6 +255,8 @@ public class mouseFollow : MonoBehaviour
             }
         }
     }
+
+
 
 
     void EffectDoor(GameObject[] Objects, int num)
@@ -305,54 +287,38 @@ public class mouseFollow : MonoBehaviour
         {
             if (effect[num] > 0) // start action for effect (called at start of colission)
             {
-
-
                 if (Objects[0].transform.position.x < Objects[2].transform.position.x)
                 {
                     Objects[0].transform.Translate(new Vector3(platformSpeed, 0, 0));
                     player.platformLock(platformSpeed, true, "Effect" + num.ToString());
-
                 }
-
             }
-
             else if (effect[num] <= 0) // end action for effect (called at end of colission)
             {
-
                 if (Objects[0].transform.position.x > Objects[1].transform.position.x)
                 {
                     Objects[0].transform.Translate(new Vector3(-platformSpeed, 0, 0));
                     player.platformLock(-platformSpeed, true, "Effect" + num.ToString());
-
                 }
-
             }
         }
         else
         {
             if (effect[num] > 0)
             {
-
-
                 if (Objects[0].transform.position.x > Objects[2].transform.position.x)
                 {
-
                     Objects[0].transform.Translate(new Vector3(-platformSpeed, 0, 0));
                     player.platformLock(-platformSpeed, true, "Effect" + num.ToString());
-
                 }
-
             }
             else if (effect[num] <= 0) // end action for effect (called at end of colission)
             {
-
                 if (Objects[0].transform.position.x < Objects[1].transform.position.x)
                 {
                     Objects[0].transform.Translate(new Vector3(platformSpeed, 0, 0));
                     player.platformLock(platformSpeed, true, "Effect" + num.ToString());
-
                 }
-
             }
         }
     }
@@ -361,61 +327,268 @@ public class mouseFollow : MonoBehaviour
     {
         if (Objects[1].transform.position.y - Objects[2].transform.position.y < 0)
         {
-            // UP
             if (effect[num] > 0) // start action for effect (called at start of colission)
             {
                 if (Objects[0].transform.position.y < Objects[2].transform.position.y)
                 {
                     Objects[0].transform.Translate(new Vector3(0, platformSpeed, 0));
-                    player.platformLock(platformSpeed, false, "Effect" + num.ToString()); 
-
+                    player.platformLock(platformSpeed, false, "Effect" + num.ToString());
                 }
-
             }
-
             else if (effect[num] <= 0) // end action for effect (called at end of colission)
             {
-
                 if (Objects[0].transform.position.y > Objects[1].transform.position.y)
                 {
-                    Objects[0].transform.Translate(new Vector3( 0, -platformSpeed, 0));
-                    player.platformLock(-platformSpeed, false, "Effect" + num.ToString()); 
-
+                    Objects[0].transform.Translate(new Vector3(0, -platformSpeed, 0));
+                    player.platformLock(-platformSpeed, false, "Effect" + num.ToString());
                 }
-
             }
         }
         else
         {
-                
             if (effect[num] > 0)
             {
-
-
                 if (Objects[0].transform.position.y > Objects[2].transform.position.y)
                 {
-                    Debug.Log("Up");
-                    Objects[0].transform.Translate(new Vector3( 0, -platformSpeed, 0));
+                    Objects[0].transform.Translate(new Vector3(0, -platformSpeed, 0));
                     player.platformLock(-platformSpeed, false, "Effect" + num.ToString());
-
                 }
-
             }
             else if (effect[num] <= 0) // end action for effect (called at end of colission)
             {
-                    
                 if (Objects[0].transform.position.y < Objects[1].transform.position.y)
                 {
-                    Debug.Log("Down");
-                    Objects[0].transform.Translate(new Vector3( 0, platformSpeed, 0));
+                    Objects[0].transform.Translate(new Vector3(0, platformSpeed, 0));
                     player.platformLock(platformSpeed, false, "Effect" + num.ToString());
-
                 }
-
             }
         }
     }
 
 
-    
+    void ConstantPlatformH(GameObject[] Objects, int num)
+    {
+        if (Objects[1].transform.position.x - Objects[2].transform.position.x < 0)
+        {
+            //left right
+
+            if (Objects[0].transform.position.x < Objects[1].transform.position.x)
+            {
+                directionFlip[num] = true;
+            }
+            else if (Objects[0].transform.position.x > Objects[2].transform.position.x)
+            {
+                directionFlip[num] = false;
+            }
+
+            if (directionFlip[num])
+            {
+                Objects[0].transform.Translate(new Vector3(platformSpeed, 0, 0));
+                player.platformLock(platformSpeed, true, "Effect" + num.ToString());
+            }
+            else
+            {
+                Objects[0].transform.Translate(new Vector3(-platformSpeed, 0, 0));
+                player.platformLock(-platformSpeed, true, "Effect" + num.ToString());
+            }
+        }
+        else
+        {
+            if (Objects[0].transform.position.x > Objects[1].transform.position.x)
+            {
+                directionFlip[num] = true;
+            }
+            else if (Objects[0].transform.position.x < Objects[2].transform.position.x)
+            {
+                directionFlip[num] = false;
+            }
+
+            if (!directionFlip[num])
+            {
+                Objects[0].transform.Translate(new Vector3(platformSpeed, 0, 0));
+                player.platformLock(platformSpeed, true, "Effect" + num.ToString());
+            }
+            else
+            {
+                Objects[0].transform.Translate(new Vector3(-platformSpeed, 0, 0));
+                player.platformLock(-platformSpeed, true, "Effect" + num.ToString());
+            }
+        }
+    }
+
+
+    void ConstantPlatformV(GameObject[] Objects, int num)
+    {
+        if (Objects[1].transform.position.y - Objects[2].transform.position.y < 0)
+        {
+            //Up Down
+
+            if (Objects[0].transform.position.y > Objects[1].transform.position.y)
+            {
+                directionFlip[num] = true;
+            }
+            else if (Objects[0].transform.position.y < Objects[2].transform.position.y)
+            {
+                directionFlip[num] = false;
+            }
+
+            if (directionFlip[num])
+            {
+                Objects[0].transform.Translate(new Vector3(0, -platformSpeed, 0));
+                player.platformLock(-platformSpeed, false, "Effect" + num.ToString());
+            }
+            else
+            {
+                Objects[0].transform.Translate(new Vector3(0, platformSpeed, 0));
+                player.platformLock(platformSpeed, false, "Effect" + num.ToString());
+            }
+        }
+        else
+        {
+            if (Objects[0].transform.position.y < Objects[1].transform.position.y)
+            {
+                directionFlip[num] = true;
+            }
+            else if (Objects[0].transform.position.y > Objects[2].transform.position.y)
+            {
+                directionFlip[num] = false;
+            }
+
+            if (!directionFlip[num])
+            {
+                Objects[0].transform.Translate(new Vector3(0, -platformSpeed, 0));
+                player.platformLock(-platformSpeed, false, "Effect" + num.ToString());
+            }
+            else
+            {
+                Objects[0].transform.Translate(new Vector3(0, platformSpeed, 0));
+                player.platformLock(platformSpeed, false, "Effect" + num.ToString());
+            }
+        }
+    }
+
+    void StopPlatformH(GameObject[] Objects, int num)
+    {
+        if (effect[num] > 0 && Click)
+        {
+            moveStop[num] = stopTime;
+        }
+
+        if (moveStop[num] <= 0)
+        { 
+            if (Objects[1].transform.position.x - Objects[2].transform.position.x < 0)
+            {
+                //left right
+
+                if (Objects[0].transform.position.x < Objects[1].transform.position.x)
+                {
+                    directionFlip[num] = true;
+                }
+                else if (Objects[0].transform.position.x > Objects[2].transform.position.x)
+                {
+                    directionFlip[num] = false;
+                }
+
+                if (directionFlip[num])
+                {
+                    Objects[0].transform.Translate(new Vector3(platformSpeed, 0, 0));
+                    player.platformLock(platformSpeed, true, "Effect" + num.ToString());
+                }
+                else
+                {
+                    Objects[0].transform.Translate(new Vector3(-platformSpeed, 0, 0));
+                    player.platformLock(-platformSpeed, true, "Effect" + num.ToString());
+                }
+
+            }
+            else
+            {
+                if (Objects[0].transform.position.x > Objects[1].transform.position.x)
+                {
+                    directionFlip[num] = true;
+                }
+                else if (Objects[0].transform.position.x < Objects[2].transform.position.x)
+                {
+                    directionFlip[num] = false;
+                }
+
+                if (!directionFlip[num])
+                {
+                    Objects[0].transform.Translate(new Vector3(platformSpeed, 0, 0));
+                    player.platformLock(platformSpeed, true, "Effect" + num.ToString());
+                }
+                else
+                {
+                    Objects[0].transform.Translate(new Vector3(-platformSpeed, 0, 0));
+                    player.platformLock(-platformSpeed, true, "Effect" + num.ToString());
+                }
+            }
+        }
+        else
+        {
+            moveStop[num] -= Time.deltaTime;
+        }
+    }
+
+    void StopPlatformV(GameObject[] Objects, int num)
+    {
+        if (effect[num] > 0 && Click)
+        {
+            moveStop[num] = stopTime;
+        }
+
+        if (moveStop[num] <= 0)
+        {
+            if (Objects[1].transform.position.y - Objects[2].transform.position.y < 0)
+            {
+                //Up Down
+
+                if (Objects[0].transform.position.y > Objects[1].transform.position.y)
+                {
+                    directionFlip[num] = true;
+                }
+                else if (Objects[0].transform.position.y < Objects[2].transform.position.y)
+                {
+                    directionFlip[num] = false;
+                }
+
+                if (directionFlip[num])
+                {
+                    Objects[0].transform.Translate(new Vector3(0, -platformSpeed, 0));
+                    player.platformLock(-platformSpeed, false, "Effect" + num.ToString());
+                }
+                else
+                {
+                    Objects[0].transform.Translate(new Vector3(0, platformSpeed, 0));
+                    player.platformLock(platformSpeed, false, "Effect" + num.ToString());
+                }
+            }
+            else
+            {
+                if (Objects[0].transform.position.y < Objects[1].transform.position.y)
+                {
+                    directionFlip[num] = true;
+                }
+                else if (Objects[0].transform.position.y > Objects[2].transform.position.y)
+                {
+                    directionFlip[num] = false;
+                }
+
+                if (!directionFlip[num])
+                {
+                    Objects[0].transform.Translate(new Vector3(0, -platformSpeed, 0));
+                    player.platformLock(-platformSpeed, false, "Effect" + num.ToString());
+                }
+                else
+                {
+                    Objects[0].transform.Translate(new Vector3(0, platformSpeed, 0));
+                    player.platformLock(platformSpeed, false, "Effect" + num.ToString());
+                }
+            }
+        }
+        else
+        {
+            moveStop[num] -= Time.deltaTime;
+        }
+    }
 }
