@@ -55,7 +55,13 @@ public class Player : MonoBehaviour
         if (rolltimer < 0) 
         {
             rolltimer = 0;
+            
         }
+        if (rolltimer < 0.3) 
+        {
+            gameObject.GetComponent<Animator>().SetBool("dash", false);
+        }
+ 
         if (rb.velocity.x != 0)
         {
             gameObject.GetComponent<Animator>().SetBool("run", true);
@@ -311,6 +317,7 @@ public class Player : MonoBehaviour
 
             if (rolltimer <= 0 && sr.flipX == false && isGrounded)
             {
+                gameObject.GetComponent<Animator>().SetBool("dash", true);
                 maxV = 20;
                 rolltimer = 0.6f;
                 rb.AddForce(new Vector2(20, 0f), ForceMode2D.Impulse);
@@ -321,7 +328,7 @@ public class Player : MonoBehaviour
             }
             if (rolltimer <= 0 && sr.flipX == true && isGrounded)
             {
-
+                gameObject.GetComponent<Animator>().SetBool("dash", true);
                 rolltimer = 0.6f;
                 rb.AddForce(new Vector2(-20, 0f), ForceMode2D.Impulse);
                 maxV = 10;
