@@ -615,7 +615,7 @@ public class mouseFollow : MonoBehaviour
 
         if (moveStop[num] <= 0)
         {
-            if (Objects[1].transform.position.y - Objects[2].transform.position.y < 0)
+            if (Objects[1].transform.position.y > Objects[2].transform.position.y)
             {
                 //Up Down
 
