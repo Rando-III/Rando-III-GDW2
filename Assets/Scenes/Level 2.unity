@@ -4393,11 +4393,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4125870486130254417, guid: 5775f44047946664ab4bb7328f064e38, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.9955
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4125870486130254417, guid: 5775f44047946664ab4bb7328f064e38, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -2.8155
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4205504939061894005, guid: 5775f44047946664ab4bb7328f064e38, type: 3}
       propertyPath: m_LocalPosition.x
@@ -5982,8 +5982,16 @@ PrefabInstance:
       value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 2714492619844527048, guid: 3972110d16ee61a4ea426993fa9eeca1, type: 3}
+      propertyPath: effectType.Array.size
+      value: 25
+      objectReference: {fileID: 0}
+    - target: {fileID: 2714492619844527048, guid: 3972110d16ee61a4ea426993fa9eeca1, type: 3}
       propertyPath: TYPE_HELP.Array.data[4]
       value: 3 = Up/Down Platform
+      objectReference: {fileID: 0}
+    - target: {fileID: 2714492619844527048, guid: 3972110d16ee61a4ea426993fa9eeca1, type: 3}
+      propertyPath: effectEnabled.Array.size
+      value: 25
       objectReference: {fileID: 0}
     - target: {fileID: 2714492619844527048, guid: 3972110d16ee61a4ea426993fa9eeca1, type: 3}
       propertyPath: effectType.Array.data[0]

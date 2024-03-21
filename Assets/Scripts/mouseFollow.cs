@@ -15,14 +15,14 @@ public class mouseFollow : MonoBehaviour
 
     public float platformSpeed;
 
-    int[] effect = { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 };
-    public int[] effectType = { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 };
+    int[] effect = { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
+    public int[] effectType = { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 };
     public string[] TYPE_HELP = { "0 = No Effect", "1 = Door", "2 = Left/Right Platform", "3 = Up/Down Platform", "4 = On Off Blocks (OnClick)", "5 = L/R Constant moving platform", "6 = U/D Constant moving platform", "7 = L/R Stopable Constant moving platform", "8 = U/D Stopable Constant moving platform" };
-    bool[] effectActive = { false, false, false, false, false, false, false, false, false, false };
-    public bool[] effectEnabled = { false, false, false, false, false, false, false, false, false, false };
+    bool[] effectActive = { false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false };
+    public bool[] effectEnabled = { false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false };
     public string[] OBJECT_HELP = { "DOOR = all objects will be disabled on enable", "MOVING PLATFORMS (ALL TYPES (2,3,5 - 8))", "1. Platform", "2. Start Point", "3. End Point", "ON OFF = objects will flip active state" };
-    bool[] directionFlip = { false, false, false, false, false, false, false, false, false, false };
-    float[] moveStop = { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 };
+    bool[] directionFlip = { false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false };
+    float[] moveStop = { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 };
     public float stopTime = 3;
     public GameObject[] Effect1Objects;
     public GameObject[] Effect2Objects;
@@ -34,6 +34,21 @@ public class mouseFollow : MonoBehaviour
     public GameObject[] Effect8Objects;
     public GameObject[] Effect9Objects;
     public GameObject[] Effect10Objects;
+    public GameObject[] Effect11Objects;
+    public GameObject[] Effect12Objects;
+    public GameObject[] Effect13Objects;
+    public GameObject[] Effect14Objects;
+    public GameObject[] Effect15Objects;
+    public GameObject[] Effect16Objects;
+    public GameObject[] Effect17Objects;
+    public GameObject[] Effect18Objects;
+    public GameObject[] Effect19Objects;
+    public GameObject[] Effect20Objects;
+    public GameObject[] Effect21Objects;
+    public GameObject[] Effect22Objects;
+    public GameObject[] Effect23Objects;
+    public GameObject[] Effect24Objects;
+    public GameObject[] Effect25Objects;
 
     bool Click;
 
@@ -92,6 +107,68 @@ public class mouseFollow : MonoBehaviour
         if (effectEnabled[9])
         {
             effectCheck(Effect10Objects, 9);
+        }
+
+        if (effectEnabled[10])
+        {
+            effectCheck(Effect11Objects, 10);
+        }
+        if (effectEnabled[11])
+        {
+            effectCheck(Effect12Objects, 11);
+        }
+        if (effectEnabled[12])
+        {
+            effectCheck(Effect13Objects, 12);
+        }
+        if (effectEnabled[13])
+        {
+            effectCheck(Effect14Objects, 13);
+        }
+        if (effectEnabled[14])
+        {
+            effectCheck(Effect15Objects, 14);
+        }
+        if (effectEnabled[15])
+        {
+            effectCheck(Effect16Objects, 15);
+        }
+        if (effectEnabled[16])
+        {
+            effectCheck(Effect17Objects, 16);
+        }
+        if (effectEnabled[17])
+        {
+            effectCheck(Effect18Objects, 17);
+        }
+        if (effectEnabled[18])
+        {
+            effectCheck(Effect19Objects, 18);
+        }
+        if (effectEnabled[19])
+        {
+            effectCheck(Effect20Objects, 19);
+        }
+
+        if (effectEnabled[20])
+        {
+            effectCheck(Effect21Objects, 20);
+        }
+        if (effectEnabled[21])
+        {
+            effectCheck(Effect22Objects, 21);
+        }
+        if (effectEnabled[22])
+        {
+            effectCheck(Effect23Objects, 22);
+        }
+        if (effectEnabled[23])
+        {
+            effectCheck(Effect24Objects, 23);
+        }
+        if (effectEnabled[24])
+        {
+            effectCheck(Effect25Objects, 24);
         }
         Click = false;
     }
@@ -419,10 +496,9 @@ public class mouseFollow : MonoBehaviour
 
     void ConstantPlatformV(GameObject[] Objects, int num)
     {
-        if (Objects[1].transform.position.y - Objects[2].transform.position.y < 0)
+        if (Objects[1].transform.position.y > Objects[2].transform.position.y)
         {
             //Up Down
-
             if (Objects[0].transform.position.y > Objects[1].transform.position.y)
             {
                 directionFlip[num] = true;
