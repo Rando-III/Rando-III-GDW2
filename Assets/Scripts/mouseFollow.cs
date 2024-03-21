@@ -222,7 +222,6 @@ public class mouseFollow : MonoBehaviour
     void OnClick()
     {
         Click = true;
-        Debug.Log("CLICK");
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
@@ -735,7 +734,6 @@ public class mouseFollow : MonoBehaviour
     {
         if (effect[num] > 0 && Click)
         {
-            Debug.Log("STOP");
             moveStop[num] = stopTime;
         }
 
