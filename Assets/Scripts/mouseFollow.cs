@@ -15,14 +15,14 @@ public class mouseFollow : MonoBehaviour
 
     public float platformSpeed;
 
-    int[] effect = { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
+    public int[] effect = { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
     public int[] effectType = { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 };
     public string[] TYPE_HELP = { "0 = No Effect", "1 = Door", "2 = Left/Right Platform", "3 = Up/Down Platform", "4 = On Off Blocks (OnClick)", "5 = L/R Constant moving platform", "6 = U/D Constant moving platform", "7 = L/R Stopable Constant moving platform", "8 = U/D Stopable Constant moving platform" };
     bool[] effectActive = { false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false };
     public bool[] effectEnabled = { false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false };
     public string[] OBJECT_HELP = { "DOOR = all objects will be disabled on enable", "MOVING PLATFORMS (ALL TYPES (2,3,5 - 8))", "1. Platform", "2. Start Point", "3. End Point", "ON OFF = objects will flip active state" };
     bool[] directionFlip = { false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false };
-    float[] moveStop = { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 };
+    public float[] moveStop = { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 };
     public float stopTime = 3;
     public GameObject[] Effect1Objects;
     public GameObject[] Effect2Objects;
@@ -50,7 +50,7 @@ public class mouseFollow : MonoBehaviour
     public GameObject[] Effect24Objects;
     public GameObject[] Effect25Objects;
 
-    bool Click;
+    public bool Click;
 
     Vector3 mouse;
     Vector2 mousePos;
@@ -222,6 +222,7 @@ public class mouseFollow : MonoBehaviour
     void OnClick()
     {
         Click = true;
+        Debug.Log("CLICK");
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
@@ -265,6 +266,68 @@ public class mouseFollow : MonoBehaviour
         else if (collision.tag == "Effect9")
         {
             effect[9]++;
+        }
+
+        if (collision.tag == "Effect10")
+        {
+            effect[10]++;
+        }
+        else if (collision.tag == "Effect11")
+        {
+            effect[11]++;
+        }
+        else if (collision.tag == "Effect12")
+        {
+            effect[12]++;
+        }
+        else if (collision.tag == "Effect13")
+        {
+            effect[13]++;
+        }
+        else if (collision.tag == "Effect14")
+        {
+            effect[14]++;
+        }
+        else if (collision.tag == "Effect15")
+        {
+            effect[15]++;
+        }
+        else if (collision.tag == "Effect16")
+        {
+            effect[16]++;
+        }
+        else if (collision.tag == "Effect17")
+        {
+            effect[17]++;
+        }
+        else if (collision.tag == "Effect18")
+        {
+            effect[18]++;
+        }
+        else if (collision.tag == "Effect19")
+        {
+            effect[19]++;
+        }
+
+        if (collision.tag == "Effect20")
+        {
+            effect[20]++;
+        }
+        else if (collision.tag == "Effect21")
+        {
+            effect[21]++;
+        }
+        else if (collision.tag == "Effect22")
+        {
+            effect[22]++;
+        }
+        else if (collision.tag == "Effect23")
+        {
+            effect[23]++;
+        }
+        else if (collision.tag == "Effect24")
+        {
+            effect[24]++;
         }
 
     }
@@ -311,6 +374,68 @@ public class mouseFollow : MonoBehaviour
         else if (collision.tag == "Effect9")
         {
             effect[9]--;
+        }
+
+        else if(collision.tag == "Effect10")
+        {
+            effect[10]--;
+        }
+        else if (collision.tag == "Effect11")
+        {
+            effect[11]--;
+        }
+        else if (collision.tag == "Effect12")
+        {
+            effect[12]--;
+        }
+        else if (collision.tag == "Effect13")
+        {
+            effect[13]--;
+        }
+        else if (collision.tag == "Effect14")
+        {
+            effect[14]--;
+        }
+        else if (collision.tag == "Effect15")
+        {
+            effect[15]--;
+        }
+        else if (collision.tag == "Effect16")
+        {
+            effect[16]--;
+        }
+        else if (collision.tag == "Effect17")
+        {
+            effect[17]--;
+        }
+        else if (collision.tag == "Effect18")
+        {
+            effect[18]--;
+        }
+        else if (collision.tag == "Effect19")
+        {
+            effect[19]--;
+        }
+
+        else if(collision.tag == "Effect20")
+        {
+            effect[20]--;
+        }
+        else if (collision.tag == "Effect21")
+        {
+            effect[21]--;
+        }
+        else if (collision.tag == "Effect22")
+        {
+            effect[22]--;
+        }
+        else if (collision.tag == "Effect23")
+        {
+            effect[23]--;
+        }
+        else if (collision.tag == "Effect24")
+        {
+            effect[24]--;
         }
     }
 
@@ -610,6 +735,7 @@ public class mouseFollow : MonoBehaviour
     {
         if (effect[num] > 0 && Click)
         {
+            Debug.Log("STOP");
             moveStop[num] = stopTime;
         }
 
