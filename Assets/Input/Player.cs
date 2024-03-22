@@ -51,6 +51,10 @@ public class Player : MonoBehaviour
     void FixedUpdate()
     {
 
+        if (rb.velocity.y < 0 && !isGrounded)
+        {
+            gameObject.GetComponent<Animator>().SetBool("fall", false);
+        }
         rolltimer -= Time.deltaTime;
         if (rolltimer < 0) 
         {
@@ -271,6 +275,12 @@ public class Player : MonoBehaviour
         i++;
         if (!dead && i % 2 != 0)
         {
+            if (rolltimer > 0)
+            {
+                rb.AddForce(new Vector2(0, jumpforce), ForceMode2D.Impulse);
+                isGrounded = false;
+                rolltimer = 0;
+            }
             gameObject.GetComponent<Animator>().SetBool("jump", true);
             if (isGrounded)
             {
