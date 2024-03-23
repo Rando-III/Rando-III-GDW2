@@ -8,6 +8,7 @@ public class EndGameScript : MonoBehaviour
     public bool countdown;
     public float time;
     public GameObject player;
+    public string level;
 
     // Start is called before the first frame update
     void Start()
@@ -41,6 +42,6 @@ public class EndGameScript : MonoBehaviour
     }
     void End()
     {
-        SceneManager.LoadScene("Level 2");
+        SceneManager.LoadScene(level);
     }
 }
