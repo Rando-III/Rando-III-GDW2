@@ -9,6 +9,7 @@ public class EndGameScript : MonoBehaviour
     public float time;
     public GameObject player;
     public string level;
+    public GameObject PortalAnim;
 
     // Start is called before the first frame update
     void Start()
@@ -37,11 +38,14 @@ public class EndGameScript : MonoBehaviour
     }
     void StartEnd()
     {
+        Instantiate(PortalAnim, transform.position - new Vector3 (0,3,0), Quaternion.identity);
         player.SetActive(false);
         countdown = true;
     }
     void End()
     {
+
         SceneManager.LoadScene(level);
     }
+    
 }
