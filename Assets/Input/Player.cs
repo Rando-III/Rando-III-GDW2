@@ -149,7 +149,7 @@ public class Player : MonoBehaviour
             {
                 if (deadtimer <= 0 )
                 {
-                    Destroy(DeathEffect);
+                    Destroy(GameObject.Find("CFXR2 Broken Heart(Clone)"));
                     gameObject.GetComponent<Animator>().SetBool("dead", false);
                     gameObject.transform.position = respawn.transform.position + new Vector3(0, 5f, 0);
                     dead = false;
