@@ -2554,7 +2554,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7831740662026284754, guid: e2c1ac940434a5242b54d72b66654687, type: 3}
       propertyPath: m_Intensity
-      value: 1.3579723
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8797081065329041583, guid: e2c1ac940434a5242b54d72b66654687, type: 3}
       propertyPath: m_Materials.Array.size
@@ -12950,6 +12950,10 @@ PrefabInstance:
       propertyPath: PauseScreen
       value: 
       objectReference: {fileID: 1845783541}
+    - target: {fileID: 3551294952454934822, guid: 3972110d16ee61a4ea426993fa9eeca1, type: 3}
+      propertyPath: DeathEffect
+      value: 
+      objectReference: {fileID: 6855314210357232287, guid: 7c2a9b83b809a0848915fabd9596b68b, type: 3}
     - target: {fileID: 3775995747840499813, guid: 3972110d16ee61a4ea426993fa9eeca1, type: 3}
       propertyPath: m_SortingOrder
       value: 5
