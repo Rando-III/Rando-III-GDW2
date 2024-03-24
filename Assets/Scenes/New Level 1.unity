@@ -1569,7 +1569,7 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects:
-    - targetCorrespondingSourceObject: {fileID: 1505005323598734650, guid: 1854722e84b3b4448a73a98c82beed53, type: 3}
+    - targetCorrespondingSourceObject: {fileID: 843935262653864757, guid: 1854722e84b3b4448a73a98c82beed53, type: 3}
       insertIndex: -1
       addedObject: {fileID: 943330765}
     m_AddedComponents:
@@ -11870,12 +11870,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 943330764}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: 0.7071068, w: 0.7071068}
-  m_LocalPosition: {x: 2.65, y: 0.01, z: -0.18419147}
-  m_LocalScale: {x: 1.4066994, y: 1, z: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0.009999999, y: 0.08999086, z: -0.18419147}
+  m_LocalScale: {x: 1.4066993, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 151825526}
+  m_Father: {fileID: 1534674039}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 90}
 --- !u!212 &943330766
 SpriteRenderer:
@@ -20359,6 +20359,11 @@ SortingGroup:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_SortAtRoot: 0
+--- !u!4 &1534674039 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 843935262653864757, guid: 1854722e84b3b4448a73a98c82beed53, type: 3}
+  m_PrefabInstance: {fileID: 151825525}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1538400752
 PrefabInstance:
   m_ObjectHideFlags: 0
