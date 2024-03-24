@@ -332,10 +332,10 @@ public class Player : MonoBehaviour
 
     internal void Roll()
     {
-        if (!dead)
+        if (!dead && sr != null)
         {
 
-
+            sr = GetComponent<SpriteRenderer>();
 
             if (rolltimer <= 0 && sr.flipX == false && isGrounded)
             {
