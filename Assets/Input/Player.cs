@@ -303,38 +303,24 @@ public class Player : MonoBehaviour
                 isGrounded = false;
                 rolltimer = 0;
             }
-            try
-            {
-                gameObject.GetComponent<Animator>().SetBool("jump", true);
-            }
-            catch 
-            { }
+            
+            gameObject.GetComponent<Animator>().SetBool("jump", true);
             if (isGrounded)
             {
+                
 
-                try
-                {
-                    rb.AddForce(new Vector2(0, jumpforce), ForceMode2D.Impulse);
-                }
-                catch { }
-
-            isjumping = true;
+                rb.AddForce(new Vector2(0, jumpforce), ForceMode2D.Impulse);
+                
+                isjumping = true;
                 
                 isGrounded = false;
             }
             if (canWalljump)
             {
 
-                try
-                {
-                    rb.AddForce(Vector2.right * 20, ForceMode2D.Impulse);
-                }
-                catch { }
-                try
-                {
-                    rb.AddForce(Vector2.up * 35, ForceMode2D.Impulse);
-                }
-                catch { }
+
+                rb.AddForce(Vector2.right * 20, ForceMode2D.Impulse);
+                rb.AddForce(Vector2.up * 35, ForceMode2D.Impulse);
                 sr.flipX = true;
 
 
@@ -344,16 +330,9 @@ public class Player : MonoBehaviour
             }
             if (canwalljumpleft)
             {
-                try
-                {
-                    rb.AddForce(Vector2.left * 20, ForceMode2D.Impulse);
-                }
-                catch { }
-                try
-                {
-                    rb.AddForce(Vector2.up * 35, ForceMode2D.Impulse);
-                }
-                catch { }
+                rb.AddForce(Vector2.left * 20, ForceMode2D.Impulse);
+                rb.AddForce(Vector2.up * 35, ForceMode2D.Impulse);
+
                 canwalljumpleft = false;
 
             }
