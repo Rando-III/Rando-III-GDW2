@@ -12585,11 +12585,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2553370491425075742, guid: 3972110d16ee61a4ea426993fa9eeca1, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 191.1
+      value: 113.9
       objectReference: {fileID: 0}
     - target: {fileID: 2553370491425075742, guid: 3972110d16ee61a4ea426993fa9eeca1, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -202.2
+      value: -147.4
       objectReference: {fileID: 0}
     - target: {fileID: 2553370491425075742, guid: 3972110d16ee61a4ea426993fa9eeca1, type: 3}
       propertyPath: m_LocalPosition.z
@@ -13087,6 +13087,10 @@ PrefabInstance:
       propertyPath: PauseScreen
       value: 
       objectReference: {fileID: 1845783541}
+    - target: {fileID: 3551294952454934822, guid: 3972110d16ee61a4ea426993fa9eeca1, type: 3}
+      propertyPath: deadtimer
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3551294952454934822, guid: 3972110d16ee61a4ea426993fa9eeca1, type: 3}
       propertyPath: DeathEffect
       value: 
