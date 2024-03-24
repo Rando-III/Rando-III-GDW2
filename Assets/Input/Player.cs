@@ -225,7 +225,7 @@ public class Player : MonoBehaviour
             platLock = true;
             platTag = collision.gameObject.tag;
             onPlat = true;
-
+            gameObject.GetComponent<Animator>().SetBool("jump", false);
             isGrounded = true;
             canMove = true;
             isjumping = false;
@@ -248,6 +248,10 @@ public class Player : MonoBehaviour
         {
             
             canwalljumpleft = true;
+        }
+        if (collision.gameObject.layer == 11 && !canWalljump && !canwalljumpleft)
+        {
+            isGrounded = true;
         }
     }
 
