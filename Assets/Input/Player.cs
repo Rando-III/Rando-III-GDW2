@@ -56,6 +56,13 @@ public class Player : MonoBehaviour
 
         if (rb.velocity.y < 0 && !isGrounded)
         {
+            
+            gameObject.GetComponent<Animator>().SetBool("fall", true);
+            
+        }
+        
+        else
+        {
             gameObject.GetComponent<Animator>().SetBool("fall", false);
         }
         rolltimer -= Time.deltaTime;
@@ -293,6 +300,7 @@ public class Player : MonoBehaviour
                 isGrounded = false;
                 rolltimer = 0;
             }
+            
             gameObject.GetComponent<Animator>().SetBool("jump", true);
             if (isGrounded)
             {
