@@ -54,7 +54,7 @@ public class mouseFollow : MonoBehaviour
 
     Vector3 mouse;
     Vector2 mousePos;
-
+    bool rightclick;
 
     private void Start()
     {
@@ -63,11 +63,19 @@ public class mouseFollow : MonoBehaviour
 
     }
 
+    public void OnRight()
+    {
+        if (rightclick) { rightclick = false; }
+        else { rightclick = true; }
+    }
+
     private void FixedUpdate()
     {
-        mouse = mainCam.ScreenToWorldPoint(mousePos);
-        transform.position = new Vector3(mouse.x, mouse.y);
-
+        if (!rightclick)
+        {
+            mouse = mainCam.ScreenToWorldPoint(mousePos);
+            transform.position = new Vector3(mouse.x, mouse.y);
+        }
         if (effectEnabled[0])
         {
             effectCheck(Effect1Objects, 0);
