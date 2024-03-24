@@ -37,6 +37,9 @@ public class Player : MonoBehaviour
     public Transform respawn;
     public float deadtimer;
     int i;
+
+    public GameObject DeathEffect;
+    public float deathEffectCount = 0;
     void Start()
     {
         deadtimer = 1;
@@ -51,6 +54,10 @@ public class Player : MonoBehaviour
     void FixedUpdate()
     {
 
+        if (rb.velocity.y < 0 && !isGrounded)
+        {
+            gameObject.GetComponent<Animator>().SetBool("fall", false);
+        }
         rolltimer -= Time.deltaTime;
         if (rolltimer < 0) 
         {
@@ -130,15 +137,24 @@ public class Player : MonoBehaviour
           
         if (dead)
         {
+            if (deathEffectCount < 1)
+            {
+                Instantiate(DeathEffect, gameObject.transform.position, Quaternion.identity);
+                deathEffectCount++;
+            }
+            
+            
             gameObject.GetComponent<Animator>().SetBool("dead", true);
             deadtimer -= Time.deltaTime;
             {
                 if (deadtimer <= 0 )
                 {
+                    Destroy(GameObject.Find("CFXR2 Broken Heart(Clone)"));
                     gameObject.GetComponent<Animator>().SetBool("dead", false);
                     gameObject.transform.position = respawn.transform.position + new Vector3(0, 5f, 0);
                     dead = false;
                     deadtimer = 1;
+                    deathEffectCount = 0;
                 }
             }
             // Add Death Stuff Here
@@ -271,6 +287,12 @@ public class Player : MonoBehaviour
         i++;
         if (!dead && i % 2 != 0)
         {
+            if (rolltimer > 0)
+            {
+                rb.AddForce(new Vector2(0, jumpforce), ForceMode2D.Impulse);
+                isGrounded = false;
+                rolltimer = 0;
+            }
             gameObject.GetComponent<Animator>().SetBool("jump", true);
             if (isGrounded)
             {
