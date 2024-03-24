@@ -40,10 +40,13 @@ public class Player : MonoBehaviour
 
     public GameObject DeathEffect;
     public float deathEffectCount = 0;
+
+    
     void Start()
     {
         deadtimer = 1;
         sr = GetComponent<SpriteRenderer>();
+        gameObject.GetComponent<Animator>();
         InputManager.Init(this);
         InputManager.SetGameControls();
         rb = GetComponent<Rigidbody2D>();
