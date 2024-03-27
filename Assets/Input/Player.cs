@@ -303,7 +303,12 @@ public class Player : MonoBehaviour
         {
             if (rolltimer > 0)
             {
-                rb.AddForce(new Vector2(0, jumpforce), ForceMode2D.Impulse);
+                try
+                {
+                    gameObject.GetComponent<Animator>().SetBool("jump", true);
+                }
+                catch
+                { }
                 isGrounded = false;
                 rolltimer = 0;
             }
@@ -311,10 +316,14 @@ public class Player : MonoBehaviour
             gameObject.GetComponent<Animator>().SetBool("jump", true);
             if (isGrounded)
             {
-                
 
-                rb.AddForce(new Vector2(0, jumpforce), ForceMode2D.Impulse);
-                
+
+                try
+                {
+                    rb.AddForce(new Vector2(0, jumpforce), ForceMode2D.Impulse);
+                }
+                catch { }
+
                 isjumping = true;
                 
                 isGrounded = false;
@@ -323,8 +332,16 @@ public class Player : MonoBehaviour
             {
 
 
-                rb.AddForce(Vector2.right * 20, ForceMode2D.Impulse);
-                rb.AddForce(Vector2.up * 35, ForceMode2D.Impulse);
+                try
+                {
+                    rb.AddForce(Vector2.right * 20, ForceMode2D.Impulse);
+                }
+                catch { }
+                try
+                {
+                    rb.AddForce(Vector2.up * 35, ForceMode2D.Impulse);
+                }
+                catch { }
                 sr.flipX = true;
 
 
@@ -334,8 +351,16 @@ public class Player : MonoBehaviour
             }
             if (canwalljumpleft)
             {
-                rb.AddForce(Vector2.left * 20, ForceMode2D.Impulse);
-                rb.AddForce(Vector2.up * 35, ForceMode2D.Impulse);
+                try
+                {
+                    rb.AddForce(Vector2.left * 20, ForceMode2D.Impulse);
+                }
+                catch { }
+                try
+                {
+                    rb.AddForce(Vector2.up * 35, ForceMode2D.Impulse);
+                }
+                catch { }
 
                 canwalljumpleft = false;
 
