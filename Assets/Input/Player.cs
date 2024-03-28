@@ -304,8 +304,8 @@ public class Player : MonoBehaviour
             if (rolltimer > 0)
             {
 
-                    gameObject.GetComponent<Animator>().SetBool("jump", true);
-
+                gameObject.GetComponent<Animator>().SetBool("jump", true);
+                rb.AddForce(new Vector2(0, jumpforce), ForceMode2D.Impulse);
                 isGrounded = false;
                 rolltimer = 0;
             }
