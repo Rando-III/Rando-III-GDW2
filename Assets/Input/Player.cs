@@ -303,12 +303,9 @@ public class Player : MonoBehaviour
         {
             if (rolltimer > 0)
             {
-                try
-                {
+
                     gameObject.GetComponent<Animator>().SetBool("jump", true);
-                }
-                catch
-                { }
+
                 isGrounded = false;
                 rolltimer = 0;
             }
@@ -318,11 +315,9 @@ public class Player : MonoBehaviour
             {
 
 
-                try
-                {
+
                     rb.AddForce(new Vector2(0, jumpforce), ForceMode2D.Impulse);
-                }
-                catch { }
+
 
                 isjumping = true;
                 
@@ -332,16 +327,11 @@ public class Player : MonoBehaviour
             {
 
 
-                try
-                {
+
                     rb.AddForce(Vector2.right * 20, ForceMode2D.Impulse);
-                }
-                catch { }
-                try
-                {
+
                     rb.AddForce(Vector2.up * 35, ForceMode2D.Impulse);
-                }
-                catch { }
+
                 sr.flipX = true;
 
 
@@ -351,16 +341,11 @@ public class Player : MonoBehaviour
             }
             if (canwalljumpleft)
             {
-                try
-                {
+
                     rb.AddForce(Vector2.left * 20, ForceMode2D.Impulse);
-                }
-                catch { }
-                try
-                {
+
                     rb.AddForce(Vector2.up * 35, ForceMode2D.Impulse);
-                }
-                catch { }
+
 
                 canwalljumpleft = false;
 
