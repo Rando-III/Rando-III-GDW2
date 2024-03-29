@@ -149,12 +149,13 @@ public class Player : MonoBehaviour
         {
             if (deathEffectCount < 1)
             {
+
                 Instantiate(DeathEffect, gameObject.transform.position, Quaternion.identity);
                 deathEffectCount++;
             }
-            
-            
+
             gameObject.GetComponent<Animator>().SetBool("dead", true);
+            gameObject.GetComponent<Animator>().SetBool("wall", false);
             deadtimer -= Time.deltaTime;
             {
                 if (deadtimer <= 0 )
