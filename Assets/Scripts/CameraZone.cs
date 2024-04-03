@@ -44,46 +44,8 @@ public class CameraZone : MonoBehaviour
     {
         if (GoToCamPos)
         {
-            if (MainCamera.transform.position != CameraPos.transform.position)
-            {
-                var distance = MainCamera.transform.position - CameraPos.transform.position;
-                if (distance.x > speed)
-                {
-                    MainCamera.transform.Translate(-speed, 0, 0);
-                }
-                else if (distance.x < -speed)
-                {
-                    MainCamera.transform.Translate(speed, 0, 0);
-                }
-                else
-                {
-                    MainCamera.transform.Translate(distance.x * -1, 0, 0);
-                    distance.x = 0;
-                }
+            MainCamera.transform.position = Vector3.MoveTowards(MainCamera.transform.position, CameraPos.transform.position, speed);
 
-                if (distance.y > speed)
-                {
-                    MainCamera.transform.Translate(0, -speed, 0);
-                }
-                else if (distance.y < -speed)
-                {
-                    MainCamera.transform.Translate(0, speed, 0);
-                }
-                else
-                {
-                    MainCamera.transform.Translate(distance.y * -1, 0, 0);
-                    distance.y = 0;
-                }
-
-                if (distance.x == 0 && distance.y == 0)
-                {
-                    GoToCamPos = false;
-                }
-            }
-            else
-            {
-                GoToCamPos = false;
-            }
         }
 
         if (GoToPlayer)
