@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class EndGameScript : MonoBehaviour
 {
@@ -10,7 +11,7 @@ public class EndGameScript : MonoBehaviour
     public GameObject player;
     public string level;
     public GameObject PortalAnim;
-    
+    public GameObject fade;
     // Start is called before the first frame update
     void Start()
     {
@@ -43,8 +44,9 @@ public class EndGameScript : MonoBehaviour
     public IEnumerator SceneTransition()
     {
         StartEnd ();
-        
-        yield return new WaitForSeconds (3);
+        yield return new WaitForSeconds(1);
+        fade.GetComponent<Animator>().Play("fade out");
+        yield return new WaitForSeconds (2);
         End();
     }
     
