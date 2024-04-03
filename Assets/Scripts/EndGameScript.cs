@@ -10,7 +10,7 @@ public class EndGameScript : MonoBehaviour
     public GameObject player;
     public string level;
     public GameObject PortalAnim;
-
+    
     // Start is called before the first frame update
     void Start()
     {
@@ -18,7 +18,7 @@ public class EndGameScript : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
         
     }
@@ -43,6 +43,7 @@ public class EndGameScript : MonoBehaviour
     public IEnumerator SceneTransition()
     {
         StartEnd ();
+        
         yield return new WaitForSeconds (3);
         End();
     }
