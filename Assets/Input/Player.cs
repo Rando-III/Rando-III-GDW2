@@ -41,7 +41,8 @@ public class Player : MonoBehaviour
     public GameObject DeathEffect;
     public float deathEffectCount = 0;
 
-    
+
+    public float walljumptimer;
     void Start()
     {
         deadtimer = 1;
@@ -56,6 +57,12 @@ public class Player : MonoBehaviour
 
     void FixedUpdate()
     {
+        walljumptimer -= Time.deltaTime;
+
+        if (canWalljump || canwalljumpleft)
+        {
+            walljumptimer = 0.2f;
+        }
 
         if (rb.velocity.y < 0 && !isGrounded)
         {
@@ -241,7 +248,7 @@ public class Player : MonoBehaviour
         }
         if (collision.gameObject.layer == 8 && !isGrounded)
         {
- 
+            
             canWalljump = true;
             
         }
@@ -302,6 +309,10 @@ public class Player : MonoBehaviour
         i++;
         if (!dead && i % 2 != 0)
         {
+            if (!isGrounded && !canWalljump && !canwalljumpleft)
+            {
+                walljumptimer = 0.2f;
+            }
             if (rolltimer > 0)
             {
 
@@ -324,7 +335,7 @@ public class Player : MonoBehaviour
                 
                 isGrounded = false;
             }
-            if (canWalljump)
+            if (canWalljump || walljumptimer > 0)
             {
 
 
@@ -340,7 +351,7 @@ public class Player : MonoBehaviour
                 canWalljump = false;
 
             }
-            if (canwalljumpleft)
+            if (canwalljumpleft || walljumptimer > 0)
             {
 
                     rb.AddForce(Vector2.left * 20, ForceMode2D.Impulse);
