@@ -68,11 +68,7 @@ public class mouseFollow : MonoBehaviour
 
     }
 
-    public void OnRight()
-    {
-        if (rightclick) { rightclick = false; }
-        else { rightclick = true; }
-    }
+
 
     private void FixedUpdate()
     {

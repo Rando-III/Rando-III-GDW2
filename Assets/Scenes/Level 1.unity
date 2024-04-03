@@ -609,7 +609,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 00dac7b593447674c9c5144809c6b65c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  FirstRoom: {fileID: 0}
+  FirstRoom: {fileID: 1551286664}
   SecondRoom: {fileID: 0}
 --- !u!1 &43498860
 GameObject:
@@ -12828,8 +12828,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 00dac7b593447674c9c5144809c6b65c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  FirstRoom: {fileID: 0}
-  SecondRoom: {fileID: 0}
+  FirstRoom: {fileID: 1296245461}
+  SecondRoom: {fileID: 1421441577}
 --- !u!1 &942019592
 GameObject:
   m_ObjectHideFlags: 0
@@ -15870,7 +15870,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   FirstRoom: {fileID: 126447022}
-  SecondRoom: {fileID: 0}
+  SecondRoom: {fileID: 1296245461}
 --- !u!1 &1148639292
 GameObject:
   m_ObjectHideFlags: 0
@@ -30493,8 +30493,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 00dac7b593447674c9c5144809c6b65c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  FirstRoom: {fileID: 0}
-  SecondRoom: {fileID: 0}
+  FirstRoom: {fileID: 1421441577}
+  SecondRoom: {fileID: 1551286664}
 --- !u!1 &2061664038
 GameObject:
   m_ObjectHideFlags: 0
