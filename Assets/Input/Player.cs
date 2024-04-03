@@ -361,6 +361,32 @@ public class Player : MonoBehaviour
         {
             respawn = collision.transform;
         }
+
+        for (int i = 0; i < 25; i++)
+        {
+            if (collision.tag == "Effect" + i.ToString())
+            {
+                platTag = collision.tag;
+            }
+        }
+
+    }
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        for (int i = 0; i < 25; i++)
+        {
+            if (collision.tag == "Effect" + i.ToString())
+            {
+                platTag = null;
+            }
+        }
+    }
+
+
+    public string getTag()
+    {
+
+        return platTag;
     }
 
     internal void Jump()

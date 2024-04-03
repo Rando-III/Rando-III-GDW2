@@ -456,7 +456,7 @@ public class mouseFollow : MonoBehaviour
 
     void OnOffBlocks(GameObject[] Objects, int num)
     {
-        if (effect[num] > 0 && Click)
+        if (effect[num] > 0 && Click && player.platTag != "Effect" + num.ToString())
         {
             Click = false;
             if (OnOffinActive != null)
