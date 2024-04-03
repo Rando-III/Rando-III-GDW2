@@ -45,6 +45,7 @@ public class Player : MonoBehaviour
     public float walljumptimer;
     public float walljumptimerleft;
     public float jumpintime;
+    public float walljumpcount;
     void Start()
     {
         deadtimer = 1;
@@ -59,9 +60,20 @@ public class Player : MonoBehaviour
 
     void FixedUpdate()
     {
+        
         walljumptimer -= Time.deltaTime;
         walljumptimerleft -= Time.deltaTime;
         jumpintime -= Time.deltaTime;
+        if (walljumptimer > 0 || walljumptimerleft >0 )
+        {
+            jumpintime = 0;
+        
+        }
+        if ( jumpintime > 0)
+        {
+            walljumptimerleft = 0;
+            walljumptimer = 0;
+        }
         if (canwalljumpleft)
         {
             walljumptimerleft = 0.2f;
@@ -69,6 +81,12 @@ public class Player : MonoBehaviour
         if (canWalljump)
         {
             walljumptimer = 0.2f;
+        }
+        if (walljumpcount > 0)
+        {
+            walljumptimer = 0;
+            walljumptimerleft = 0;
+            jumpintime = 0;
         }
 
         if (rb.velocity.y < 0 && !isGrounded)
@@ -113,6 +131,7 @@ public class Player : MonoBehaviour
         
         if (!dead)
         {
+
             //if (rb.velocity.x >= maxV)
             //{
             //  rb.velocity = new Vector2( 1,0);
@@ -246,23 +265,55 @@ public class Player : MonoBehaviour
             isjumping = false;
             walljumping = false;
         }
+        if (collision.gameObject.layer == 8 && !isGrounded && jumpintime > 0)
+        {
+            rb.AddForce(Vector2.right * 20, ForceMode2D.Impulse);
+
+            rb.AddForce(Vector2.up * 35, ForceMode2D.Impulse);
+            walljumpcount = 1;
+            sr.flipX = true;
+            jumpintime = 0;
+            walljumptimer = 0;
+
+            canWalljump = false;
+        }
+        if (collision.gameObject.layer == 8)
+        {
+            walljumpcount = 0;
+        }
+        if (collision.gameObject.layer == 9 && !isGrounded && jumpintime > 0)
+        {
+            rb.AddForce(Vector2.left * 20, ForceMode2D.Impulse);
+            walljumpcount = 1;
+            rb.AddForce(Vector2.up * 35, ForceMode2D.Impulse);
+            jumpintime = 0;
+            walljumptimerleft = 0;
+            canwalljumpleft = false;
+        }
+        if (collision.gameObject.layer == 9)
+        {
+            walljumpcount = 0;
+        }
+        
     }
     private void OnCollisionStay2D(Collision2D collision)
     {
         if (collision.gameObject.layer == 3 && !canWalljump && !canwalljumpleft)
         {
+
             isGrounded = true;
         }
         if (collision.gameObject.layer == 8 && !isGrounded)
         {
-            
+            jumpintime = 0;
             canWalljump = true;
             
         }
         if (collision.gameObject.layer == 9 && !isGrounded)
         {
-            
+            jumpintime = 0;
             canwalljumpleft = true;
+            
         }
         if (collision.gameObject.layer == 11 && !canWalljump && !canwalljumpleft)
         {
@@ -290,6 +341,7 @@ public class Player : MonoBehaviour
         }
         if (collision.gameObject.layer == 9)
         {
+            
             canwalljumpleft = false;
         }
         if (collision.gameObject.layer == 11)
@@ -316,9 +368,9 @@ public class Player : MonoBehaviour
         i++;
         if (!dead && i % 2 != 0)
         {
-            if (!isGrounded && !canWalljump && !canwalljumpleft)
+            if (!isGrounded && !canWalljump && !canwalljumpleft && walljumptimerleft <=0 && walljumptimer <=0)
             {
-                jumpintime = 1;
+                jumpintime = 0.2f;
             }
             if (rolltimer > 0)
             {
@@ -342,30 +394,31 @@ public class Player : MonoBehaviour
                 
                 isGrounded = false;
             }
-            if (canWalljump  || walljumptimer > 0)
+            if ((canWalljump  || walljumptimer > 0)&& walljumpcount <1)
             {
 
+                walljumptimer = 0;
+                walljumpcount = 1;
+                rb.AddForce(Vector2.right * 20, ForceMode2D.Impulse);
 
-
-                    rb.AddForce(Vector2.right * 20, ForceMode2D.Impulse);
-
-                    rb.AddForce(Vector2.up * 35, ForceMode2D.Impulse);
+                rb.AddForce(Vector2.up * 35, ForceMode2D.Impulse);
 
                 sr.flipX = true;
 
-
+                
 
                 canWalljump = false;
 
             }
-            if (canwalljumpleft || walljumptimerleft > 0)
+            if ((canwalljumpleft || walljumptimerleft > 0) && walljumpcount <1)
             {
+                walljumpcount = 1;
+                walljumptimerleft = 0;
+                rb.AddForce(Vector2.left * 20, ForceMode2D.Impulse);
 
-                    rb.AddForce(Vector2.left * 20, ForceMode2D.Impulse);
+                rb.AddForce(Vector2.up * 35, ForceMode2D.Impulse);
 
-                    rb.AddForce(Vector2.up * 35, ForceMode2D.Impulse);
-
-
+                
                 canwalljumpleft = false;
 
             }
