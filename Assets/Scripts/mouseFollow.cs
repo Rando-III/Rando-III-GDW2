@@ -56,6 +56,11 @@ public class mouseFollow : MonoBehaviour
     Vector2 mousePos;
     bool rightclick;
 
+    GameObject OnOffActive;
+    GameObject OnOffinActive;
+    float OnOffTimer;
+
+
     private void Start()
     {
         playerInput = GetComponent<PlayerInput>();
@@ -71,6 +76,13 @@ public class mouseFollow : MonoBehaviour
 
     private void FixedUpdate()
     {
+        OnOffTimer += Time.fixedDeltaTime;
+        if (OnOffTimer > 2 && OnOffinActive != null)
+        {
+            OnOffActive.SetActive(false);
+            OnOffinActive.SetActive(true);
+        }
+
         if (!rightclick)
         {
             mouse = mainCam.ScreenToWorldPoint(mousePos);
@@ -451,17 +463,27 @@ public class mouseFollow : MonoBehaviour
         if (effect[num] > 0 && Click)
         {
             Click = false;
-            foreach (GameObject obj in Objects)
+            if (OnOffinActive != null)
             {
-                if (obj.activeInHierarchy == false)
+                OnOffActive.SetActive(false);
+                OnOffinActive.SetActive(true);
+            }
+            OnOffTimer = 0;
+            for (int i = 0; i < Objects.Length; i++)
+            {
+                if (i % 2 == 0)
                 {
-                    obj.SetActive(true);
+
+                    Objects[i].SetActive(false);
+                    OnOffinActive = Objects[i];
                 }
                 else
                 {
-                    obj.SetActive(false);
+                    Objects[i].SetActive(true);
+                    OnOffActive = Objects[i];
                 }
             }
+            
         }
     }
 
