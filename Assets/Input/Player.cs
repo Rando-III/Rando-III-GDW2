@@ -43,6 +43,8 @@ public class Player : MonoBehaviour
 
 
     public float walljumptimer;
+    public float walljumptimerleft;
+    public float jumpintime;
     void Start()
     {
         deadtimer = 1;
@@ -58,8 +60,13 @@ public class Player : MonoBehaviour
     void FixedUpdate()
     {
         walljumptimer -= Time.deltaTime;
-
-        if (canWalljump || canwalljumpleft)
+        walljumptimerleft -= Time.deltaTime;
+        jumpintime -= Time.deltaTime;
+        if (canwalljumpleft)
+        {
+            walljumptimerleft = 0.2f;
+        }
+        if (canWalljump)
         {
             walljumptimer = 0.2f;
         }
@@ -311,7 +318,7 @@ public class Player : MonoBehaviour
         {
             if (!isGrounded && !canWalljump && !canwalljumpleft)
             {
-                walljumptimer = 0.2f;
+                jumpintime = 1;
             }
             if (rolltimer > 0)
             {
@@ -335,7 +342,7 @@ public class Player : MonoBehaviour
                 
                 isGrounded = false;
             }
-            if (canWalljump || walljumptimer > 0)
+            if (canWalljump  || walljumptimer > 0)
             {
 
 
@@ -351,7 +358,7 @@ public class Player : MonoBehaviour
                 canWalljump = false;
 
             }
-            if (canwalljumpleft || walljumptimer > 0)
+            if (canwalljumpleft || walljumptimerleft > 0)
             {
 
                     rb.AddForce(Vector2.left * 20, ForceMode2D.Impulse);
