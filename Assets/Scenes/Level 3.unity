@@ -11789,6 +11789,7 @@ GameObject:
   - component: {fileID: 982109281}
   - component: {fileID: 982109280}
   - component: {fileID: 982109279}
+  - component: {fileID: 982109282}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -11870,6 +11871,15 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!45 &982109282
+Skybox:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 982109278}
+  m_Enabled: 1
+  m_CustomSkybox: {fileID: 2100000, guid: 7fc76e5cef660e64c9fc7ccd0a8961ff, type: 2}
 --- !u!1 &986627584
 GameObject:
   m_ObjectHideFlags: 0
@@ -21737,7 +21747,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2553370491425075742, guid: 3972110d16ee61a4ea426993fa9eeca1, type: 3}
       propertyPath: m_LocalScale.x
-      value: 0.23149501
+      value: 0.15
       objectReference: {fileID: 0}
     - target: {fileID: 2553370491425075742, guid: 3972110d16ee61a4ea426993fa9eeca1, type: 3}
       propertyPath: m_LocalPosition.x
@@ -21778,6 +21788,10 @@ PrefabInstance:
     - target: {fileID: 2553370491425075742, guid: 3972110d16ee61a4ea426993fa9eeca1, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2553370491425075742, guid: 3972110d16ee61a4ea426993fa9eeca1, type: 3}
+      propertyPath: m_ConstrainProportionsScale
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2714492619844527048, guid: 3972110d16ee61a4ea426993fa9eeca1, type: 3}
       propertyPath: mainCam
