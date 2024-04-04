@@ -14446,6 +14446,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1022152149}
   - component: {fileID: 1022152150}
+  - component: {fileID: 1022152151}
   m_Layer: 0
   m_Name: fire_ball
   m_TagString: Untagged
@@ -14520,6 +14521,27 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!95 &1022152151
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1022152148}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 22fe27db4103f1b419d22b9c09e3bd2d, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &1024144826
 GameObject:
   m_ObjectHideFlags: 0
@@ -15882,6 +15904,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1148639293}
   - component: {fileID: 1148639294}
+  - component: {fileID: 1148639295}
   m_Layer: 0
   m_Name: fire_ball
   m_TagString: Untagged
@@ -15956,6 +15979,27 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!95 &1148639295
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1148639292}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 22fe27db4103f1b419d22b9c09e3bd2d, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &1152872001
 GameObject:
   m_ObjectHideFlags: 0
@@ -16359,6 +16403,32 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1 &1181936459 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4133892568818371645, guid: 547a61ddd5c4dfa40aeee8b45827dda3, type: 3}
+  m_PrefabInstance: {fileID: 3903442353534543815}
+  m_PrefabAsset: {fileID: 0}
+--- !u!95 &1181936461
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1181936459}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 22fe27db4103f1b419d22b9c09e3bd2d, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &1194819262
 GameObject:
   m_ObjectHideFlags: 0
@@ -20291,6 +20361,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1428806987}
   - component: {fileID: 1428806988}
+  - component: {fileID: 1428806989}
   m_Layer: 0
   m_Name: fire_ball
   m_TagString: Untagged
@@ -20365,6 +20436,27 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!95 &1428806989
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1428806986}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 22fe27db4103f1b419d22b9c09e3bd2d, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &1430501999 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 6011156223830996128, guid: 8d398968db7f72d49bfcf0c475fa74dc, type: 3}
@@ -32118,10 +32210,33 @@ PrefabInstance:
       propertyPath: m_Name
       value: R1
       objectReference: {fileID: 0}
+    - target: {fileID: 8332512196262990264, guid: 547a61ddd5c4dfa40aeee8b45827dda3, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.15
+      objectReference: {fileID: 0}
+    - target: {fileID: 8332512196262990264, guid: 547a61ddd5c4dfa40aeee8b45827dda3, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.15
+      objectReference: {fileID: 0}
+    - target: {fileID: 8332512196262990264, guid: 547a61ddd5c4dfa40aeee8b45827dda3, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0.15
+      objectReference: {fileID: 0}
+    - target: {fileID: 8332512196262990264, guid: 547a61ddd5c4dfa40aeee8b45827dda3, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0.01
+      objectReference: {fileID: 0}
+    - target: {fileID: 8332512196262990264, guid: 547a61ddd5c4dfa40aeee8b45827dda3, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.19
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 4133892568818371645, guid: 547a61ddd5c4dfa40aeee8b45827dda3, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1181936461}
   m_SourcePrefab: {fileID: 100100000, guid: 547a61ddd5c4dfa40aeee8b45827dda3, type: 3}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
