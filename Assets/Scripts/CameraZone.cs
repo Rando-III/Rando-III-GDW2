@@ -7,7 +7,6 @@ public class CameraZone : MonoBehaviour
 {
     [SerializeField] GameObject CameraPos;
     [SerializeField] Camera MainCamera;
-    [SerializeField] Camera Cam;
     [SerializeField] CameraManager CameraManager;
     public float speed = 1;
     bool GoToCamPos = false;
