@@ -10712,8 +10712,8 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7289140222008082629, guid: 547a61ddd5c4dfa40aeee8b45827dda3, type: 3}
       propertyPath: m_text
-      value: Green Platform's Are Only Colidable After Being Clicked But Only One
-        Is Active At A Time
+      value: Green Platform's Are Only Colidable After Being Clicked, But Only One
+        Can Be Active At A Time
       objectReference: {fileID: 0}
     - target: {fileID: 7289140222008082629, guid: 547a61ddd5c4dfa40aeee8b45827dda3, type: 3}
       propertyPath: m_fontSize
@@ -16069,6 +16069,63 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1001 &1275591094
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 7340840601599838191, guid: f4250d196091eff4faabe3f8d8a0afad, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 442.5544
+      objectReference: {fileID: 0}
+    - target: {fileID: 7340840601599838191, guid: f4250d196091eff4faabe3f8d8a0afad, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 5.491984
+      objectReference: {fileID: 0}
+    - target: {fileID: 7340840601599838191, guid: f4250d196091eff4faabe3f8d8a0afad, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7340840601599838191, guid: f4250d196091eff4faabe3f8d8a0afad, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7340840601599838191, guid: f4250d196091eff4faabe3f8d8a0afad, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7340840601599838191, guid: f4250d196091eff4faabe3f8d8a0afad, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7340840601599838191, guid: f4250d196091eff4faabe3f8d8a0afad, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7340840601599838191, guid: f4250d196091eff4faabe3f8d8a0afad, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7340840601599838191, guid: f4250d196091eff4faabe3f8d8a0afad, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7340840601599838191, guid: f4250d196091eff4faabe3f8d8a0afad, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7344228418573441613, guid: f4250d196091eff4faabe3f8d8a0afad, type: 3}
+      propertyPath: m_Name
+      value: dummy item (3)
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: f4250d196091eff4faabe3f8d8a0afad, type: 3}
 --- !u!1 &1292387679
 GameObject:
   m_ObjectHideFlags: 0
@@ -21906,7 +21963,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: -1
   m_Sprite: {fileID: 21300000, guid: b992fc4ed25e3194780f7e53fdd2fe85, type: 3}
-  m_Color: {r: 0.103773594, g: 0.103773594, b: 0.103773594, a: 1}
+  m_Color: {r: 0.3773585, g: 0.3773585, b: 0.3773585, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 2
@@ -31314,3 +31371,4 @@ SceneRoots:
   - {fileID: 553052411}
   - {fileID: 1837466659}
   - {fileID: 1875778367}
+  - {fileID: 1275591094}
