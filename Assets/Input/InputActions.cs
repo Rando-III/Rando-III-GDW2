@@ -62,6 +62,15 @@ public partial class @InputActions: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Reset"",
+                    ""type"": ""Button"",
+                    ""id"": ""f9f160f5-f5b3-4d12-b58a-39c3be9e48c7"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -106,6 +115,17 @@ public partial class @InputActions: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""groups"": """",
                     ""action"": ""Right"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""7c92db48-9023-4bb4-aa8e-a7dd22025c01"",
+                    ""path"": ""<Keyboard>/home"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Reset"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -299,6 +319,7 @@ public partial class @InputActions: IInputActionCollection2, IDisposable
         m_KeyboardMouse_Escape = m_KeyboardMouse.FindAction("Escape", throwIfNotFound: true);
         m_KeyboardMouse_Click = m_KeyboardMouse.FindAction("Click", throwIfNotFound: true);
         m_KeyboardMouse_Right = m_KeyboardMouse.FindAction("Right", throwIfNotFound: true);
+        m_KeyboardMouse_Reset = m_KeyboardMouse.FindAction("Reset", throwIfNotFound: true);
         // InGame
         m_InGame = asset.FindActionMap("InGame", throwIfNotFound: true);
         m_InGame_LeftRight = m_InGame.FindAction("LeftRight", throwIfNotFound: true);
@@ -375,6 +396,7 @@ public partial class @InputActions: IInputActionCollection2, IDisposable
     private readonly InputAction m_KeyboardMouse_Escape;
     private readonly InputAction m_KeyboardMouse_Click;
     private readonly InputAction m_KeyboardMouse_Right;
+    private readonly InputAction m_KeyboardMouse_Reset;
     public struct KeyboardMouseActions
     {
         private @InputActions m_Wrapper;
@@ -383,6 +405,7 @@ public partial class @InputActions: IInputActionCollection2, IDisposable
         public InputAction @Escape => m_Wrapper.m_KeyboardMouse_Escape;
         public InputAction @Click => m_Wrapper.m_KeyboardMouse_Click;
         public InputAction @Right => m_Wrapper.m_KeyboardMouse_Right;
+        public InputAction @Reset => m_Wrapper.m_KeyboardMouse_Reset;
         public InputActionMap Get() { return m_Wrapper.m_KeyboardMouse; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -404,6 +427,9 @@ public partial class @InputActions: IInputActionCollection2, IDisposable
             @Right.started += instance.OnRight;
             @Right.performed += instance.OnRight;
             @Right.canceled += instance.OnRight;
+            @Reset.started += instance.OnReset;
+            @Reset.performed += instance.OnReset;
+            @Reset.canceled += instance.OnReset;
         }
 
         private void UnregisterCallbacks(IKeyboardMouseActions instance)
@@ -420,6 +446,9 @@ public partial class @InputActions: IInputActionCollection2, IDisposable
             @Right.started -= instance.OnRight;
             @Right.performed -= instance.OnRight;
             @Right.canceled -= instance.OnRight;
+            @Reset.started -= instance.OnReset;
+            @Reset.performed -= instance.OnReset;
+            @Reset.canceled -= instance.OnReset;
         }
 
         public void RemoveCallbacks(IKeyboardMouseActions instance)
@@ -597,6 +626,7 @@ public partial class @InputActions: IInputActionCollection2, IDisposable
         void OnEscape(InputAction.CallbackContext context);
         void OnClick(InputAction.CallbackContext context);
         void OnRight(InputAction.CallbackContext context);
+        void OnReset(InputAction.CallbackContext context);
     }
     public interface IInGameActions
     {
