@@ -20354,7 +20354,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6f6451a7195cdaf4195da90bcbbc8be0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  levelManager: {fileID: 0}
+  levelManager: {fileID: 1785678315}
   player: {fileID: 976515387}
   level: Level 2
   PortalAnim: {fileID: 5112403345868107898, guid: 6f34ef0d986e9db4199cf75805f79753, type: 3}
@@ -25369,6 +25369,17 @@ PrefabInstance:
       addedObject: {fileID: 1134639061}
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3972110d16ee61a4ea426993fa9eeca1, type: 3}
+--- !u!114 &1785678315 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8576699831429508293, guid: 3972110d16ee61a4ea426993fa9eeca1, type: 3}
+  m_PrefabInstance: {fileID: 1785678314}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7b207b7aeac90bb4faf0ea78c657764a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1798185299
 GameObject:
   m_ObjectHideFlags: 0

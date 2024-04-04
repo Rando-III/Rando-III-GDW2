@@ -10867,7 +10867,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6f6451a7195cdaf4195da90bcbbc8be0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  levelManager: {fileID: 0}
+  levelManager: {fileID: 1785678316}
   player: {fileID: 1785678315}
   level: EndScreen
   PortalAnim: {fileID: 1141330259687333427, guid: 6718dc24203da53468af9ada8fef7d6d, type: 3}
@@ -23130,6 +23130,17 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 1266782145911103784, guid: 3972110d16ee61a4ea426993fa9eeca1, type: 3}
   m_PrefabInstance: {fileID: 1785678314}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1785678316 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8576699831429508293, guid: 3972110d16ee61a4ea426993fa9eeca1, type: 3}
+  m_PrefabInstance: {fileID: 1785678314}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7b207b7aeac90bb4faf0ea78c657764a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1786533094
 PrefabInstance:
   m_ObjectHideFlags: 0
