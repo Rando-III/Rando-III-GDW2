@@ -3029,7 +3029,7 @@ Transform:
   m_GameObject: {fileID: 314158003}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0.7071068, w: 0.7071068}
-  m_LocalPosition: {x: -19.9682, y: 0.8789, z: -0.1842311}
+  m_LocalPosition: {x: -20.8844, y: 0.8789, z: -0.1842311}
   m_LocalScale: {x: 1.3137147, y: 1.0821375, z: 1.3137152}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -3081,7 +3081,7 @@ SpriteRenderer:
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 2
-  m_Size: {x: 3.3510952, y: 31.816032}
+  m_Size: {x: 3.3510952, y: 33.509357}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -8661,7 +8661,7 @@ Transform:
   m_GameObject: {fileID: 659429489}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0.7071068, w: 0.7071068}
-  m_LocalPosition: {x: -16.238, y: -4.2449, z: -0.1842311}
+  m_LocalPosition: {x: -20.0625, y: -4.2449, z: -0.1842311}
   m_LocalScale: {x: 1.3137147, y: 1.0821375, z: 1.3137152}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -8713,7 +8713,7 @@ SpriteRenderer:
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 2
-  m_Size: {x: 4.562431, y: 24.887857}
+  m_Size: {x: 4.562431, y: 31.956274}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -18017,7 +18017,7 @@ Transform:
   m_GameObject: {fileID: 1451923865}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0.7071068, w: 0.7071068}
-  m_LocalPosition: {x: -20.102707, y: -9.145466, z: -0.1842311}
+  m_LocalPosition: {x: -21.5117, y: -9.1455, z: -0.1842311}
   m_LocalScale: {x: 1.3137147, y: 1.0821375, z: 1.3137152}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -18069,7 +18069,7 @@ SpriteRenderer:
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 2
-  m_Size: {x: 3.41, y: 32.084827}
+  m_Size: {x: 3.41, y: 34.688984}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -20637,7 +20637,7 @@ Transform:
   m_GameObject: {fileID: 1664122743}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0.7071068, w: 0.7071068}
-  m_LocalPosition: {x: -18.972, y: -4.1114, z: -0.1842311}
+  m_LocalPosition: {x: -21.5888, y: -4.1114, z: -0.1842311}
   m_LocalScale: {x: 1.3137147, y: 1.0821375, z: 1.3137152}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -20689,7 +20689,7 @@ SpriteRenderer:
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 2
-  m_Size: {x: 4.359145, y: 29.940893}
+  m_Size: {x: 4.359145, y: 34.777184}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -23126,6 +23126,10 @@ PrefabInstance:
       propertyPath: DeathEffect
       value: 
       objectReference: {fileID: 6855314210357232287, guid: 7c2a9b83b809a0848915fabd9596b68b, type: 3}
+    - target: {fileID: 3775995747840499813, guid: 3972110d16ee61a4ea426993fa9eeca1, type: 3}
+      propertyPath: m_SortingOrder
+      value: 150
+      objectReference: {fileID: 0}
     - target: {fileID: 7793911474099135813, guid: 3972110d16ee61a4ea426993fa9eeca1, type: 3}
       propertyPath: MainCamera
       value: 
@@ -24103,7 +24107,7 @@ Transform:
   m_GameObject: {fileID: 1900744500}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0.7071068, w: 0.7071068}
-  m_LocalPosition: {x: -18.972, y: -4.1073, z: -0.1842311}
+  m_LocalPosition: {x: -20.499, y: -4.1073, z: -0.1842311}
   m_LocalScale: {x: 1.3137147, y: 1.0821375, z: 1.3137152}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -24155,7 +24159,7 @@ SpriteRenderer:
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 2
-  m_Size: {x: 4.3528585, y: 29.940893}
+  m_Size: {x: 4.3528585, y: 32.763096}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -25487,7 +25491,7 @@ SpriteRenderer:
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 2
-  m_Size: {x: 17.73442, y: 10.913639}
+  m_Size: {x: 18.490097, y: 11.831212}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -25502,7 +25506,7 @@ Transform:
   m_GameObject: {fileID: 1995608517}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 492.59088, y: 23.53162, z: -0.11287074}
+  m_LocalPosition: {x: 492.5369, y: 23.4506, z: -0.11287074}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []

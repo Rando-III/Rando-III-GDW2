@@ -521,7 +521,7 @@ public class Player : MonoBehaviour
 
     internal void Roll()
     {
-        if (!dead && sr != null)
+        if (!dead && sr != null && walljumptimer == 0 && walljumptimer ==0 && walljumptimerleft == 0    )
         {
 
             sr = GetComponent<SpriteRenderer>();
