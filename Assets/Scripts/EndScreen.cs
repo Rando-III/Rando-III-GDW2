@@ -35,7 +35,9 @@ public class EndScreen : MonoBehaviour
     float TotalHigh;
 
     bool NewHighScore;
-    private void OnEnable()
+
+
+    private void Start()
     {
         L1Time = PlayerPrefs.GetFloat("L1Time");
         L2Time = PlayerPrefs.GetFloat("L2Time");
@@ -48,10 +50,7 @@ public class EndScreen : MonoBehaviour
         L3High = PlayerPrefs.GetFloat("L3High");
 
         TotalHigh = PlayerPrefs.GetFloat("TotalHigh");
-    }
 
-    private void Start()
-    {
         if (L1Time < L1High)
         {
             L1highscore.SetActive(true);

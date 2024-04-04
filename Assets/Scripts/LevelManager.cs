@@ -33,6 +33,8 @@ public class LevelManager : MonoBehaviour
 
     public void savetimes()
     {
+        finalTime = Time.time - startTime;
+
         if (Level == 1)
         {
             PlayerPrefs.SetFloat("L1Time", finalTime);
