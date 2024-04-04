@@ -10763,7 +10763,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 1785678315}
-  level: 
+  level: EndScreen
   PortalAnim: {fileID: 1141330259687333427, guid: 6718dc24203da53468af9ada8fef7d6d, type: 3}
   fade: {fileID: 588130098}
 --- !u!212 &847245353
