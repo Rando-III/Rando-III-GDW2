@@ -31,7 +31,7 @@ public class LevelManager : MonoBehaviour
         return Time.time - startTime;
     }
 
-    void OnDisable()
+    public void savetimes()
     {
         if (Level == 1)
         {

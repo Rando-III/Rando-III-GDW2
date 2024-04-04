@@ -6,8 +6,8 @@ using UnityEngine.UI;
 
 public class EndGameScript : MonoBehaviour
 {
-    
-    
+
+    [SerializeField] LevelManager levelManager;
     public GameObject player;
     public string level;
     public GameObject PortalAnim;
@@ -27,6 +27,7 @@ public class EndGameScript : MonoBehaviour
     {
         if (collision.tag == "Player")
         {
+            levelManager.savetimes();
             StartCoroutine(SceneTransition());
         }
     }

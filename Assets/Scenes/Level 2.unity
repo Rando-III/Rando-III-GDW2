@@ -20862,6 +20862,10 @@ PrefabInstance:
       propertyPath: MainCamera
       value: 
       objectReference: {fileID: 982109280}
+    - target: {fileID: 8576699831429508293, guid: 3972110d16ee61a4ea426993fa9eeca1, type: 3}
+      propertyPath: Level
+      value: 2
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects:
@@ -24972,6 +24976,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6f6451a7195cdaf4195da90bcbbc8be0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  levelManager: {fileID: 0}
   player: {fileID: 1785678315}
   level: Level 3
   PortalAnim: {fileID: 2504214343621411470, guid: 3ed0d324122d7b24eaec75c55c74aafc, type: 3}

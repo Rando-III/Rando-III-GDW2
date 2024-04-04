@@ -10867,6 +10867,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6f6451a7195cdaf4195da90bcbbc8be0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  levelManager: {fileID: 0}
   player: {fileID: 1785678315}
   level: EndScreen
   PortalAnim: {fileID: 1141330259687333427, guid: 6718dc24203da53468af9ada8fef7d6d, type: 3}
@@ -23114,6 +23115,10 @@ PrefabInstance:
     - target: {fileID: 8050809972652803772, guid: 3972110d16ee61a4ea426993fa9eeca1, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8576699831429508293, guid: 3972110d16ee61a4ea426993fa9eeca1, type: 3}
+      propertyPath: Level
+      value: 3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
