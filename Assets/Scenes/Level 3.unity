@@ -2300,6 +2300,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 623443854}
     m_Modifications:
+    - target: {fileID: 493097309070042075, guid: 0edce4d085031c24ea41ac15c25e74b2, type: 3}
+      propertyPath: m_Color.a
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6351959972139714381, guid: 0edce4d085031c24ea41ac15c25e74b2, type: 3}
       propertyPath: m_Name
       value: KillFloor
@@ -2370,6 +2374,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 829652862}
     m_Modifications:
+    - target: {fileID: 493097309070042075, guid: 0edce4d085031c24ea41ac15c25e74b2, type: 3}
+      propertyPath: m_Color.a
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6351959972139714381, guid: 0edce4d085031c24ea41ac15c25e74b2, type: 3}
       propertyPath: m_Name
       value: KillFloor
@@ -2818,6 +2826,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 489601825}
     m_Modifications:
+    - target: {fileID: 493097309070042075, guid: 0edce4d085031c24ea41ac15c25e74b2, type: 3}
+      propertyPath: m_Color.a
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6351959972139714381, guid: 0edce4d085031c24ea41ac15c25e74b2, type: 3}
       propertyPath: m_Name
       value: KillFloor
@@ -13811,6 +13823,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 860565768}
     m_Modifications:
+    - target: {fileID: 493097309070042075, guid: 0edce4d085031c24ea41ac15c25e74b2, type: 3}
+      propertyPath: m_Color.a
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6351959972139714381, guid: 0edce4d085031c24ea41ac15c25e74b2, type: 3}
       propertyPath: m_Name
       value: KillFloor
@@ -18388,6 +18404,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1877626517}
     m_Modifications:
+    - target: {fileID: 493097309070042075, guid: 0edce4d085031c24ea41ac15c25e74b2, type: 3}
+      propertyPath: m_Color.a
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6351959972139714381, guid: 0edce4d085031c24ea41ac15c25e74b2, type: 3}
       propertyPath: m_Name
       value: KillFloor
