@@ -12,6 +12,9 @@ public class CameraZone : MonoBehaviour
     public float speed = 1;
     bool GoToCamPos = false;
     bool GoToPlayer = false;
+
+    public float CamSize;
+
     Vector3 playerPos;
     Vector3 camposplayer;
     Vector3 returnDistance;
@@ -21,7 +24,7 @@ public class CameraZone : MonoBehaviour
         if (collision.tag == "Player")
         {
             GoToCamPos = true;
-            CameraManager.CamSizeChange(Cam.orthographicSize);
+            CameraManager.CamSizeChange(CamSize);
             GoToPlayer = false;
         }
     }
