@@ -92,13 +92,23 @@ public class Player : MonoBehaviour
         if (rb.velocity.y < 0 && !isGrounded)
         {
             
-            gameObject.GetComponent<Animator>().SetBool("fall", true);
             
+            try
+            {
+                gameObject.GetComponent<Animator>().SetBool("fall", true);
+            }
+            catch { }
+
         }
         
         else
         {
-            gameObject.GetComponent<Animator>().SetBool("fall", false);
+            
+            try
+            {
+                gameObject.GetComponent<Animator>().SetBool("fall", false);
+            }
+            catch { }
         }
         rolltimer -= Time.deltaTime;
         if (rolltimer < 0) 
@@ -108,25 +118,50 @@ public class Player : MonoBehaviour
         }
         if (rolltimer < 0.3) 
         {
-            gameObject.GetComponent<Animator>().SetBool("dash", false);
+            
+            try
+            {
+                gameObject.GetComponent<Animator>().SetBool("dash", false);
+            }
+            catch { }
         }
  
         if (rb.velocity.x != 0)
         {
-            gameObject.GetComponent<Animator>().SetBool("run", true);
             
+            try
+            {
+                gameObject.GetComponent<Animator>().SetBool("run", true);
+            }
+            catch { }
+
         }
         else if (rb.velocity.x == 0)
         {
-            gameObject.GetComponent<Animator>().SetBool("run", false);
+            
+            try
+            {
+                gameObject.GetComponent<Animator>().SetBool("run", false);
+            }
+            catch { }
         }
         if (canWalljump || canwalljumpleft)
         {
-            gameObject.GetComponent<Animator>().SetBool("wall", true);
+            
+            try
+            {
+                gameObject.GetComponent<Animator>().SetBool("wall", true);
+            }
+            catch { }
         }
         else
         {
-            gameObject.GetComponent<Animator>().SetBool("wall", false);
+            try
+            {
+                gameObject.GetComponent<Animator>().SetBool("wall", false);
+            }
+            catch { }
+            
         }
         
         if (!dead)
@@ -186,15 +221,29 @@ public class Player : MonoBehaviour
                 Instantiate(DeathEffect, gameObject.transform.position, Quaternion.identity);
                 deathEffectCount++;
             }
-
-            gameObject.GetComponent<Animator>().SetBool("dead", true);
-            gameObject.GetComponent<Animator>().SetBool("wall", false);
+            try
+            {
+                gameObject.GetComponent<Animator>().SetBool("dead", true);
+            }
+            catch { }
+            try
+            {
+                gameObject.GetComponent<Animator>().SetBool("wall", false);
+            }
+            catch { }
+            
+            
             deadtimer -= Time.deltaTime;
             {
                 if (deadtimer <= 0 )
                 {
                     Destroy(GameObject.Find("CFXR2 Broken Heart(Clone)"));
-                    gameObject.GetComponent<Animator>().SetBool("dead", false);
+                    
+                    try
+                    {
+                        gameObject.GetComponent<Animator>().SetBool("dead", false);
+                    }
+                    catch { }
                     gameObject.transform.position = respawn.transform.position + new Vector3(0, 5f, 0);
                     dead = false;
                     deadtimer = 1;
@@ -243,7 +292,11 @@ public class Player : MonoBehaviour
         if (collision.gameObject.layer == 3)
         {
             onFloor = true;
-            gameObject.GetComponent<Animator>().SetBool("jump", false);
+            try
+            {
+                gameObject.GetComponent<Animator>().SetBool("jump", false);
+            }
+            catch { }
             if (!canWalljump && !canwalljumpleft)
             {
                 isGrounded = true;
@@ -259,7 +312,11 @@ public class Player : MonoBehaviour
             platLock = true;
             platTag = collision.gameObject.tag;
             onPlat = true;
-            gameObject.GetComponent<Animator>().SetBool("jump", false);
+            try
+            {
+                gameObject.GetComponent<Animator>().SetBool("jump", false);
+            }
+            catch { }
             isGrounded = true;
             canMove = true;
             isjumping = false;
@@ -400,14 +457,23 @@ public class Player : MonoBehaviour
             }
             if (rolltimer > 0)
             {
-
-                gameObject.GetComponent<Animator>().SetBool("jump", true);
+                try
+                {
+                    gameObject.GetComponent<Animator>().SetBool("jump", true);
+                }
+                catch { }
                 rb.AddForce(new Vector2(0, jumpforce), ForceMode2D.Impulse);
                 isGrounded = false;
                 rolltimer = 0;
             }
-            
-            gameObject.GetComponent<Animator>().SetBool("jump", true);
+
+            try
+            {
+                gameObject.GetComponent<Animator>().SetBool("jump", true);
+            }
+            catch { }
+
+
             if (isGrounded)
             {
 
@@ -462,7 +528,12 @@ public class Player : MonoBehaviour
 
             if (rolltimer <= 0 && sr.flipX == false && isGrounded)
             {
-                gameObject.GetComponent<Animator>().SetBool("dash", true);
+
+                try
+                {
+                    gameObject.GetComponent<Animator>().SetBool("dash", true);
+                }
+                catch { }
                 maxV = 20;
                 rolltimer = 0.6f;
                 rb.AddForce(new Vector2(20, 0f), ForceMode2D.Impulse);
@@ -473,7 +544,11 @@ public class Player : MonoBehaviour
             }
             if (rolltimer <= 0 && sr.flipX == true && isGrounded)
             {
-                gameObject.GetComponent<Animator>().SetBool("dash", true);
+                try
+                {
+                    gameObject.GetComponent<Animator>().SetBool("dash", true);
+                }
+                catch { }
                 rolltimer = 0.6f;
                 rb.AddForce(new Vector2(-20, 0f), ForceMode2D.Impulse);
                 maxV = 10;
