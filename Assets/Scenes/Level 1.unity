@@ -1571,6 +1571,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 140438947}
     - target: {fileID: 4357100704011073663, guid: 623e23a735382eb44ace4a6144c271ed, type: 3}
+      propertyPath: CamSize
+      value: 16.26029
+      objectReference: {fileID: 0}
+    - target: {fileID: 4357100704011073663, guid: 623e23a735382eb44ace4a6144c271ed, type: 3}
       propertyPath: MainCamera
       value: 
       objectReference: {fileID: 982109280}
@@ -6913,6 +6917,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 644241630}
     - target: {fileID: 4357100704011073663, guid: 623e23a735382eb44ace4a6144c271ed, type: 3}
+      propertyPath: CamSize
+      value: 13.9
+      objectReference: {fileID: 0}
+    - target: {fileID: 4357100704011073663, guid: 623e23a735382eb44ace4a6144c271ed, type: 3}
       propertyPath: MainCamera
       value: 
       objectReference: {fileID: 982109280}
@@ -10679,6 +10687,10 @@ PrefabInstance:
       value: 0.6
       objectReference: {fileID: 0}
     - target: {fileID: 4357100704011073663, guid: 623e23a735382eb44ace4a6144c271ed, type: 3}
+      propertyPath: CamSize
+      value: 7.005025
+      objectReference: {fileID: 0}
+    - target: {fileID: 4357100704011073663, guid: 623e23a735382eb44ace4a6144c271ed, type: 3}
       propertyPath: MainCamera
       value: 
       objectReference: {fileID: 982109280}
@@ -12198,6 +12210,10 @@ PrefabInstance:
       propertyPath: Cam
       value: 
       objectReference: {fileID: 71601707}
+    - target: {fileID: 4357100704011073663, guid: 623e23a735382eb44ace4a6144c271ed, type: 3}
+      propertyPath: CamSize
+      value: 14.47709
+      objectReference: {fileID: 0}
     - target: {fileID: 4357100704011073663, guid: 623e23a735382eb44ace4a6144c271ed, type: 3}
       propertyPath: MainCamera
       value: 
@@ -15395,6 +15411,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 844774788}
     - target: {fileID: 4357100704011073663, guid: 623e23a735382eb44ace4a6144c271ed, type: 3}
+      propertyPath: CamSize
+      value: 18.99
+      objectReference: {fileID: 0}
+    - target: {fileID: 4357100704011073663, guid: 623e23a735382eb44ace4a6144c271ed, type: 3}
       propertyPath: MainCamera
       value: 
       objectReference: {fileID: 982109280}
@@ -16720,6 +16740,10 @@ PrefabInstance:
       propertyPath: Cam
       value: 
       objectReference: {fileID: 684529319}
+    - target: {fileID: 4357100704011073663, guid: 623e23a735382eb44ace4a6144c271ed, type: 3}
+      propertyPath: CamSize
+      value: 8.413605
+      objectReference: {fileID: 0}
     - target: {fileID: 4357100704011073663, guid: 623e23a735382eb44ace4a6144c271ed, type: 3}
       propertyPath: MainCamera
       value: 
@@ -23571,6 +23595,10 @@ PrefabInstance:
       propertyPath: Cam
       value: 
       objectReference: {fileID: 718730414}
+    - target: {fileID: 4357100704011073663, guid: 623e23a735382eb44ace4a6144c271ed, type: 3}
+      propertyPath: CamSize
+      value: 9
+      objectReference: {fileID: 0}
     - target: {fileID: 4357100704011073663, guid: 623e23a735382eb44ace4a6144c271ed, type: 3}
       propertyPath: MainCamera
       value: 
