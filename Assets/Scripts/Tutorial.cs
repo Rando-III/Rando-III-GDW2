@@ -12,14 +12,18 @@ public class Tutorial : MonoBehaviour
         if (collision.tag == "Player" && !triggered)
         {
             triggered = true;
-            if (SecondRoom != null)
+            if (SecondRoom != null && FirstRoom != null)
             {
                 FirstRoom.SetActive(false);
                 SecondRoom.SetActive(true);
             }
-            else
+            else if (SecondRoom == null)
             {
                 FirstRoom.SetActive(false);
+            }
+            else if (FirstRoom == null)
+            {
+                SecondRoom.SetActive(true);
             }
         }
     }
