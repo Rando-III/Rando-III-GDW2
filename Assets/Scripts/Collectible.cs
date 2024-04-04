@@ -6,9 +6,10 @@ public class Collectible : MonoBehaviour
 {
     public FloatSO item;
 
-    private void OnTriggerEnter(Collider other)
+    
+    private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (other.gameObject.tag == "Player")
+        if (collision.gameObject.tag == "Player")
         {
             item.value++;
             Destroy(gameObject);
